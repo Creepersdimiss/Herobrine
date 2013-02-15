@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Herobrine extends JavaPlugin {
@@ -15,6 +16,7 @@ public class Herobrine extends JavaPlugin {
     private static Herobrine instance;
     private static ActionManager actionManager;
     private static YamlConfiguration config;
+    private static Plugin glowstone;
 
     @Override
     public void onEnable() {
@@ -49,6 +51,12 @@ public class Herobrine extends JavaPlugin {
         } catch (Exception ex) {
             Herobrine.log("Failed to start MCStats reporting!", Level.WARNING);
         }
+        Herobrine.glowstone = this.getServer().getPluginManager().getPlugin("Glowstone");
+        if (glowstone != null) {
+            Herobrine.log("Glowstone v" + glowstone.getDescription().getVersion() + " has been detected!", Level.OFF);
+        } else {
+            Herobrine.log("Glowstone was not detected! Skipping it...", Level.WARNING);
+        }
     }
     
     @Override
@@ -73,6 +81,10 @@ public class Herobrine extends JavaPlugin {
         }
     }
     
+    public static Plugin getGlowstone() {
+        return Herobrine.glowstone;
+    }
+
     public static YamlConfiguration getConfigFile() {
         return Herobrine.config;
     }
