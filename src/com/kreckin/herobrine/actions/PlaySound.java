@@ -23,7 +23,6 @@ public class PlaySound extends Action {
         sounds.add(Sound.BREATH);
         sounds.add(Sound.CAT_HISS);
         sounds.add(Sound.CREEPER_HISS);
-        sounds.add(Sound.BURP);
         sounds.add(Sound.DOOR_CLOSE);
         sounds.add(Sound.DOOR_OPEN);
         sounds.add(Sound.ENDERDRAGON_GROWL);
