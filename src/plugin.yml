@@ -7,4 +7,4 @@ website: http://dev.bukkit.org/server-mods/herobrineunleashed/
 commands:
   hb:
     description: Herobrine commands.
-    usage: Use /hb
+    usage: Error in command!
