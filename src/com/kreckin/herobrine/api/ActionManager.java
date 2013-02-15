@@ -15,6 +15,7 @@ import com.kreckin.herobrine.actions.PlaceTorch;
 import com.kreckin.herobrine.actions.PlaySound;
 import com.kreckin.herobrine.actions.PossessPlayer;
 import com.kreckin.herobrine.actions.RearrangeInventory;
+import com.kreckin.herobrine.actions.SendMessage;
 import com.kreckin.herobrine.actions.StealItem;
 import com.kreckin.herobrine.actions.WolfAttack;
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class ActionManager {
         this.actions.add(new PlaySound());
         this.actions.add(new AltarSummon());
         this.actions.add(new GiftBook());
+        this.actions.add(new SendMessage());
         for (Action action : this.actions) {
             Herobrine.log("Registered Action: " + action.getClass().getSimpleName(), Level.INFO);
         }
