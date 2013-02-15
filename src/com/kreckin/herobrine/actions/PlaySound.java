@@ -1,9 +1,8 @@
 package com.kreckin.herobrine.actions;
 
-import com.kreckin.herobrine.api.IActionResult;
-import com.kreckin.herobrine.impl.Action;
-import com.kreckin.herobrine.impl.ActionResult;
-import com.kreckin.herobrine.impl.ActionType;
+import com.kreckin.herobrine.api.Action;
+import com.kreckin.herobrine.api.ActionResult;
+import com.kreckin.herobrine.api.ActionType;
 import java.util.ArrayList;
 import java.util.Random;
 import org.bukkit.Sound;
@@ -16,7 +15,7 @@ public class PlaySound extends Action {
     }
 
     @Override
-    public IActionResult callAction(Player player, Object[] metadata) {
+    public ActionResult callAction(Player player, Object[] metadata) {
         ArrayList<Sound> sounds = new ArrayList<Sound>();
         sounds.add(Sound.AMBIENCE_CAVE);
         sounds.add(Sound.AMBIENCE_RAIN);

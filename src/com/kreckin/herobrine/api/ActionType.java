@@ -1,4 +1,4 @@
-package com.kreckin.herobrine.impl;
+package com.kreckin.herobrine.api;
 
 public enum ActionType {
     

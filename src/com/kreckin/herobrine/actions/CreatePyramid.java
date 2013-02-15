@@ -1,9 +1,8 @@
 package com.kreckin.herobrine.actions;
 
-import com.kreckin.herobrine.api.IActionResult;
-import com.kreckin.herobrine.impl.Action;
-import com.kreckin.herobrine.impl.ActionResult;
-import com.kreckin.herobrine.impl.ActionType;
+import com.kreckin.herobrine.api.Action;
+import com.kreckin.herobrine.api.ActionResult;
+import com.kreckin.herobrine.api.ActionType;
 import com.kreckin.herobrine.util.Util;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -18,7 +17,7 @@ public class CreatePyramid extends Action {
     }
 
     @Override
-    public IActionResult callAction(Player player, Object[] metadata) {
+    public ActionResult callAction(Player player, Object[] metadata) {
         Block[] blocks = new Block[14];
         blocks[0] = Util.getNearbyLocation(player, 25).add(0, 2, 0).getBlock();
         blocks[1] = blocks[0].getRelative(BlockFace.NORTH).getLocation().subtract(0, 1, 0).getBlock();

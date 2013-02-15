@@ -1,13 +1,11 @@
-package com.kreckin.herobrine.impl;
+package com.kreckin.herobrine.api;
 
 import com.kreckin.herobrine.Herobrine;
-import com.kreckin.herobrine.api.IAction;
-import com.kreckin.herobrine.api.IActionResult;
 import java.util.logging.Level;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
-public abstract class Action implements IAction {
+public abstract class Action {
 
     private final ActionType type;
 
@@ -15,8 +13,7 @@ public abstract class Action implements IAction {
         this.type = type;
     }
 
-    @Override
-    public IActionResult checkAction(Player player, Object[] metadata) {
+    public ActionResult checkAction(Player player, Object[] metadata) {
         if (Herobrine.getConfigFile().getStringList("Herobrine.disallowedActions").contains(this.getClass().getSimpleName())) {
             return (new ActionResult("Sorry, that action has been disallowed in the configuration file!"));
         }
@@ -30,15 +27,16 @@ public abstract class Action implements IAction {
             return (new ActionResult("Sorry, the player cannot have the \"herobrine.ignore\" permissions node!"));
         }
         Herobrine.log("Running Action: " + this.getClass().getSimpleName() + " & Player: " + player.getName(), Level.INFO);
-        IActionResult result = this.callAction(player, metadata);
+        ActionResult result = this.callAction(player, metadata);
         Herobrine.log(result.getMessage(), Level.INFO);
         if (result.getData() != null) {
             Herobrine.log("Details: " + result.getData(), Level.INFO);
         }
         return result;
     }
+    
+    public abstract ActionResult callAction(Player player, Object[] metadata);
 
-    @Override
     public ActionType getType() {
         return this.type;
     }

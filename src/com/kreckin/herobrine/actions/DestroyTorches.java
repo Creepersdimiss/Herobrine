@@ -1,9 +1,8 @@
 package com.kreckin.herobrine.actions;
 
-import com.kreckin.herobrine.api.IActionResult;
-import com.kreckin.herobrine.impl.Action;
-import com.kreckin.herobrine.impl.ActionResult;
-import com.kreckin.herobrine.impl.ActionType;
+import com.kreckin.herobrine.api.Action;
+import com.kreckin.herobrine.api.ActionResult;
+import com.kreckin.herobrine.api.ActionType;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -16,7 +15,7 @@ public class DestroyTorches extends Action {
     }
     
     @Override
-    public IActionResult callAction(Player player, Object[] metadata) {
+    public ActionResult callAction(Player player, Object[] metadata) {
         int torchTotal = 0;
         for (int x = -5; x < 5; x++) {
             for (int z = -5; z < 5; z++) {

@@ -1,9 +1,9 @@
 package com.kreckin.herobrine.listeners;
 
 import com.kreckin.herobrine.Herobrine;
-import com.kreckin.herobrine.api.IAction;
-import com.kreckin.herobrine.api.IActionResult;
-import com.kreckin.herobrine.impl.ActionType;
+import com.kreckin.herobrine.api.Action;
+import com.kreckin.herobrine.api.ActionResult;
+import com.kreckin.herobrine.api.ActionType;
 import com.kreckin.herobrine.util.Util;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
@@ -26,7 +26,7 @@ public class CommandListener implements CommandExecutor {
         }
         if (strings.length == 1 && strings[0].equalsIgnoreCase("help")) {
             String knownActions = "Known actions: ";
-            for (IAction action : Herobrine.getActionManager().getActions()) {
+            for (Action action : Herobrine.getActionManager().getActions()) {
                 knownActions += action.getClass().getSimpleName() + ", ";
             }
             knownActions = knownActions.substring(0, knownActions.length() - 2);
@@ -34,8 +34,8 @@ public class CommandListener implements CommandExecutor {
             return true;
         }
         if (strings.length == 2) {
-            IAction foundAction = null;
-            for (IAction action : Herobrine.getActionManager().getActions()) {
+            Action foundAction = null;
+            for (Action action : Herobrine.getActionManager().getActions()) {
                 if (action.getClass().getSimpleName().equalsIgnoreCase(strings[0])) {
                     foundAction = action;
                     break;
@@ -50,7 +50,7 @@ public class CommandListener implements CommandExecutor {
                 if (player == null) {
                     cs.sendMessage(Util.formatString("Unknown player!"));
                 } else {
-                    IActionResult result = foundAction.checkAction(player, null);
+                    ActionResult result = foundAction.checkAction(player, null);
                     cs.sendMessage(Util.formatString(result.getMessage()));
                     if (result.getData() != null) {
                         cs.sendMessage(Util.formatString("Details: " + result.getData()));

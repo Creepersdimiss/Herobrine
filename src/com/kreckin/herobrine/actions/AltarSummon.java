@@ -1,9 +1,8 @@
 package com.kreckin.herobrine.actions;
 
-import com.kreckin.herobrine.api.IActionResult;
-import com.kreckin.herobrine.impl.Action;
-import com.kreckin.herobrine.impl.ActionResult;
-import com.kreckin.herobrine.impl.ActionType;
+import com.kreckin.herobrine.api.Action;
+import com.kreckin.herobrine.api.ActionResult;
+import com.kreckin.herobrine.api.ActionType;
 import com.kreckin.herobrine.util.Util;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
@@ -16,7 +15,7 @@ public class AltarSummon extends Action {
     }
 
     @Override
-    public IActionResult callAction(Player player, Object[] metadata) {
+    public ActionResult callAction(Player player, Object[] metadata) {
         player.getWorld().createExplosion(((Block) metadata[0]).getLocation(), 3F);
         player.getWorld().setStorm(true);
         player.getWorld().setTime(14200);

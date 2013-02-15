@@ -1,9 +1,8 @@
 package com.kreckin.herobrine.actions;
 
-import com.kreckin.herobrine.api.IActionResult;
-import com.kreckin.herobrine.impl.Action;
-import com.kreckin.herobrine.impl.ActionResult;
-import com.kreckin.herobrine.impl.ActionType;
+import com.kreckin.herobrine.api.Action;
+import com.kreckin.herobrine.api.ActionResult;
+import com.kreckin.herobrine.api.ActionType;
 import com.kreckin.herobrine.util.Util;
 import java.util.ArrayList;
 import org.bukkit.Location;
@@ -18,7 +17,7 @@ public class CreateRingOfFire extends Action {
     }
 
     @Override
-    public IActionResult callAction(Player player, Object[] metadata) {
+    public ActionResult callAction(Player player, Object[] metadata) {
         ArrayList<Block> blocks = new ArrayList<Block>();
         blocks.add(player.getLocation().add(2, 0, 0).getBlock());
         blocks.add(player.getLocation().add(0, 0, 2).getBlock());

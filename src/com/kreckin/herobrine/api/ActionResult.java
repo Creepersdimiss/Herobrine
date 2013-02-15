@@ -1,8 +1,6 @@
-package com.kreckin.herobrine.impl;
+package com.kreckin.herobrine.api;
 
-import com.kreckin.herobrine.api.IActionResult;
-
-public class ActionResult implements IActionResult {
+public class ActionResult {
 
     private final String data, message;
     
@@ -15,12 +13,10 @@ public class ActionResult implements IActionResult {
         this.data = data;
     }
 
-    @Override
     public String getData() {
         return this.data;
     }
 
-    @Override
     public String getMessage() {
         return this.message;
     }

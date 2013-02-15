@@ -1,6 +1,6 @@
 package com.kreckin.herobrine;
 
-import com.kreckin.herobrine.impl.ActionManager;
+import com.kreckin.herobrine.api.ActionManager;
 import com.kreckin.herobrine.listeners.CommandListener;
 import com.kreckin.herobrine.listeners.EventListener;
 import java.io.File;
