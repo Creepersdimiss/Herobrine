@@ -14,12 +14,15 @@ import com.kreckin.herobrine.actions.PlaceSign;
 import com.kreckin.herobrine.actions.PlaceTorch;
 import com.kreckin.herobrine.actions.PlaySound;
 import com.kreckin.herobrine.actions.PossessPlayer;
+import com.kreckin.herobrine.actions.RandomExplosion;
+import com.kreckin.herobrine.actions.RandomLightning;
 import com.kreckin.herobrine.actions.RearrangeInventory;
 import com.kreckin.herobrine.actions.SendMessage;
 import com.kreckin.herobrine.actions.StealItem;
 import com.kreckin.herobrine.actions.WolfAttack;
 import java.util.ArrayList;
 import java.util.logging.Level;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 public class ActionManager {
@@ -45,6 +48,8 @@ public class ActionManager {
         this.registerAction(Herobrine.getInstance(), new AltarSummon());
         this.registerAction(Herobrine.getInstance(), new GiftBook());
         this.registerAction(Herobrine.getInstance(), new SendMessage());
+        this.registerAction(Herobrine.getInstance(), new RandomLightning());
+        this.registerAction(Herobrine.getInstance(), new RandomExplosion());
     }
     
     public final void registerAction(Plugin plugin, Action action) {
