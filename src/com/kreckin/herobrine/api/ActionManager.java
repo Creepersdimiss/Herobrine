@@ -20,6 +20,7 @@ import com.kreckin.herobrine.actions.StealItem;
 import com.kreckin.herobrine.actions.WolfAttack;
 import java.util.ArrayList;
 import java.util.logging.Level;
+import org.bukkit.plugin.Plugin;
 
 public class ActionManager {
 
@@ -27,26 +28,28 @@ public class ActionManager {
     
     public ActionManager() {
         this.actions = new ArrayList<Action>();
-        this.actions.add(new PlaceTorch());
-        this.actions.add(new PlaceSign());
-        this.actions.add(new DestroyTorches());
-        this.actions.add(new CreateRingOfFire());
-        this.actions.add(new BuryPlayer());
-        this.actions.add(new CreateGrave());
-        this.actions.add(new CreateTNTTrap());
-        this.actions.add(new StealItem());
-        this.actions.add(new RearrangeInventory());
-        this.actions.add(new PossessPlayer());
-        this.actions.add(new WolfAttack());
-        this.actions.add(new BatAttack());
-        this.actions.add(new CreatePyramid());
-        this.actions.add(new PlaySound());
-        this.actions.add(new AltarSummon());
-        this.actions.add(new GiftBook());
-        this.actions.add(new SendMessage());
-        for (Action action : this.actions) {
-            Herobrine.log("Registered Action: " + action.getClass().getSimpleName(), Level.INFO);
-        }
+        this.registerAction(Herobrine.getInstance(), new PlaceTorch());
+        this.registerAction(Herobrine.getInstance(), new PlaceSign());
+        this.registerAction(Herobrine.getInstance(), new DestroyTorches());
+        this.registerAction(Herobrine.getInstance(), new CreateRingOfFire());
+        this.registerAction(Herobrine.getInstance(), new BuryPlayer());
+        this.registerAction(Herobrine.getInstance(), new CreateGrave());
+        this.registerAction(Herobrine.getInstance(), new CreateTNTTrap());
+        this.registerAction(Herobrine.getInstance(), new StealItem());
+        this.registerAction(Herobrine.getInstance(), new RearrangeInventory());
+        this.registerAction(Herobrine.getInstance(), new PossessPlayer());
+        this.registerAction(Herobrine.getInstance(), new WolfAttack());
+        this.registerAction(Herobrine.getInstance(), new BatAttack());
+        this.registerAction(Herobrine.getInstance(), new CreatePyramid());
+        this.registerAction(Herobrine.getInstance(), new PlaySound());
+        this.registerAction(Herobrine.getInstance(), new AltarSummon());
+        this.registerAction(Herobrine.getInstance(), new GiftBook());
+        this.registerAction(Herobrine.getInstance(), new SendMessage());
+    }
+    
+    public final void registerAction(Plugin plugin, Action action) {
+        this.actions.add(action);
+        Herobrine.log("\"" + plugin.getDescription().getName() + "\" Registered: " + action.getClass().getSimpleName(), Level.INFO);
     }
 
     public ArrayList<Action> getActions() {
