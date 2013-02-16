@@ -9,6 +9,7 @@ import com.kreckin.herobrine.actions.CreatePyramid;
 import com.kreckin.herobrine.actions.CreateRingOfFire;
 import com.kreckin.herobrine.actions.CreateTNTTrap;
 import com.kreckin.herobrine.actions.DestroyTorches;
+import com.kreckin.herobrine.actions.DimTorches;
 import com.kreckin.herobrine.actions.GiftBook;
 import com.kreckin.herobrine.actions.PlaceSign;
 import com.kreckin.herobrine.actions.PlaceTorch;
@@ -50,6 +51,7 @@ public class ActionManager {
         this.registerAction(Herobrine.getInstance(), new SendMessage());
         this.registerAction(Herobrine.getInstance(), new RandomLightning());
         this.registerAction(Herobrine.getInstance(), new RandomExplosion());
+        this.registerAction(Herobrine.getInstance(), new DimTorches());
     }
     
     public final void registerAction(Plugin plugin, Action action) {
