@@ -20,11 +20,13 @@ public class RearrangeInventory extends Action {
         List<ItemStack> items = Arrays.asList(player.getInventory().getContents());
         Collections.shuffle(items);
         player.getInventory().clear();
+        int count = 0;
         for (ItemStack item : items) {
             if (item != null) {
                 player.getInventory().addItem(item);
+                count++;
             }
         }
-        return (new ActionResult("Done."));
+        return (new ActionResult("Done.", "Rearranged " + count + " items!"));
     }
 }
