@@ -57,7 +57,7 @@ public class ActionManager {
     
     public final void registerAction(Plugin plugin, Action action) {
         this.actions.add(action);
-        Herobrine.log("\"" + plugin.getDescription().getName() + "\" Registered: " + action.getClass().getSimpleName(), Level.INFO);
+        Herobrine.log("Plugin \"" + plugin.getDescription().getName() + "\" Registered: " + action.getClass().getSimpleName(), Level.INFO);
     }
 
     public ArrayList<Action> getActions() {
