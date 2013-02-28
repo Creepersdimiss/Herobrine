@@ -11,6 +11,9 @@ Herobrine:
 
   # What should his name be?
   entityName: Herobrine
+  
+  # What should the title of his books be?
+  bookTitle: Story of Your Life
  
   # What messages can he put on the signs he places?
   signMessages:
