@@ -19,12 +19,13 @@ public class GiftBook extends Action {
     @Override
     public ActionResult callAction(Player player, Object[] metadata) {
         ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
+        String message = Util.getMessage("Herobrine.bookMessages");
         BookMeta meta = (BookMeta) book.getItemMeta();
         meta.setAuthor("Herobrine");
-        meta.setTitle(ChatColor.MAGIC + "steaks4uce");
-        meta.setPages(Util.getMessage("Herobrine.bookMessages"));
+        meta.setTitle(Herobrine.getConfigFile().getString("Herobrine.bookTitle"));
+        meta.setPages(message);
         book.setItemMeta(meta);
         player.getInventory().addItem(book);
-        return (new ActionResult("Done."));
+        return (new ActionResult("Done.", "Message: " + message));
     }
 }
