@@ -15,11 +15,13 @@ public class Herobrine extends JavaPlugin {
     private static Herobrine instance;
     private static ActionManager actionManager;
     private static YamlConfiguration config;
+    private static Support support;
 
     @Override
     public void onEnable() {
         Herobrine.instance = this;
         Herobrine.actionManager = new ActionManager();
+        Herobrine.support = new Support();
         this.getCommand("hb").setExecutor(new CommandListener());
         this.getServer().getPluginManager().registerEvents(new EventListener(), this);
         try {
@@ -49,6 +51,7 @@ public class Herobrine extends JavaPlugin {
         } catch (Exception ex) {
             Herobrine.log("Failed to start MCStats reporting!", Level.WARNING);
         }
+        Herobrine.support.scanPlugins();
     }
     
     @Override
@@ -83,5 +86,9 @@ public class Herobrine extends JavaPlugin {
     
     public static Herobrine getInstance() {
         return Herobrine.instance;
+    }
+    
+    public static Support getSupport() {
+        return Herobrine.support;
     }
 }

@@ -1,5 +1,8 @@
 Herobrine:
   
+  # Should we stop events that are inside protected regions? (GriefPrevention and Residence)
+  ignoreProtectedRegions: false
+  
   # Should we ignore players not in survival mode?
   survivalOnly: true
   

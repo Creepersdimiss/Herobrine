@@ -6,7 +6,6 @@ import com.kreckin.herobrine.api.ActionType;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 public class DimTorches extends Action {
 
