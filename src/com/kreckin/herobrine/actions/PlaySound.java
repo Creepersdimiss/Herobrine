@@ -9,28 +9,30 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 public class PlaySound extends Action {
+    
+    private final ArrayList<Sound> sounds;
 
     public PlaySound() {
         super(ActionType.STANDARD);
+        this.sounds = new ArrayList<Sound>();
+        this.sounds.add(Sound.AMBIENCE_CAVE);
+        this.sounds.add(Sound.AMBIENCE_RAIN);
+        this.sounds.add(Sound.AMBIENCE_THUNDER);
+        this.sounds.add(Sound.BREATH);
+        this.sounds.add(Sound.CAT_HISS);
+        this.sounds.add(Sound.CREEPER_HISS);
+        this.sounds.add(Sound.DOOR_CLOSE);
+        this.sounds.add(Sound.DOOR_OPEN);
+        this.sounds.add(Sound.ENDERDRAGON_GROWL);
+        this.sounds.add(Sound.GHAST_MOAN);
+        this.sounds.add(Sound.GHAST_SCREAM);
+        this.sounds.add(Sound.GHAST_SCREAM2);
     }
 
     @Override
     public ActionResult callAction(Player player, Object[] metadata) {
-        ArrayList<Sound> sounds = new ArrayList<Sound>();
-        sounds.add(Sound.AMBIENCE_CAVE);
-        sounds.add(Sound.AMBIENCE_RAIN);
-        sounds.add(Sound.AMBIENCE_THUNDER);
-        sounds.add(Sound.BREATH);
-        sounds.add(Sound.CAT_HISS);
-        sounds.add(Sound.CREEPER_HISS);
-        sounds.add(Sound.DOOR_CLOSE);
-        sounds.add(Sound.DOOR_OPEN);
-        sounds.add(Sound.ENDERDRAGON_GROWL);
-        sounds.add(Sound.GHAST_MOAN);
-        sounds.add(Sound.GHAST_SCREAM);
-        sounds.add(Sound.GHAST_SCREAM2);
-        Sound sound = sounds.get(new Random().nextInt(sounds.size() - 1));
-        player.playSound(player.getLocation(), Sound.BURP, 1F, 1F);
+        Sound sound = this.sounds.get(new Random().nextInt(this.sounds.size() - 1));
+        player.playSound(player.getLocation(), sound, 1F, 1F);
         return (new ActionResult("Done.", "Played: " + sound.toString()));
     }
 }
