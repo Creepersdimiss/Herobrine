@@ -1,10 +1,10 @@
 package com.kreckin.herobrine.actions;
 
+import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
 import com.kreckin.herobrine.api.ActionType;
 import com.kreckin.herobrine.util.Util;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
