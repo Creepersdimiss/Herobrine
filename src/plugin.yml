@@ -1,5 +1,5 @@
 name: Herobrine
-version: 6.3
+version: 6.4
 main: com.kreckin.herobrine.Herobrine
 description: I'll never stop.
 author: steaks4uce
@@ -8,4 +8,4 @@ website: http://dev.bukkit.org/server-mods/herobrineunleashed/
 commands:
   hb:
     description: Herobrine commands.
-    usage: Error in command!
+    usage: Please use /hb help!
