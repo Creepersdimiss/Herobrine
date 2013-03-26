@@ -8,6 +8,7 @@ import com.kreckin.herobrine.actions.CreateGrave;
 import com.kreckin.herobrine.actions.CreatePyramid;
 import com.kreckin.herobrine.actions.CreateRingOfFire;
 import com.kreckin.herobrine.actions.CreateTNTTrap;
+import com.kreckin.herobrine.actions.CreateTotem;
 import com.kreckin.herobrine.actions.DestroyTorches;
 import com.kreckin.herobrine.actions.DimTorches;
 import com.kreckin.herobrine.actions.GiftBook;
@@ -24,7 +25,6 @@ import com.kreckin.herobrine.actions.StealItem;
 import com.kreckin.herobrine.actions.ThrowPlayer;
 import com.kreckin.herobrine.actions.WolfAttack;
 import java.util.ArrayList;
-import java.util.logging.Level;
 import org.bukkit.plugin.Plugin;
 
 public class ActionManager {
@@ -55,11 +55,11 @@ public class ActionManager {
         this.registerAction(Herobrine.getInstance(), new DimTorches());
         this.registerAction(Herobrine.getInstance(), new ThrowPlayer());
         this.registerAction(Herobrine.getInstance(), new GiftHead());
+        this.registerAction(Herobrine.getInstance(), new CreateTotem());
     }
     
     public final void registerAction(Plugin plugin, Action action) {
         this.actions.add(action);
-        Herobrine.log("Plugin \"" + plugin.getDescription().getName() + "\" Registered: " + action.getClass().getSimpleName(), Level.INFO);
     }
 
     public ArrayList<Action> getActions() {
