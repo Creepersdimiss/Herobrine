@@ -61,6 +61,7 @@ public class Herobrine extends JavaPlugin {
         Herobrine.actionManager = null;
         Herobrine.config = null;
         Herobrine.instance = null;
+        Herobrine.support = null;
     }
     
     public static void log(String message, Level level) {

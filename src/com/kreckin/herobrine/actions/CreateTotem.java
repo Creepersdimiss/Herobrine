@@ -20,7 +20,7 @@ public class CreateTotem extends Action {
     public ActionResult callAction(Player player, Object[] metadata) {
         Block fence = Util.getNearbyLocation(player, 5).getBlock();
         Block head = fence.getLocation().add(0, 1, 0).getBlock();
-        if (!Util.isSolid(fence) && !Util.isSolid(head)) {
+        if (Util.isValid(fence) && Util.isValid(head)) {
             fence.setType(Material.FENCE);
             head.setType(Material.SKULL);
             ((Skull) head).setOwner(player.getName());
