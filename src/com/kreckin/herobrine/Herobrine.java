@@ -33,7 +33,8 @@ public class Herobrine extends JavaPlugin {
             }
             Herobrine.config = YamlConfiguration.loadConfiguration(new File(this.getDataFolder() + "/config.yml"));
         } catch (Exception ex) {
-            Herobrine.log("Failed to properly config the plugin!", Level.SEVERE);
+            Herobrine.log("Failed to properly manage the configuration!", Level.SEVERE);
+            ex.printStackTrace();
             this.getServer().getPluginManager().disablePlugin(this);
             return;
         }
@@ -52,6 +53,7 @@ public class Herobrine extends JavaPlugin {
             new MetricsLite(this).start();
         } catch (Exception ex) {
             Herobrine.log("Failed to start MCStats reporting!", Level.WARNING);
+            ex.printStackTrace();
         }
         Herobrine.support.scanPlugins();
     }
