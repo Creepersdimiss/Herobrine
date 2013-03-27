@@ -2,7 +2,6 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import java.util.Random;
 import org.bukkit.Material;
 import org.bukkit.SkullType;
@@ -13,7 +12,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 public class GiftHead extends Action {
     
     public GiftHead() {
-        super(ActionType.STANDARD);
+        super(true);
     }
 
     @Override

@@ -3,7 +3,6 @@ package com.kreckin.herobrine.actions;
 import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import com.kreckin.herobrine.util.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -14,7 +13,7 @@ import org.bukkit.entity.Player;
 public class BuryPlayer extends Action {
     
     public BuryPlayer() {
-        super(ActionType.STANDARD);
+        super(true);
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import com.kreckin.herobrine.util.Util;
 import java.util.ArrayList;
 import java.util.Random;
@@ -16,7 +15,7 @@ public class AltarSummon extends Action {
     private final ArrayList<EntityType> hostiles;
 
     public AltarSummon() {
-        super(ActionType.SPECIAL);
+        super(false);
         this.hostiles = new ArrayList<EntityType>();
         this.hostiles.add(EntityType.BAT);
         this.hostiles.add(EntityType.BLAZE);

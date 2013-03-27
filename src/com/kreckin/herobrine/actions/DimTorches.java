@@ -2,7 +2,6 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -10,7 +9,7 @@ import org.bukkit.entity.Player;
 public class DimTorches extends Action {
 
     public DimTorches() {
-        super(ActionType.STANDARD);
+        super(true);
     }
     
     @Override

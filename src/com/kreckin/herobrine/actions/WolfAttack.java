@@ -2,7 +2,6 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import com.kreckin.herobrine.util.Util;
 import java.util.Random;
 import org.bukkit.entity.EntityType;
@@ -12,7 +11,7 @@ import org.bukkit.entity.Wolf;
 public class WolfAttack extends Action {
 
     public WolfAttack() {
-        super(ActionType.STANDARD);
+        super(true);
     }
 
     @Override

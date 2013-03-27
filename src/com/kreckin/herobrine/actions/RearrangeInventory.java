@@ -2,7 +2,6 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -12,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 public class RearrangeInventory extends Action {
     
     public RearrangeInventory() {
-        super(ActionType.STANDARD);
+        super(true);
     }
 
     @Override

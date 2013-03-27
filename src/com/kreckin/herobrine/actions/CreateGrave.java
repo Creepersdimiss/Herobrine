@@ -2,7 +2,6 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import com.kreckin.herobrine.util.Util;
 import java.util.Random;
 import org.bukkit.Location;
@@ -14,7 +13,7 @@ import org.bukkit.entity.Player;
 public class CreateGrave extends Action {
     
     public CreateGrave() {
-        super(ActionType.STANDARD);
+        super(true);
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import com.kreckin.herobrine.util.Util;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -13,7 +12,7 @@ import org.bukkit.entity.Player;
 public class CreateTotem extends Action {
     
     public CreateTotem() {
-        super(ActionType.STANDARD);
+        super(true);
     }
     
     @Override

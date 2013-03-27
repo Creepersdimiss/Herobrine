@@ -2,13 +2,12 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import org.bukkit.entity.Player;
 
 public class ThrowPlayer extends Action {
 
     public ThrowPlayer() {
-        super(ActionType.STANDARD);
+        super(true);
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import java.util.Random;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -11,7 +10,7 @@ import org.bukkit.potion.PotionEffectType;
 public class PossessPlayer extends Action {
     
     public PossessPlayer() {
-        super(ActionType.STANDARD);
+        super(true);
     }
 
     @Override

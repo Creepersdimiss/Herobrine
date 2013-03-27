@@ -2,7 +2,6 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import com.kreckin.herobrine.util.Util;
 import java.util.ArrayList;
 import org.bukkit.Location;
@@ -13,7 +12,7 @@ import org.bukkit.entity.Player;
 public class CreateRingOfFire extends Action {
     
     public CreateRingOfFire() {
-        super(ActionType.STANDARD);
+        super(true);
     }
 
     @Override

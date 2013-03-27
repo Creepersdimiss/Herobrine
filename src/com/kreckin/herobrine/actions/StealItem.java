@@ -2,7 +2,6 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import java.util.ArrayList;
 import java.util.Random;
 import org.bukkit.entity.Player;
@@ -11,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 public class StealItem extends Action {
     
     public StealItem() {
-        super(ActionType.STANDARD);
+        super(true);
     }
 
     @Override

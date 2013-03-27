@@ -3,7 +3,6 @@ package com.kreckin.herobrine.listeners;
 import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import com.kreckin.herobrine.util.Util;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
@@ -42,7 +41,7 @@ public class CommandListener implements CommandExecutor {
                 }
             }
             if (foundAction != null) {
-                if (!foundAction.getType().equals(ActionType.STANDARD)) {
+                if (!foundAction.isRandom()) {
                     cs.sendMessage(Util.formatString("Sorry, this is not an action that can be run by commands!"));
                     return true;
                 }

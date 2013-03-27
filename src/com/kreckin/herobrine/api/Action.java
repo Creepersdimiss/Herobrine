@@ -7,10 +7,10 @@ import org.bukkit.entity.Player;
 
 public abstract class Action {
 
-    private final ActionType type;
+    private final boolean random;
 
-    public Action(ActionType type) {
-        this.type = type;
+    public Action(boolean random) {
+        this.random = random;
     }
 
     public ActionResult checkAction(Player player, Object[] metadata) {
@@ -40,7 +40,7 @@ public abstract class Action {
     
     public abstract ActionResult callAction(Player player, Object[] metadata);
 
-    public ActionType getType() {
-        return this.type;
+    public boolean isRandom() {
+        return this.random;
     }
 }

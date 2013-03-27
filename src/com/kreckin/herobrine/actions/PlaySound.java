@@ -2,7 +2,6 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import java.util.ArrayList;
 import java.util.Random;
 import org.bukkit.Sound;
@@ -13,7 +12,7 @@ public class PlaySound extends Action {
     private final ArrayList<Sound> sounds;
 
     public PlaySound() {
-        super(ActionType.STANDARD);
+        super(true);
         this.sounds = new ArrayList<Sound>();
         this.sounds.add(Sound.AMBIENCE_CAVE);
         this.sounds.add(Sound.AMBIENCE_RAIN);

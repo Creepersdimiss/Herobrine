@@ -2,14 +2,13 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.ActionResult;
-import com.kreckin.herobrine.api.ActionType;
 import java.util.Random;
 import org.bukkit.entity.Player;
 
 public class SpinPlayer extends Action {
     
     public SpinPlayer() {
-        super(ActionType.STANDARD);
+        super(true);
     }
 
     @Override
