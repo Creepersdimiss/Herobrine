@@ -11,6 +11,7 @@ import com.kreckin.herobrine.actions.CreateTNTTrap;
 import com.kreckin.herobrine.actions.CreateTotem;
 import com.kreckin.herobrine.actions.DestroyTorches;
 import com.kreckin.herobrine.actions.DimTorches;
+import com.kreckin.herobrine.actions.DuplicateItem;
 import com.kreckin.herobrine.actions.GiftBook;
 import com.kreckin.herobrine.actions.GiftHead;
 import com.kreckin.herobrine.actions.PlaceSign;
@@ -59,6 +60,7 @@ public class ActionManager {
         this.registerAction(Herobrine.getInstance(), new GiftHead());
         this.registerAction(Herobrine.getInstance(), new CreateTotem());
         this.registerAction(Herobrine.getInstance(), new SpinPlayer());
+        this.registerAction(Herobrine.getInstance(), new DuplicateItem());
     }
     
     public final void registerAction(Plugin plugin, Action action) {
