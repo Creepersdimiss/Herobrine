@@ -21,10 +21,12 @@ import com.kreckin.herobrine.actions.RandomExplosion;
 import com.kreckin.herobrine.actions.RandomLightning;
 import com.kreckin.herobrine.actions.RearrangeInventory;
 import com.kreckin.herobrine.actions.SendMessage;
+import com.kreckin.herobrine.actions.SpinPlayer;
 import com.kreckin.herobrine.actions.StealItem;
 import com.kreckin.herobrine.actions.ThrowPlayer;
 import com.kreckin.herobrine.actions.WolfAttack;
 import java.util.ArrayList;
+import java.util.logging.Level;
 import org.bukkit.plugin.Plugin;
 
 public class ActionManager {
@@ -56,10 +58,12 @@ public class ActionManager {
         this.registerAction(Herobrine.getInstance(), new ThrowPlayer());
         this.registerAction(Herobrine.getInstance(), new GiftHead());
         this.registerAction(Herobrine.getInstance(), new CreateTotem());
+        this.registerAction(Herobrine.getInstance(), new SpinPlayer());
     }
     
     public final void registerAction(Plugin plugin, Action action) {
         this.actions.add(action);
+        Herobrine.log("The Plugin \"" + plugin.getDescription().getName() + "\" Registered: " + action.getClass().getSimpleName(), Level.INFO);
     }
 
     public ArrayList<Action> getActions() {
