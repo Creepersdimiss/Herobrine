@@ -18,7 +18,7 @@ public abstract class Support {
     public abstract boolean checkPermissions(Player player, Plugin plugin);
     
     public Plugin getPlugin() {
-        if (this.plugin == null) {
+        if (this.plugin == null && this.state != 0) {
             this.plugin = Bukkit.getServer().getPluginManager().getPlugin(this.name);
         }
         return this.plugin;
