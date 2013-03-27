@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import com.kreckin.herobrine.util.Util;
 import java.util.Random;
 import org.bukkit.Location;
@@ -17,7 +16,7 @@ public class CreateGrave extends Action {
     }
 
     @Override
-    public ActionResult callAction(Player player, Object[] metadata) {
+    public String callAction(Player player, Object[] metadata) {
         Block sign = Util.getNearbyLocation(player, 5).getBlock();
         Block stone1 = sign.getLocation().add(0, -1, 1).getBlock();
         Block stone2 = sign.getLocation().add(0, -1, 2).getBlock();
@@ -31,8 +30,8 @@ public class CreateGrave extends Action {
             signIn.setLine(1, player.getName());
             signIn.update();
             Location loc = sign.getLocation();
-            return (new ActionResult("Done.", "Location: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ()));
+            return ("Location: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
         }
-        return (new ActionResult("Failed, could not find a proper location!"));
+        return "Failed, could not find a proper location!";
     }
 }

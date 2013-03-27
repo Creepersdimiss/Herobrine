@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import com.kreckin.herobrine.util.Util;
 import java.util.Random;
 import org.bukkit.Location;
@@ -16,7 +15,7 @@ public class CreateTNTTrap extends Action {
     }
     
     @Override
-    public ActionResult callAction(Player player, Object[] metadata) {
+    public String callAction(Player player, Object[] metadata) {
         Block plate = Util.getNearbyLocation(player, 5).getBlock();
         Block ground = plate.getLocation().subtract(0, 1, 0).getBlock();
         Block tnt = ground.getLocation().subtract(0, 1, 0).getBlock();
@@ -24,8 +23,8 @@ public class CreateTNTTrap extends Action {
             plate.setTypeId(new Random().nextBoolean() ? 70 : 72);
             tnt.setType(Material.TNT);
             Location loc = plate.getLocation();
-            return (new ActionResult("Done.", "Location: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ()));
+            return ("Location: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
         }
-        return (new ActionResult("Failed, could not find a proper location!"));
+        return "Failed, could not find a proper location!";
     }
 }

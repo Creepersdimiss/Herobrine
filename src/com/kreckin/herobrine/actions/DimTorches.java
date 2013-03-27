@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -13,7 +12,7 @@ public class DimTorches extends Action {
     }
     
     @Override
-    public ActionResult callAction(Player player, Object[] metadata) {
+    public String callAction(Player player, Object[] metadata) {
         int torchTotal = 0;
         for (int x = -5; x < 5; x++) {
             for (int z = -5; z < 5; z++) {
@@ -26,6 +25,6 @@ public class DimTorches extends Action {
                 }
             }
         }
-        return (new ActionResult("Done.", "Dimmed " + torchTotal + " torches."));
+        return ("Dimmed " + torchTotal + " torches.");
     }
 }

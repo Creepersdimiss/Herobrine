@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import java.util.ArrayList;
 import java.util.Random;
 import org.bukkit.Sound;
@@ -29,9 +28,9 @@ public class PlaySound extends Action {
     }
 
     @Override
-    public ActionResult callAction(Player player, Object[] metadata) {
+    public String callAction(Player player, Object[] metadata) {
         Sound sound = this.sounds.get(new Random().nextInt(this.sounds.size() - 1));
         player.playSound(player.getLocation(), sound, 1F, 1F);
-        return (new ActionResult("Done.", "Played: " + sound.toString()));
+        return ("Played: " + sound.toString());
     }
 }

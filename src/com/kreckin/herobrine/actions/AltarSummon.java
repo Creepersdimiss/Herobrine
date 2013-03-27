@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import com.kreckin.herobrine.util.Util;
 import java.util.ArrayList;
 import java.util.Random;
@@ -35,7 +34,7 @@ public class AltarSummon extends Action {
     }
 
     @Override
-    public ActionResult callAction(Player player, Object[] metadata) {
+    public String callAction(Player player, Object[] metadata) {
         player.getWorld().createExplosion(((Block) metadata[0]).getLocation(), 3F);
         player.getWorld().setStorm(true);
         player.getWorld().setTime(14200);
@@ -50,6 +49,6 @@ public class AltarSummon extends Action {
             player.getWorld().spawnEntity(Util.getNearbyLocation(player, new Random().nextInt(10)), this.hostiles.get(new Random().nextInt(this.hostiles.size() - 1)));
         }
         player.sendMessage(Util.formatString(Util.getMessage("Herobrine.altarMessages")));
-        return (new ActionResult("Done.", "Spawned: " + amountToSpawn));
+        return ("Spawned: " + amountToSpawn);
     }
 }

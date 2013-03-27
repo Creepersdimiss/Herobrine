@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import com.kreckin.herobrine.util.Util;
 import java.util.Random;
 import org.bukkit.entity.EntityType;
@@ -15,13 +14,13 @@ public class WolfAttack extends Action {
     }
 
     @Override
-    public ActionResult callAction(Player player, Object[] metadata) {
+    public String callAction(Player player, Object[] metadata) {
         int toSpawn = (new Random().nextInt(3)) + 3;
         for (int wolf = 0; wolf < toSpawn; wolf++) {
             Wolf theWolf = (Wolf) player.getWorld().spawnEntity(Util.getNearbyLocation(player, 5), EntityType.WOLF);
             theWolf.setAngry(true);
             theWolf.setTarget(player);
         }
-        return (new ActionResult("Done.", "Spawned: " + toSpawn));
+        return ("Spawned: " + toSpawn);
     }
 }

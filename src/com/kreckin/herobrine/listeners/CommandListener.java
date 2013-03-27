@@ -2,7 +2,6 @@ package com.kreckin.herobrine.listeners;
 
 import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import com.kreckin.herobrine.util.Util;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
@@ -49,11 +48,7 @@ public class CommandListener implements CommandExecutor {
                 if (player == null) {
                     cs.sendMessage(Util.formatString("Unknown player!"));
                 } else {
-                    ActionResult result = foundAction.checkAction(player, null);
-                    cs.sendMessage(Util.formatString(result.getMessage()));
-                    if (result.getData() != null) {
-                        cs.sendMessage(Util.formatString("Details: " + result.getData()));
-                    }
+                    cs.sendMessage(Util.formatString(foundAction.checkAction(player, null)));
                 }
             } else {
                 cs.sendMessage(Util.formatString("Unknown action! Type \"/hb help\" for all actions!"));

@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import java.util.ArrayList;
 import java.util.Random;
 import org.bukkit.entity.Player;
@@ -14,7 +13,7 @@ public class StealItem extends Action {
     }
 
     @Override
-    public ActionResult callAction(Player player, Object[] metadata) {
+    public String callAction(Player player, Object[] metadata) {
         ArrayList<Integer> slots = new ArrayList<Integer>();
         for (int index = 0; index < 35; index++) {
             if (player.getInventory().getItem(index) != null) {
@@ -22,7 +21,7 @@ public class StealItem extends Action {
             }
         }
         if (slots.isEmpty()) {
-            return (new ActionResult("Failed, could not find a proper item!"));
+            return "Failed, could not find a proper item!";
         }
         ItemStack item = player.getInventory().getItem(slots.get(0));
         if (slots.size() > 1) {
@@ -31,8 +30,8 @@ public class StealItem extends Action {
         if (item != null) {
             player.getInventory().remove(item);
             player.updateInventory();
-            return (new ActionResult("Done.", "Stole: " + item.getType().toString() + " & Amount: " + item.getAmount()));
+            return ("Stole: " + item.getType().toString() + " & Amount: " + item.getAmount());
         }
-        return (new ActionResult("Failed, could not find a proper item!"));
+        return "Failed, could not find a proper item!";
     }
 }

@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import com.kreckin.herobrine.util.Util;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -16,20 +15,20 @@ public class PlaceSign extends Action {
     }
     
     @Override
-    public ActionResult callAction(Player player, Object[] metadata) {
+    public String callAction(Player player, Object[] metadata) {
         Block block = Util.getNearbyLocation(player, 5).getBlock();
         if (Util.isValid(block)) {
             String message = Util.getMessage("Herobrine.signMessages");
             if (message == null) {
-                return (new ActionResult("Failed, there are no sign messages in the configuration file!"));
+                return "Failed, there are no sign messages in the configuration file!";
             }
             block.setType(Material.SIGN_POST);
             Sign sign = (Sign) block.getState();
             sign.setLine(1, message);
             sign.update();
             Location loc = block.getLocation();
-            return (new ActionResult("Done.", "Location: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ() + " & Message: \"" + message + "\""));
+            return ("Location: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ() + " & Message: \"" + message + "\"");
         }
-        return (new ActionResult("Failed, could not find a proper location!"));
+        return "Failed, could not find a proper location!";
     }
 }

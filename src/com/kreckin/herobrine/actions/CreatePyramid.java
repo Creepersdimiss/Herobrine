@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import com.kreckin.herobrine.util.Util;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -16,7 +15,7 @@ public class CreatePyramid extends Action {
     }
 
     @Override
-    public ActionResult callAction(Player player, Object[] metadata) {
+    public String callAction(Player player, Object[] metadata) {
         Block[] blocks = new Block[14];
         blocks[0] = Util.getNearbyLocation(player, 25).add(0, 2, 0).getBlock();
         blocks[1] = blocks[0].getRelative(BlockFace.NORTH).getLocation().subtract(0, 1, 0).getBlock();
@@ -36,7 +35,7 @@ public class CreatePyramid extends Action {
             Block block = blocks[index];
             if (index >= 5 && index <= 12) {
                 if (Util.isSolid(block.getLocation().subtract(0, 1, 0).getBlock()) || player.getLocation().distance(block.getLocation()) <= 1F) {
-                    return (new ActionResult("Failed, could not find a proper location!"));
+                    return "Failed, could not find a proper location!";
                 }
             }
         }
@@ -50,6 +49,6 @@ public class CreatePyramid extends Action {
             }
         }
         Location loc = blocks[0].getLocation();
-        return (new ActionResult("Done.", "Location: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ()));
+        return ("Location: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
     }
 }

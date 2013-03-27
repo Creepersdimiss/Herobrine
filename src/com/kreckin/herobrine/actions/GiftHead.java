@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import java.util.Random;
 import org.bukkit.Material;
 import org.bukkit.SkullType;
@@ -16,7 +15,7 @@ public class GiftHead extends Action {
     }
 
     @Override
-    public ActionResult callAction(Player player, Object[] metadata) {
+    public String callAction(Player player, Object[] metadata) {
         ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) SkullType.PLAYER.ordinal());
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         meta.setOwner(player.getName());
@@ -25,6 +24,6 @@ public class GiftHead extends Action {
         }
         skull.setItemMeta(meta);
         player.getInventory().addItem(skull);
-        return (new ActionResult("Done."));
+        return "Done.";
     }
 }

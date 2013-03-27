@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import com.kreckin.herobrine.util.Util;
 import java.util.ArrayList;
 import org.bukkit.Location;
@@ -16,7 +15,7 @@ public class CreateRingOfFire extends Action {
     }
 
     @Override
-    public ActionResult callAction(Player player, Object[] metadata) {
+    public String callAction(Player player, Object[] metadata) {
         ArrayList<Block> blocks = new ArrayList<Block>();
         blocks.add(player.getLocation().add(2, 0, 0).getBlock());
         blocks.add(player.getLocation().add(0, 0, 2).getBlock());
@@ -37,8 +36,8 @@ public class CreateRingOfFire extends Action {
                 block.setType(Material.FIRE);
             }
             Location loc = player.getLocation();
-            return (new ActionResult("Done.", "Location: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ()));
+            return ("Location: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
         }
-        return (new ActionResult("Failed, could not find a proper location!"));
+        return "Failed, could not find a proper location!";
     }
 }

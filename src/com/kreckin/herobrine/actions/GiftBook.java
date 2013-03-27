@@ -2,7 +2,6 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import com.kreckin.herobrine.util.Util;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -16,7 +15,7 @@ public class GiftBook extends Action {
     }
 
     @Override
-    public ActionResult callAction(Player player, Object[] metadata) {
+    public String callAction(Player player, Object[] metadata) {
         ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
         String message = Util.getMessage("Herobrine.bookMessages");
         BookMeta meta = (BookMeta) book.getItemMeta();
@@ -25,6 +24,6 @@ public class GiftBook extends Action {
         meta.setPages(message);
         book.setItemMeta(meta);
         player.getInventory().addItem(book);
-        return (new ActionResult("Done.", "Message: " + message));
+        return ("Message: " + message);
     }
 }

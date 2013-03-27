@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +14,7 @@ public class RearrangeInventory extends Action {
     }
 
     @Override
-    public ActionResult callAction(Player player, Object[] metadata) {
+    public String callAction(Player player, Object[] metadata) {
         List<ItemStack> items = Arrays.asList(player.getInventory().getContents());
         Collections.shuffle(items);
         player.getInventory().clear();
@@ -26,6 +25,6 @@ public class RearrangeInventory extends Action {
                 count++;
             }
         }
-        return (new ActionResult("Done.", "Rearranged " + count + " items!"));
+        return ("Rearranged " + count + " items!");
     }
 }

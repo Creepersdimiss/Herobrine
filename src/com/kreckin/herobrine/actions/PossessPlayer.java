@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.api.ActionResult;
 import java.util.Random;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -14,7 +13,7 @@ public class PossessPlayer extends Action {
     }
 
     @Override
-    public ActionResult callAction(Player player, Object[] metadata) {
+    public String callAction(Player player, Object[] metadata) {
         int time = (new Random().nextInt(10) + 5) * 20;
         player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, time, 1));
         player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, time, 1));
@@ -22,6 +21,6 @@ public class PossessPlayer extends Action {
         player.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER, time, 1));
         player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, time, 1));
         player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, time, 1));
-        return (new ActionResult("Done."));
+        return "Done.";
     }
 }
