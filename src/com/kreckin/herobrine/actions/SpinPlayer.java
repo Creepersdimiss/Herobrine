@@ -1,7 +1,7 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import java.util.Random;
+import com.kreckin.herobrine.util.Util;
 import org.bukkit.entity.Player;
 
 public class SpinPlayer extends Action {
@@ -12,10 +12,9 @@ public class SpinPlayer extends Action {
 
     @Override
     public String callAction(Player player, Object[] metadata) {
-        Random random = new Random();
         for (int spin = 0; spin < 5; spin++) {
-            player.getLocation().setPitch(random.nextInt(360));
-            player.getLocation().setYaw(random.nextInt(360));
+            player.getLocation().setPitch(Util.getRandom().nextInt(360));
+            player.getLocation().setYaw(Util.getRandom().nextInt(360));
         }
         return "Done.";
     }

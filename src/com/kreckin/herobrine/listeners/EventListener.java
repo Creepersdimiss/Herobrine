@@ -4,7 +4,6 @@ import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.actions.AltarSummon;
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.util.Util;
-import java.util.Random;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
@@ -29,7 +28,7 @@ public class EventListener implements Listener {
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
         if (Util.shouldAct(event.getPlayer())) {
-            Action action = Herobrine.getActionManager().getActions().get(new Random().nextInt(Herobrine.getActionManager().getActions().size() - 1));
+            Action action = Herobrine.getActionManager().getActions().get(Util.getRandom().nextInt(Herobrine.getActionManager().getActions().size() - 1));
             if (!action.isRandom()) {
                 return;
             }

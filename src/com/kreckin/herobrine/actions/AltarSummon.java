@@ -3,7 +3,6 @@ package com.kreckin.herobrine.actions;
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.util.Util;
 import java.util.ArrayList;
-import java.util.Random;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -44,9 +43,9 @@ public class AltarSummon extends Action {
                 ((Player) entity).sendMessage(Util.formatString(Util.getMessage("Herobrine.altarMessages")));
             }
         }
-        int amountToSpawn = 5 + (new Random().nextInt(5));
+        int amountToSpawn = 5 + (Util.getRandom().nextInt(5));
         for (int id = 0; id < amountToSpawn; id++) {
-            player.getWorld().spawnEntity(Util.getNearbyLocation(player, new Random().nextInt(10)), this.hostiles.get(new Random().nextInt(this.hostiles.size() - 1)));
+            player.getWorld().spawnEntity(Util.getNearbyLocation(player, Util.getRandom().nextInt(10)), this.hostiles.get(Util.getRandom().nextInt(this.hostiles.size() - 1)));
         }
         player.sendMessage(Util.formatString(Util.getMessage("Herobrine.altarMessages")));
         return ("Spawned: " + amountToSpawn);

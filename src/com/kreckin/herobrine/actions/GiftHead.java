@@ -1,7 +1,7 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import java.util.Random;
+import com.kreckin.herobrine.util.Util;
 import org.bukkit.Material;
 import org.bukkit.SkullType;
 import org.bukkit.entity.Player;
@@ -19,7 +19,7 @@ public class GiftHead extends Action {
         ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) SkullType.PLAYER.ordinal());
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         meta.setOwner(player.getName());
-        if (new Random().nextInt(10) == 0) {
+        if (Util.getRandom().nextInt(10) == 0) {
             meta.setOwner("Herobrine");
         }
         skull.setItemMeta(meta);

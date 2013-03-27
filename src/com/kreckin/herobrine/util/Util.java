@@ -12,6 +12,8 @@ import org.bukkit.entity.Player;
 
 public class Util {
     
+    private final static Random random = new Random();
+    
     public static boolean shouldAct(Player player) {
         int actionChance = Herobrine.getConfigFile().getInt("Herobrine.actionChance");
         if (player.getWorld().getTime() >= 13000 && player.getWorld().getTime() <= 14200) {
@@ -22,7 +24,7 @@ public class Util {
                 actionChance /= 4;
             }
         }
-        return (new Random().nextInt(actionChance) == 0);
+        return (Util.getRandom().nextInt(actionChance) == 0);
     }
     
     public static String getMessage(String path) {
@@ -33,13 +35,12 @@ public class Util {
         if (strings.size() == 1) {
             return strings.get(0);
         }
-        return strings.get(new Random().nextInt(strings.size() - 1));
+        return strings.get(Util.getRandom().nextInt(strings.size() - 1));
     }
 
     public static Location getNearbyLocation(Player player, int distance) {
-        Random random = new Random();
-        int addX = (random.nextBoolean() ? -random.nextInt(distance) : random.nextInt(distance));
-        int addZ = (random.nextBoolean() ? -random.nextInt(distance) : random.nextInt(distance));
+        int addX = (Util.getRandom().nextBoolean() ? -Util.getRandom().nextInt(distance) : Util.getRandom().nextInt(distance));
+        int addZ = (Util.getRandom().nextBoolean() ? -Util.getRandom().nextInt(distance) : Util.getRandom().nextInt(distance));
         return (player.getLocation().add(addX, 0, addZ));
     }
     
@@ -59,5 +60,9 @@ public class Util {
     
     public static String formatString(String message) {
         return ("[" + ChatColor.RED + Herobrine.getConfigFile().getString("Herobrine.entityName") + ChatColor.WHITE + "] " + message);
+    }
+    
+    public static Random getRandom() {
+        return Util.random;
     }
 }
