@@ -1,5 +1,6 @@
 package com.kreckin.herobrine;
 
+import com.kreckin.herobrine.api.SupportManager;
 import com.kreckin.herobrine.api.ActionManager;
 import com.kreckin.herobrine.listeners.CommandListener;
 import com.kreckin.herobrine.listeners.EventListener;
@@ -15,15 +16,10 @@ public class Herobrine extends JavaPlugin {
     private static Herobrine instance;
     private static ActionManager actionManager;
     private static YamlConfiguration config;
-    private static Support support;
+    private static SupportManager support;
 
     @Override
     public void onEnable() {
-        Herobrine.instance = this;
-        Herobrine.actionManager = new ActionManager();
-        Herobrine.support = new Support();
-        this.getCommand("hb").setExecutor(new CommandListener());
-        this.getServer().getPluginManager().registerEvents(new EventListener(), this);
         try {
             if (!this.getDataFolder().exists()) {
                 this.getDataFolder().mkdirs();
@@ -38,24 +34,31 @@ public class Herobrine extends JavaPlugin {
             this.getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        Herobrine.log("Heavier Equation: " + Herobrine.config.getBoolean("Herobrine.heavierEquation"), Level.INFO);
-        Herobrine.log("Survival Only: " + Herobrine.config.getBoolean("Herobrine.survivalOnly"), Level.INFO);
-        Herobrine.log("Action Chance: " + Herobrine.config.getInt("Herobrine.actionChance"), Level.INFO);
-        Herobrine.log("Entity Name: " + Herobrine.config.getString("Herobrine.entityName"), Level.INFO);
-        Herobrine.log("Ignore Protected Regions: " + Herobrine.config.getBoolean("Herobrine.ignoreProtectedRegions"), Level.INFO);
-        Herobrine.log("Book Title: " + Herobrine.config.getBoolean("Herobrine.bookTitle"), Level.INFO);
-        this.printArray(Herobrine.config.getStringList("Herobrine.bookMessages"), "Book Messages");
-        this.printArray(Herobrine.config.getStringList("Herobrine.signMessages"), "Sign Messages");
-        this.printArray(Herobrine.config.getStringList("Herobrine.altarMessages"), "Altar Messages");
-        this.printArray(Herobrine.config.getStringList("Herobrine.disallowedWorlds"), "Disallowed Worlds");
-        this.printArray(Herobrine.config.getStringList("Herobrine.disallowedActions"), "Disallowed Actions");
+        Herobrine.instance = this;
+        Herobrine.actionManager = new ActionManager();
+        Herobrine.support = new SupportManager();
+        this.getCommand("hb").setExecutor(new CommandListener());
+        this.getServer().getPluginManager().registerEvents(new EventListener(), this);
+        if (Herobrine.config.getBoolean("Herobrine.verboseLog")) {
+            Herobrine.log("Heavier Equation: " + Herobrine.config.getBoolean("Herobrine.heavierEquation"), Level.INFO);
+            Herobrine.log("Survival Only: " + Herobrine.config.getBoolean("Herobrine.survivalOnly"), Level.INFO);
+            Herobrine.log("Action Chance: " + Herobrine.config.getInt("Herobrine.actionChance"), Level.INFO);
+            Herobrine.log("Entity Name: " + Herobrine.config.getString("Herobrine.entityName"), Level.INFO);
+            Herobrine.log("Ignore Protected Regions: " + Herobrine.config.getBoolean("Herobrine.ignoreProtectedRegions"), Level.INFO);
+            Herobrine.log("Book Title: " + Herobrine.config.getBoolean("Herobrine.bookTitle"), Level.INFO);
+            this.printArray(Herobrine.config.getStringList("Herobrine.bookMessages"), "Book Messages");
+            this.printArray(Herobrine.config.getStringList("Herobrine.signMessages"), "Sign Messages");
+            this.printArray(Herobrine.config.getStringList("Herobrine.altarMessages"), "Altar Messages");
+            this.printArray(Herobrine.config.getStringList("Herobrine.disallowedWorlds"), "Disallowed Worlds");
+            this.printArray(Herobrine.config.getStringList("Herobrine.disallowedActions"), "Disallowed Actions");
+        }
         try {
             new MetricsLite(this).start();
         } catch (Exception ex) {
             Herobrine.log("Failed to start MCStats reporting!", Level.WARNING);
             ex.printStackTrace();
         }
-        Herobrine.support.scanPlugins();
+        Herobrine.support.checkPlugins();
     }
     
     @Override
@@ -93,7 +96,7 @@ public class Herobrine extends JavaPlugin {
         return Herobrine.instance;
     }
     
-    public static Support getSupport() {
+    public static SupportManager getSupportManager() {
         return Herobrine.support;
     }
 }

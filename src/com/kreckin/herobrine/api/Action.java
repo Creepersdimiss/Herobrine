@@ -26,7 +26,7 @@ public abstract class Action {
         if (player.hasPermission("herobrine.ignore") && !player.isOp()) {
             return (new ActionResult("Sorry, the player cannot have the \"herobrine.ignore\" permissions node!"));
         }
-        if (!Herobrine.getSupport().isAllowed(player.getLocation()) && !Herobrine.getConfigFile().getBoolean("Herobrine.ignoreProtectedRegions")) {
+        if (!Herobrine.getSupportManager().checkPermissions(player) && !Herobrine.getConfigFile().getBoolean("Herobrine.ignoreProtectedRegions")) {
             return (new ActionResult("Sorry, events are not allowed in that region!"));
         }
         Herobrine.log("Running Action: " + this.getClass().getSimpleName() + " & Player: " + player.getName(), Level.INFO);

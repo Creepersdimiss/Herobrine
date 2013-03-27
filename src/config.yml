@@ -1,5 +1,8 @@
 Herobrine:
   
+  # Should we log all debugging information (you should just ignore this)?
+  verboseLog: false
+  
   # Should we stop events that are inside protected regions? (GriefPrevention and Residence)
   ignoreProtectedRegions: false
   
