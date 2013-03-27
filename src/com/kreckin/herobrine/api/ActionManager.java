@@ -20,6 +20,7 @@ import com.kreckin.herobrine.actions.PlaySound;
 import com.kreckin.herobrine.actions.PossessPlayer;
 import com.kreckin.herobrine.actions.RandomExplosion;
 import com.kreckin.herobrine.actions.RandomLightning;
+import com.kreckin.herobrine.actions.RandomStorm;
 import com.kreckin.herobrine.actions.RearrangeInventory;
 import com.kreckin.herobrine.actions.SendMessage;
 import com.kreckin.herobrine.actions.SpinPlayer;
@@ -61,6 +62,7 @@ public class ActionManager {
         this.registerAction(Herobrine.getInstance(), new CreateTotem());
         this.registerAction(Herobrine.getInstance(), new SpinPlayer());
         this.registerAction(Herobrine.getInstance(), new DuplicateItem());
+        this.registerAction(Herobrine.getInstance(), new RandomStorm());
     }
     
     public final void registerAction(Plugin plugin, Action action) {
