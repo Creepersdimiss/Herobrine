@@ -6,12 +6,13 @@ import com.kreckin.herobrine.util.Util;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
 public class FallenAngel extends CustomEntity {
     
     public FallenAngel(Location loc) {
-        super(loc);
+        super(loc, EntityType.ZOMBIE);
         super.getDrops().add(Util.getColoredArmour(Material.LEATHER_BOOTS, Color.SILVER));
         super.getDrops().add(Util.getColoredArmour(Material.LEATHER_LEGGINGS, Color.SILVER));
         super.getDrops().add(Util.getColoredArmour(Material.LEATHER_CHESTPLATE, Color.SILVER));
@@ -23,6 +24,8 @@ public class FallenAngel extends CustomEntity {
     public void onSpawn() {
         super.getEntity().setCanPickupItems(false);
         super.getEntity().setCustomName("Fallen Angel");
+        super.getEntity().setCustomNameVisible(true);
+        super.getEntity().setRemoveWhenFarAway(false);
         super.getEntity().getWorld().strikeLightning(super.getEntity().getLocation());
         super.getEntity().setMaxHealth(Herobrine.getConfigFile().getInt("Herobrine.fallenAngelHealth"));
         super.getEntity().setHealth(super.getEntity().getMaxHealth());

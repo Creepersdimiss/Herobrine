@@ -13,8 +13,8 @@ public abstract class CustomEntity {
     private final LivingEntity entity;
     private final ArrayList<ItemStack> drops;
 
-    public CustomEntity(Location loc) {
-        this.entity = (LivingEntity) loc.getWorld().spawnEntity(loc, EntityType.ZOMBIE);
+    public CustomEntity(Location loc, EntityType type) {
+        this.entity = (LivingEntity) loc.getWorld().spawnEntity(loc, type);
         this.drops = new ArrayList<ItemStack>();
         this.onSpawn();
         Herobrine.getEntityManager().addEntity(this);
