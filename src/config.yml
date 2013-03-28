@@ -1,5 +1,20 @@
 Herobrine:
   
+  # What sounds are allowed to be played?
+  allowedSounds:
+    - AMBIENCE_CAVE
+    - AMBIENCE_RAIN
+    - AMBIENCE_THUNDER
+    - BREATH
+    - CAT_HISS
+    - CREEPER_HISS
+    - DOOR_CLOSE
+    - DOOR_OPEN
+    - ENDERDRAGON_GROWL
+    - GHAST_MOAN
+    - GHAST_SCREAM
+    - GHAST_SCREAM2
+  
   # What mobs is he allowed to spawn in his various attacks?
   allowedMobs:
     - BAT
