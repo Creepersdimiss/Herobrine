@@ -13,7 +13,10 @@ public class SpawnCustomEntity extends Action {
 
     @Override
     public String callAction(Player player, Object[] metadata) {
-        new HellsGuardian(Util.getNearbyLocation(player, 5));
-        return "Done.";
+        int toSpawn = 3 + Util.getRandom().nextInt(3);
+        for (int id = 0; id < toSpawn; id++) {
+            new HellsGuardian(Util.getNearbyLocation(player, 5 + Util.getRandom().nextInt(3)));
+        }
+        return ("Spawned: " + toSpawn);
     }
 }

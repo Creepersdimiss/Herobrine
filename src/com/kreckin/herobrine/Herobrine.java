@@ -2,6 +2,7 @@ package com.kreckin.herobrine;
 
 import com.kreckin.herobrine.api.SupportManager;
 import com.kreckin.herobrine.api.ActionManager;
+import com.kreckin.herobrine.api.CustomEntityManager;
 import com.kreckin.herobrine.listeners.CommandListener;
 import com.kreckin.herobrine.listeners.EventListener;
 import java.io.File;
@@ -17,6 +18,7 @@ public class Herobrine extends JavaPlugin {
     private static ActionManager actionManager;
     private static YamlConfiguration config;
     private static SupportManager support;
+    private static CustomEntityManager entityManager;
 
     @Override
     public void onEnable() {
@@ -36,6 +38,7 @@ public class Herobrine extends JavaPlugin {
         Herobrine.instance = this;
         Herobrine.actionManager = new ActionManager();
         Herobrine.support = new SupportManager();
+        Herobrine.entityManager = new CustomEntityManager();
         this.getCommand("hb").setExecutor(new CommandListener());
         this.getServer().getPluginManager().registerEvents(new EventListener(), this);
         if (Herobrine.config.getBoolean("Herobrine.verboseLog")) {
@@ -68,6 +71,7 @@ public class Herobrine extends JavaPlugin {
         Herobrine.config = null;
         Herobrine.instance = null;
         Herobrine.support = null;
+        Herobrine.entityManager = null;
     }
     
     public static void log(String message, Level level) {
@@ -83,6 +87,10 @@ public class Herobrine extends JavaPlugin {
                 Herobrine.log("\t" + (index + 1) + ". " + list.get(index), Level.INFO);
             }
         }
+    }
+    
+    public static CustomEntityManager getEntityManager() {
+        return Herobrine.entityManager;
     }
     
     public static YamlConfiguration getConfigFile() {

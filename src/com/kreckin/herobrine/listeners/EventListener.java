@@ -10,7 +10,6 @@ import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockIgniteEvent;
-import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -43,23 +42,21 @@ public class EventListener implements Listener {
     
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
-        if (event.getEntity() instanceof CustomEntity && event.getCause().equals(DamageCause.ENTITY_ATTACK)) {
+        if (Herobrine.getEntityManager().getEntity(event.getEntity().getEntityId()) != null && !event.getCause().equals(DamageCause.ENTITY_ATTACK)) {
             event.setCancelled(true);
             event.setDamage(0);
+            if (event.getEntity().getFireTicks() > 0) {
+                event.getEntity().setFireTicks(0);
+            }
         }
     }
     
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
-        if (event.getEntity() instanceof CustomEntity) {
-            ((CustomEntity) event.getEntity()).onKilled();
-        }
-    }
-    
-    @EventHandler
-    public void onEntitySpawn(CreatureSpawnEvent event) {
-        if (event.getEntity() instanceof CustomEntity) {
-            ((CustomEntity) event.getEntity()).onSpawn();
+        CustomEntity entity = Herobrine.getEntityManager().getEntity(event.getEntity().getEntityId());
+        if (entity != null) {
+            entity.onKilled();
+            Herobrine.getEntityManager().removeEntity(entity.getEntity().getEntityId());
         }
     }
 }
