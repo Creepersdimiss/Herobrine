@@ -21,6 +21,7 @@ public class FallenAngel extends CustomEntity {
 
     @Override
     public void onSpawn() {
+        super.getEntity().getWorld().strikeLightning(super.getEntity().getLocation());
         super.getEntity().setMaxHealth(Herobrine.getConfigFile().getInt("Herobrine.fallenAngelHealth"));
         super.getEntity().setHealth(super.getEntity().getMaxHealth());
         super.getEntity().getEquipment().setBoots(Util.getColoredArmour(Material.LEATHER_BOOTS, Color.SILVER));
@@ -32,6 +33,6 @@ public class FallenAngel extends CustomEntity {
     
     @Override
     public void onKilled() {
-        
+        super.getEntity().getWorld().strikeLightning(super.getEntity().getLocation());
     }
 }
