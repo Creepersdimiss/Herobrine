@@ -59,6 +59,7 @@ public class Herobrine extends JavaPlugin {
         Herobrine.support.checkPlugins();
         Herobrine.log("Special Thanks Too: ", Level.INFO);
         Herobrine.log("\t- cadester177", Level.INFO);
+        Herobrine.log("\t- Deanfvjr", Level.INFO);
     }
     
     @Override
