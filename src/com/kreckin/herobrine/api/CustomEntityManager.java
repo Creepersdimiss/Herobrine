@@ -1,6 +1,9 @@
 package com.kreckin.herobrine.api;
 
+import com.kreckin.herobrine.mobs.FallenAngel;
+import com.kreckin.herobrine.mobs.HellsGuardian;
 import java.util.ArrayList;
+import org.bukkit.Location;
 
 public class CustomEntityManager {
     
@@ -8,6 +11,15 @@ public class CustomEntityManager {
     
     public CustomEntityManager() {
         this.entities = new ArrayList<CustomEntity>();
+    }
+    
+    public static CustomEntity spawnEntity(CustomEntityType type, Location loc) {
+        if (type.equals(CustomEntityType.HELLS_GUARDIAN)) {
+            return (new HellsGuardian(loc));
+        } else if (type.equals(CustomEntityType.FALLEN_ANGEL)) {
+            return (new FallenAngel(loc));
+        }
+        return null;
     }
     
     public void addEntity(CustomEntity entity) {

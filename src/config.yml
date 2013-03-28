@@ -30,7 +30,10 @@ Herobrine:
   verboseLog: false
   
   # How much health should a Hell's Guardian have?
-  entityHealth: 50
+  hellsGuardianHealth: 50
+  
+  # How much health should a Fallen Angel have?
+  fallenAngelHealth: 35
   
   # Should we stop events that are inside protected regions? (GriefPrevention and Residence)
   ignoreProtectedRegions: false
