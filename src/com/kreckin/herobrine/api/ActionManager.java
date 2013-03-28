@@ -23,6 +23,7 @@ import com.kreckin.herobrine.actions.RandomLightning;
 import com.kreckin.herobrine.actions.RandomStorm;
 import com.kreckin.herobrine.actions.RearrangeInventory;
 import com.kreckin.herobrine.actions.SendMessage;
+import com.kreckin.herobrine.actions.SpawnCustomEntity;
 import com.kreckin.herobrine.actions.SpinPlayer;
 import com.kreckin.herobrine.actions.StealItem;
 import com.kreckin.herobrine.actions.ThrowPlayer;
@@ -62,6 +63,7 @@ public class ActionManager {
         this.registerAction(new SpinPlayer());
         this.registerAction(new DuplicateItem());
         this.registerAction(new RandomStorm());
+        this.registerAction(new SpawnCustomEntity());
     }
     
     public final void registerAction(Action action) {

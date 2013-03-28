@@ -5,14 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class Util {
     
     private final static Random random = new Random();
+    
+    public static ItemStack getColoredArmour(Material mat, Color color) {
+        ItemStack itemStack = new ItemStack(mat, 1);
+        LeatherArmorMeta meta = (LeatherArmorMeta) itemStack.getItemMeta();
+        meta.setColor(color);
+        itemStack.setItemMeta(meta);
+        return itemStack;
+    }
 
     public static boolean shouldAct(Player player) {
         int actionChance = Herobrine.getConfigFile().getInt("Herobrine.actionChance");

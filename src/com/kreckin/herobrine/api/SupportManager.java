@@ -22,7 +22,7 @@ public class SupportManager {
     }
     
     public final void registerSupport(Support support) {
-        this.supports.add(new ResidenceSupport());
+        this.supports.add(support);
         if (Herobrine.getConfigFile().getBoolean("Herobrine.verboseLog")) {
             Herobrine.log("Supports: " + support.getName(), Level.INFO);
         }
@@ -30,8 +30,8 @@ public class SupportManager {
     
     public void checkPlugins() {
         for (Support support : this.supports) {
-            if (support.isEnabled() && Herobrine.getConfigFile().getBoolean("Herobrine.verboseLog")) {
-                Herobrine.log("Found: " + support.getName() + " v" + support.getPlugin().getDescription().getName(), Level.INFO);
+            if (support.isEnabled()) {
+                Herobrine.log("Found: " + support.getName() + " v" + support.getPlugin().getDescription().getVersion(), Level.INFO);
             }
         }
     }

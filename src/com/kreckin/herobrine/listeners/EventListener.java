@@ -3,12 +3,17 @@ package com.kreckin.herobrine.listeners;
 import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.actions.AltarSummon;
 import com.kreckin.herobrine.api.Action;
+import com.kreckin.herobrine.api.CustomEntity;
 import com.kreckin.herobrine.util.Util;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockIgniteEvent;
+import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 public class EventListener implements Listener {
@@ -33,6 +38,28 @@ public class EventListener implements Listener {
                 return;
             }
             action.checkAction(event.getPlayer(), null);
+        }
+    }
+    
+    @EventHandler
+    public void onEntityDamage(EntityDamageEvent event) {
+        if (event.getEntity() instanceof CustomEntity && event.getCause().equals(DamageCause.ENTITY_ATTACK)) {
+            event.setCancelled(true);
+            event.setDamage(0);
+        }
+    }
+    
+    @EventHandler
+    public void onEntityDeath(EntityDeathEvent event) {
+        if (event.getEntity() instanceof CustomEntity) {
+            ((CustomEntity) event.getEntity()).onKilled();
+        }
+    }
+    
+    @EventHandler
+    public void onEntitySpawn(CreatureSpawnEvent event) {
+        if (event.getEntity() instanceof CustomEntity) {
+            ((CustomEntity) event.getEntity()).onSpawn();
         }
     }
 }
