@@ -8,37 +8,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
 public class Util {
     
     private final static Random random = new Random();
-    private static ArrayList<EntityType> allowedMobs;
-    
-    public static ArrayList<EntityType> getAllowedMobs() {
-        if (Util.allowedMobs == null) {
-            Util.allowedMobs = new ArrayList<EntityType>();
-            for (String mobName : Herobrine.getConfigFile().getStringList("Herobrine.allowedMobs")) {
-                if (EntityType.fromName(mobName) != null) {
-                    Util.allowedMobs.add(EntityType.fromName(mobName));
-                }
-            }
-        }
-        return Util.allowedMobs;
-    }
-    
-    public static EntityType getRandomMob() {
-        ArrayList<EntityType> allowedTypes = Util.getAllowedMobs();
-        if (allowedTypes.isEmpty()) {
-            return null;
-        }
-        if (allowedTypes.size() == 1) {
-            return allowedTypes.get(0);
-        }
-        return allowedTypes.get(new Random().nextInt(allowedTypes.size() - 1));
-    }
-    
+
     public static boolean shouldAct(Player player) {
         int actionChance = Herobrine.getConfigFile().getInt("Herobrine.actionChance");
         if (player.getWorld().getTime() >= 13000 && player.getWorld().getTime() <= 14200) {

@@ -1,7 +1,9 @@
 package com.kreckin.herobrine.actions;
 
+import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.util.Util;
+import java.util.ArrayList;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -9,8 +11,16 @@ import org.bukkit.entity.Player;
 
 public class AltarSummon extends Action {
 
+    private final ArrayList<EntityType> allowedMobs;
+
     public AltarSummon() {
         super(false);
+        this.allowedMobs = new ArrayList<EntityType>();
+        for (String mobName : Herobrine.getConfigFile().getStringList("Herobrine.allowedMobs")) {
+            if (EntityType.fromName(mobName) != null) {
+                this.allowedMobs.add(EntityType.fromName(mobName));
+            }
+        }
     }
 
     @Override
@@ -26,9 +36,14 @@ public class AltarSummon extends Action {
         }
         int amountToSpawn = 5 + (Util.getRandom().nextInt(5));
         for (int id = 0; id < amountToSpawn; id++) {
-            EntityType entity = Util.getRandomMob();
-            if (entity == null) {
-                continue;
+            if (this.allowedMobs.isEmpty()) {
+                break;
+            }
+            EntityType entity;
+            if (this.allowedMobs.size() == 1) {
+                entity = this.allowedMobs.get(0);
+            } else {
+                entity = this.allowedMobs.get(Util.getRandom().nextInt(this.allowedMobs.size() - 1));
             }
             player.getWorld().spawnEntity(Util.getNearbyLocation(player, Util.getRandom().nextInt(10)), entity);
         }
