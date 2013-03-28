@@ -1,5 +1,23 @@
 Herobrine:
   
+  # What mobs is he allowed to spawn in his various attacks?
+  allowedMobs:
+    - BAT
+    - BLAZE
+    - CAVE_SPIDER
+    - CREEPER
+    - ENDERMAN
+    - GHAST
+    - GIANT
+    - MAGMA_CUBE
+    - PIG_ZOMBIE
+    - SILVERFISH
+    - SKELETON
+    - SLIME
+    - SPIDER
+    - WITCH
+    - ZOMBIE
+  
   # Should we log all debugging information (you should just ignore this)?
   verboseLog: false
   
@@ -20,6 +38,9 @@ Herobrine:
   
   # What should the title of his books be?
   bookTitle: Story of Your Life
+  
+  # Who should the author of his books be?
+  bookAuthor: Herobrine
  
   # What messages can he put on the signs he places?
   signMessages:

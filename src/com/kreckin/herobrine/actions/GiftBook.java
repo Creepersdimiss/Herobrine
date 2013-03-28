@@ -18,8 +18,11 @@ public class GiftBook extends Action {
     public String callAction(Player player, Object[] metadata) {
         ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
         String message = Util.getMessage("Herobrine.bookMessages");
+        if (message == null) {
+            return "Failed, there are no book messages in the configuration file!";
+        }
         BookMeta meta = (BookMeta) book.getItemMeta();
-        meta.setAuthor("Herobrine");
+        meta.setAuthor(Herobrine.getConfigFile().getString("Herobrine.bookAuthor"));
         meta.setTitle(Herobrine.getConfigFile().getString("Herobrine.bookTitle"));
         meta.setPages(message);
         book.setItemMeta(meta);
