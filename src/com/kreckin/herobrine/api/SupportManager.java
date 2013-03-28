@@ -1,11 +1,13 @@
 package com.kreckin.herobrine.api;
 
 import com.kreckin.herobrine.Herobrine;
+import com.kreckin.herobrine.support.GriefPreventionSupport;
+import com.kreckin.herobrine.support.PreciousStonesSupport;
 import com.kreckin.herobrine.support.ResidenceSupport;
+import com.kreckin.herobrine.support.WorldGuardSupport;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
 public class SupportManager {
     
@@ -13,10 +15,13 @@ public class SupportManager {
     
     public SupportManager() {
         this.supports = new ArrayList<Support>();
-        this.registerSupport(Herobrine.getInstance(), new ResidenceSupport());
+        this.registerSupport(new ResidenceSupport());
+        this.registerSupport(new GriefPreventionSupport());
+        this.registerSupport(new PreciousStonesSupport());
+        this.registerSupport(new WorldGuardSupport());
     }
     
-    public final void registerSupport(Plugin plugin, Support support) {
+    public final void registerSupport(Support support) {
         this.supports.add(new ResidenceSupport());
         if (Herobrine.getConfigFile().getBoolean("Herobrine.verboseLog")) {
             Herobrine.log("Supports: " + support.getName(), Level.INFO);
