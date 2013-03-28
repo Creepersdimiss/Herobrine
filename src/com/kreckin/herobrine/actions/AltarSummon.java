@@ -2,7 +2,6 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.util.Util;
-import java.util.ArrayList;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
