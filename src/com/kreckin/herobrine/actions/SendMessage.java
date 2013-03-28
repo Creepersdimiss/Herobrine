@@ -13,6 +13,9 @@ public class SendMessage extends Action {
     @Override
     public String callAction(Player player, Object[] metadata) {
         String message = Util.getMessage("Herobrine.altarMessages");
+        if (message == null) {
+            return "Failed, there are no messages in the configuration file!";
+        }
         player.sendMessage(Util.formatString(message));
         return ("Message: " + message);
     }
