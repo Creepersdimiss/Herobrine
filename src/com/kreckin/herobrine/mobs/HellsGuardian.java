@@ -21,6 +21,8 @@ public class HellsGuardian extends CustomEntity {
     
     @Override
     public void onSpawn() {
+        super.getEntity().setCanPickupItems(false);
+        super.getEntity().setCustomName("Hell's Guardian");
         super.getEntity().setMaxHealth(Herobrine.getConfigFile().getInt("Herobrine.hellsGuardianHealth"));
         super.getEntity().setHealth(super.getEntity().getMaxHealth());
         super.getEntity().getEquipment().setBoots(Util.getColoredArmour(Material.LEATHER_BOOTS, Color.RED));

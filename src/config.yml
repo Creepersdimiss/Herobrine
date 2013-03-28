@@ -35,6 +35,9 @@ Herobrine:
   # How much health should a Fallen Angel have?
   fallenAngelHealth: 35
   
+  # How much health should a Unknown Demon have?
+  unknownDemonHealth: 40
+  
   # Should we stop events that are inside protected regions? (GriefPrevention and Residence)
   ignoreProtectedRegions: false
   
