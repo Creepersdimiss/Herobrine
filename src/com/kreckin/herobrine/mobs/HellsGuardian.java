@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 public class HellsGuardian extends CustomEntity {
 
     public HellsGuardian(Location loc) {
-        super(loc, EntityType.ZOMBIE);
+        super(loc, EntityType.ZOMBIE, "Hell's Guardian");
         super.getDrops().add(Util.getColoredArmour(Material.LEATHER_BOOTS, Color.RED));
         super.getDrops().add(Util.getColoredArmour(Material.LEATHER_LEGGINGS, Color.RED));
         super.getDrops().add(Util.getColoredArmour(Material.LEATHER_CHESTPLATE, Color.RED));
@@ -22,10 +22,6 @@ public class HellsGuardian extends CustomEntity {
     
     @Override
     public void onSpawn() {
-        super.getEntity().setCanPickupItems(false);
-        super.getEntity().setCustomName("Hell's Guardian");
-        super.getEntity().setCustomNameVisible(true);
-        super.getEntity().setRemoveWhenFarAway(false);
         super.getEntity().setMaxHealth(Herobrine.getConfigFile().getInt("Herobrine.hellsGuardianHealth"));
         super.getEntity().setHealth(super.getEntity().getMaxHealth());
         super.getEntity().getEquipment().setBoots(Util.getColoredArmour(Material.LEATHER_BOOTS, Color.RED));

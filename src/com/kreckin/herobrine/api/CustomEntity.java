@@ -13,10 +13,14 @@ public abstract class CustomEntity {
     private final LivingEntity entity;
     private final ArrayList<ItemStack> drops;
 
-    public CustomEntity(Location loc, EntityType type) {
+    public CustomEntity(Location loc, EntityType type, String name) {
         this.entity = (LivingEntity) loc.getWorld().spawnEntity(loc, type);
         this.drops = new ArrayList<ItemStack>();
         this.onSpawn();
+        this.entity.setCanPickupItems(false);
+        this.entity.setCustomName(name);
+        this.entity.setCustomNameVisible(true);
+        this.entity.setRemoveWhenFarAway(false);
         Herobrine.getEntityManager().addEntity(this);
     }
 

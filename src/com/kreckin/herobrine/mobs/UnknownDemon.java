@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 public class UnknownDemon extends CustomEntity {
     
     public UnknownDemon(Location loc) {
-        super(loc, EntityType.SKELETON);
+        super(loc, EntityType.SKELETON, "Unknown Demon");
         super.getDrops().add(Util.getColoredArmour(Material.LEATHER_BOOTS, Color.MAROON));
         super.getDrops().add(Util.getColoredArmour(Material.LEATHER_LEGGINGS, Color.MAROON));
         super.getDrops().add(Util.getColoredArmour(Material.LEATHER_CHESTPLATE, Color.MAROON));
@@ -22,10 +22,6 @@ public class UnknownDemon extends CustomEntity {
 
     @Override
     public void onSpawn() {
-        super.getEntity().setCanPickupItems(false);
-        super.getEntity().setCustomName("Unknown Demon");
-        super.getEntity().setCustomNameVisible(true);
-        super.getEntity().setRemoveWhenFarAway(false);
         super.getEntity().getWorld().strikeLightning(super.getEntity().getLocation());
         super.getEntity().setMaxHealth(Herobrine.getConfigFile().getInt("Herobrine.unknownDemonHealth"));
         super.getEntity().setHealth(super.getEntity().getMaxHealth());
