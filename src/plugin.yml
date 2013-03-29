@@ -1,9 +1,16 @@
 name: Herobrine
-version: 6.6
+version: 6.7
 main: com.kreckin.herobrine.Herobrine
 description: I'll never stop.
 author: steaks4uce
 website: http://dev.bukkit.org/server-mods/herobrineunleashed/
+
+permissions:
+  herobrine.ignore:
+    description: Ignore the player.
+    
+  herobrine.commands:
+    description: Run commands.
 
 commands:
   hb:
