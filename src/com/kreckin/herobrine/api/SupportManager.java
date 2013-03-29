@@ -4,6 +4,7 @@ import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.support.GriefPreventionSupport;
 import com.kreckin.herobrine.support.PreciousStonesSupport;
 import com.kreckin.herobrine.support.ResidenceSupport;
+import com.kreckin.herobrine.support.TownySupport;
 import com.kreckin.herobrine.support.WorldGuardSupport;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -19,6 +20,7 @@ public class SupportManager {
         this.registerSupport(new GriefPreventionSupport());
         this.registerSupport(new PreciousStonesSupport());
         this.registerSupport(new WorldGuardSupport());
+        this.registerSupport(new TownySupport());
     }
     
     public final void registerSupport(Support support) {
