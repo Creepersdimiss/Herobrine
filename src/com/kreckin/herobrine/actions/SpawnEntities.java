@@ -15,20 +15,13 @@ public class SpawnEntities extends Action {
 
     @Override
     public String callAction(Player player, Object[] metadata) {
-        switch (Util.getRandom().nextInt(3)) {
-            
-            case 0:
-                new HellsGuardian(player.getLocation());
-                break;
-                
-            case 1:
-                new FallenAngel(player.getLocation());
-                break;
-                
-            default:
-                new UnknownDemon(player.getLocation());
-                break;
+        int mobId = Util.getRandom().nextInt(3);
+        if (mobId == 0) {
+            return ("Spawned: " + new HellsGuardian(player.getLocation()).getName());
+        } else if (mobId == 1) {
+            return ("Spawned: " + new FallenAngel(player.getLocation()).getName());
+        } else {
+            return ("Spawned: " + new UnknownDemon(player.getLocation()).getName());
         }
-        return "Done.";
     }
 }
