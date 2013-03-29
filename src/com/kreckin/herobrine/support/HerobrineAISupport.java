@@ -1,18 +1,19 @@
 package com.kreckin.herobrine.support;
 
 import com.kreckin.herobrine.api.Support;
-import com.palmergames.bukkit.towny.object.TownyUniverse;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
 
-public class TownySupport extends Support {
+public class HerobrineAISupport extends Support {
     
-    public TownySupport() {
-        super("Towny");
+    public HerobrineAISupport() {
+        super("HerobrineAI");
     }
 
     @Override
     public boolean checkPermissions(Location loc, Plugin plugin) {
-        return (TownyUniverse.getTownBlock(loc) != null);
+        Bukkit.getServer().getPluginManager().disablePlugin(plugin);
+        return true;
     }
 }

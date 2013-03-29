@@ -5,7 +5,7 @@ import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import java.util.Map;
-import org.bukkit.entity.Player;
+import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
 
 public class WorldGuardSupport extends Support {
@@ -15,14 +15,14 @@ public class WorldGuardSupport extends Support {
     }
 
     @Override
-    public boolean checkPermissions(Player player, Plugin plugin) {
-        RegionManager manager = ((WorldGuardPlugin) plugin).getRegionManager(player.getWorld());
+    public boolean checkPermissions(Location loc, Plugin plugin) {
+        RegionManager manager = ((WorldGuardPlugin) plugin).getRegionManager(loc.getWorld());
         if (manager != null) {
             if (manager.getRegions() == null) {
                 return true;
             }
             for (Map.Entry entry : manager.getRegions().entrySet()) {
-                if (((ProtectedRegion) entry.getValue()).contains(player.getLocation().getBlockX(), player.getLocation().getBlockY(), player.getLocation().getBlockZ())) {
+                if (((ProtectedRegion) entry.getValue()).contains(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ())) {
                     return false;
                 }
             }

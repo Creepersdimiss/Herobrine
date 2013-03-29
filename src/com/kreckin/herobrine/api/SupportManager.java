@@ -2,13 +2,14 @@ package com.kreckin.herobrine.api;
 
 import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.support.GriefPreventionSupport;
+import com.kreckin.herobrine.support.HerobrineAISupport;
 import com.kreckin.herobrine.support.PreciousStonesSupport;
 import com.kreckin.herobrine.support.ResidenceSupport;
 import com.kreckin.herobrine.support.TownySupport;
 import com.kreckin.herobrine.support.WorldGuardSupport;
 import java.util.ArrayList;
 import java.util.logging.Level;
-import org.bukkit.entity.Player;
+import org.bukkit.Location;
 
 public class SupportManager {
     
@@ -21,6 +22,7 @@ public class SupportManager {
         this.registerSupport(new PreciousStonesSupport());
         this.registerSupport(new WorldGuardSupport());
         this.registerSupport(new TownySupport());
+        this.registerSupport(new HerobrineAISupport());
     }
     
     public final void registerSupport(Support support) {
@@ -38,12 +40,12 @@ public class SupportManager {
         }
     }
     
-    public boolean checkPermissions(Player player) {
+    public boolean checkPermissions(Location loc) {
         for (Support support : this.supports) {
             if (!support.isEnabled()) {
                 continue;
             }
-            if (!support.checkPermissions(player, support.getPlugin())) {
+            if (!support.checkPermissions(loc, support.getPlugin())) {
                 return false;
             }
         }

@@ -2,7 +2,7 @@ package com.kreckin.herobrine.support;
 
 import com.bekvon.bukkit.residence.Residence;
 import com.kreckin.herobrine.api.Support;
-import org.bukkit.entity.Player;
+import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
 
 public class ResidenceSupport extends Support {
@@ -12,8 +12,8 @@ public class ResidenceSupport extends Support {
     }
 
     @Override
-    public boolean checkPermissions(Player player, Plugin plugin) {
-        if (Residence.getResidenceManager().getByLoc(player.getLocation()) != null) {
+    public boolean checkPermissions(Location loc, Plugin plugin) {
+        if (Residence.getResidenceManager().getByLoc(loc) != null) {
             return false;
         }
         return true;

@@ -1,7 +1,7 @@
 package com.kreckin.herobrine.api;
 
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
+import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
 
 public abstract class Support {
@@ -15,7 +15,7 @@ public abstract class Support {
         this.state = 0;
     }
 
-    public abstract boolean checkPermissions(Player player, Plugin plugin);
+    public abstract boolean checkPermissions(Location loc, Plugin plugin);
     
     public Plugin getPlugin() {
         if (this.plugin == null && this.state == 0) {
