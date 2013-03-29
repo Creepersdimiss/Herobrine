@@ -17,7 +17,7 @@ public class UnknownDemon extends CustomEntity {
         super.getDrops().add(Util.getColoredArmour(Material.LEATHER_LEGGINGS, Color.MAROON));
         super.getDrops().add(Util.getColoredArmour(Material.LEATHER_CHESTPLATE, Color.MAROON));
         super.getDrops().add(Util.getColoredArmour(Material.LEATHER_HELMET, Color.MAROON));
-        super.getDrops().add(new ItemStack(Material.STONE_PICKAXE, 1));
+        super.getDrops().add(new ItemStack(Material.GOLD_SWORD, 1));
     }
 
     @Override
