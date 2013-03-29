@@ -74,6 +74,7 @@ public class Util {
     }
     
     public static Random getRandom() {
+        Util.random.setSeed(Util.random.nextLong());
         return Util.random;
     }
 }
