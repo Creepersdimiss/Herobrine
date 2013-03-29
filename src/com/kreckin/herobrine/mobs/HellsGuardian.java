@@ -2,6 +2,7 @@ package com.kreckin.herobrine.mobs;
 
 import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.api.CustomEntity;
+import com.kreckin.herobrine.items.MidnightGem;
 import com.kreckin.herobrine.util.Util;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -12,12 +13,7 @@ import org.bukkit.inventory.ItemStack;
 public class HellsGuardian extends CustomEntity {
 
     public HellsGuardian(Location loc) {
-        super(loc, EntityType.ZOMBIE, "Hell's Guardian");
-        super.getDrops().add(Util.getColoredArmour(Material.LEATHER_BOOTS, Color.RED));
-        super.getDrops().add(Util.getColoredArmour(Material.LEATHER_LEGGINGS, Color.RED));
-        super.getDrops().add(Util.getColoredArmour(Material.LEATHER_CHESTPLATE, Color.RED));
-        super.getDrops().add(Util.getColoredArmour(Material.LEATHER_HELMET, Color.RED));
-        super.getDrops().add(new ItemStack(Material.IRON_SWORD, 1));
+        super(loc, EntityType.ZOMBIE, "Hell's Guardian", new MidnightGem().getItem());
     }
     
     @Override

@@ -1,8 +1,6 @@
 package com.kreckin.herobrine.api;
 
 import com.kreckin.herobrine.Herobrine;
-import com.kreckin.herobrine.util.Util;
-import java.util.ArrayList;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -11,11 +9,11 @@ import org.bukkit.inventory.ItemStack;
 public abstract class CustomEntity {
     
     private final LivingEntity entity;
-    private final ArrayList<ItemStack> drops;
+    private final ItemStack drop;
 
-    public CustomEntity(Location loc, EntityType type, String name) {
+    public CustomEntity(Location loc, EntityType type, String name, ItemStack drop) {
         this.entity = (LivingEntity) loc.getWorld().spawnEntity(loc, type);
-        this.drops = new ArrayList<ItemStack>();
+        this.drop = drop;
         this.entity.setCanPickupItems(false);
         this.entity.setCustomName(name);
         this.entity.setCustomNameVisible(true);
@@ -28,18 +26,8 @@ public abstract class CustomEntity {
 
     public abstract void onKilled();
 
-    public ArrayList<ItemStack> getDrops() {
-        return this.drops;
-    }
-    
-    public ItemStack getRandomDrop() {
-        if (this.drops.isEmpty()) {
-            return null;
-        }
-        if (this.drops.size() == 1) {
-            return this.drops.get(0);
-        }
-        return this.drops.get(Util.getRandom().nextInt(this.drops.size() - 1));
+    public ItemStack getDrop() {
+        return this.drop;
     }
 
     public LivingEntity getEntity() {

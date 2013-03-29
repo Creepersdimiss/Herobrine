@@ -58,9 +58,7 @@ public class EventListener implements Listener {
             entity.onKilled();
             event.setDroppedExp(0);
             event.getDrops().clear();
-            if (entity.getRandomDrop() != null) {
-                event.getDrops().add(entity.getRandomDrop());
-            }
+            event.getDrops().add(entity.getDrop());
             Herobrine.getEntityManager().removeEntity(entity.getEntity().getEntityId());
         }
     }
