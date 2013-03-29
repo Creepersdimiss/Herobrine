@@ -9,6 +9,7 @@ import com.kreckin.herobrine.actions.CreatePyramid;
 import com.kreckin.herobrine.actions.CreateRingOfFire;
 import com.kreckin.herobrine.actions.CreateTNTTrap;
 import com.kreckin.herobrine.actions.CreateTotem;
+import com.kreckin.herobrine.actions.DestroyChests;
 import com.kreckin.herobrine.actions.DestroyTorches;
 import com.kreckin.herobrine.actions.DimTorches;
 import com.kreckin.herobrine.actions.DuplicateItem;
@@ -64,6 +65,7 @@ public class ActionManager {
         this.registerAction(new DuplicateItem());
         this.registerAction(new RandomStorm());
         this.registerAction(new SpawnEntities());
+        this.registerAction(new DestroyChests());
     }
     
     public final void registerAction(Action action) {
