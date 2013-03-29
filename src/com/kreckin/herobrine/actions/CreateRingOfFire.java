@@ -16,28 +16,24 @@ public class CreateRingOfFire extends Action {
 
     @Override
     public String callAction(Player player, Object[] metadata) {
-        ArrayList<Block> blocks = new ArrayList<Block>();
-        blocks.add(player.getLocation().add(2, 0, 0).getBlock());
-        blocks.add(player.getLocation().add(0, 0, 2).getBlock());
-        blocks.add(player.getLocation().add(0, 0, -2).getBlock());
-        blocks.add(player.getLocation().add(-2, 0, 0).getBlock());
-        blocks.add(player.getLocation().add(1, 0, 1).getBlock());
-        blocks.add(player.getLocation().add(1, 0, -1).getBlock());
-        blocks.add(player.getLocation().add(-1, 0, 1).getBlock());
-        blocks.add(player.getLocation().add(-1, 0, -1).getBlock());
-        boolean bad = false;
+        Block[] blocks = new Block[8];
+        blocks[0] = player.getLocation().add(2, 0, 0).getBlock();
+        blocks[1] = player.getLocation().add(0, 0, 2).getBlock();
+        blocks[2] = player.getLocation().add(0, 0, -2).getBlock();
+        blocks[3] = player.getLocation().add(-2, 0, 0).getBlock();
+        blocks[4] = player.getLocation().add(1, 0, 1).getBlock();
+        blocks[5] = player.getLocation().add(1, 0, -1).getBlock();
+        blocks[6] = player.getLocation().add(-1, 0, 1).getBlock();
+        blocks[7] = player.getLocation().add(-1, 0, -1).getBlock();
         for (Block block : blocks) {
             if (!Util.isValid(block)) {
-                bad = true;
+                return "Failed, could not find a proper location!";
             }
         }
-        if (!bad) {
-            for (Block block : blocks) {
-                block.setType(Material.FIRE);
-            }
-            Location loc = player.getLocation();
-            return ("Location: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
+        for (Block block : blocks) {
+            block.setType(Material.FIRE);
         }
-        return "Failed, could not find a proper location!";
+        Location loc = player.getLocation();
+        return ("Location: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
     }
 }
