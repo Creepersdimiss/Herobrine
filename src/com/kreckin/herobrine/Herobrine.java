@@ -3,13 +3,16 @@ package com.kreckin.herobrine;
 import com.kreckin.herobrine.api.SupportManager;
 import com.kreckin.herobrine.api.ActionManager;
 import com.kreckin.herobrine.api.CustomEntityManager;
+import com.kreckin.herobrine.items.HerobrinesSword;
 import com.kreckin.herobrine.listeners.CommandListener;
 import com.kreckin.herobrine.listeners.EventListener;
 import java.io.File;
 import java.util.List;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Herobrine extends JavaPlugin {
@@ -22,6 +25,12 @@ public class Herobrine extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        ShapedRecipe recipe = new ShapedRecipe(new HerobrinesSword().getItem());
+        recipe.shape("ABA", "BCB", "ABA");
+        recipe.setIngredient('A', Material.REDSTONE);
+        recipe.setIngredient('B', Material.DIAMOND);
+        recipe.setIngredient('C', Material.EMERALD);
+        this.getServer().addRecipe(recipe);
         try {
             if (!this.getDataFolder().exists()) {
                 this.getDataFolder().mkdirs();

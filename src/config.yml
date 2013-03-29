@@ -28,7 +28,7 @@ Herobrine:
   
   # Should we log all debugging information (you should just ignore this)?
   verboseLog: false
-  
+
   # How much health should a Hell's Guardian have?
   hellsGuardianHealth: 50
   

@@ -29,6 +29,6 @@ public class HellsGuardian extends CustomEntity {
 
     @Override
     public void onKilled() {
-        super.getEntity().getWorld().createExplosion(super.getEntity().getLocation(), 2);
+        super.getEntity().getWorld().createExplosion(super.getEntity().getLocation(), 2, true);
     }
 }

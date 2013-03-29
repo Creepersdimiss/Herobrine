@@ -18,6 +18,11 @@ public abstract class CustomEntity {
         this.entity.setCustomName(name);
         this.entity.setCustomNameVisible(true);
         this.entity.setRemoveWhenFarAway(false);
+        this.entity.getEquipment().setBootsDropChance(0);
+        this.entity.getEquipment().setChestplateDropChance(0);
+        this.entity.getEquipment().setHelmetDropChance(0);
+        this.entity.getEquipment().setItemInHandDropChance(0);
+        this.entity.getEquipment().setLeggingsDropChance(0);
         Herobrine.getEntityManager().addEntity(this);
         this.onSpawn();
     }
