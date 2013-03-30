@@ -1,6 +1,7 @@
 package com.kreckin.herobrine.api;
 
 import com.kreckin.herobrine.Herobrine;
+import com.kreckin.herobrine.support.FactionsSupport;
 import com.kreckin.herobrine.support.GriefPreventionSupport;
 import com.kreckin.herobrine.support.HerobrineAISupport;
 import com.kreckin.herobrine.support.PreciousStonesSupport;
@@ -23,6 +24,7 @@ public class SupportManager {
         this.registerSupport(new WorldGuardSupport());
         this.registerSupport(new TownySupport());
         this.registerSupport(new HerobrineAISupport());
+        this.registerSupport(new FactionsSupport());
     }
     
     public final void registerSupport(Support support) {
