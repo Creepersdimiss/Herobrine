@@ -14,11 +14,13 @@ public abstract class Support {
         this.name = name;
         this.state = 0;
     }
+    
+    public void onStartup() { }
 
     public abstract boolean checkPermissions(Location loc, Plugin plugin);
-    
+
     public Plugin getPlugin() {
-        if (this.plugin == null && this.state == 0) {
+        if (this.state == 0) {
             this.plugin = Bukkit.getServer().getPluginManager().getPlugin(this.name);
         }
         return this.plugin;
@@ -28,6 +30,7 @@ public abstract class Support {
         if (state == 0) {
             if (this.getPlugin() != null) {
                 state = 1;
+                this.onStartup();
             } else {
                 state = -1;
             }

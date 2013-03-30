@@ -83,6 +83,10 @@ public class ActionManager {
             Herobrine.log("Registered: " + action.getClass().getSimpleName(), Level.INFO);
         }
     }
+    
+    public boolean isAllowed(Class<? extends Action> action) {
+        return (!Herobrine.getConfigFile().getStringList("Herobrine.disallowedActions").contains(action.getSimpleName()));
+    }
 
     public ArrayList<Action> getActions() {
         return this.actions;
