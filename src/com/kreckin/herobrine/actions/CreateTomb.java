@@ -12,7 +12,7 @@ public class CreateTomb extends Action {
 
     @Override
     public String callAction(Player player, Object[] metadata) {
-        Structure.loadStructure(player.getLocation(), "/com/kreckin/herobrine/structures/Tomb.yml").loadBlocks();
+        Structure.loadStructure(player.getLocation(), "/com/kreckin/herobrine/structures/Tomb.yml").createStructure();
         return "Done.";
     }
 }
