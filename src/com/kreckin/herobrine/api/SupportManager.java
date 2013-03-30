@@ -34,7 +34,7 @@ public class SupportManager {
     
     public void checkPlugins() {
         for (Support support : this.supports) {
-            if (support.isEnabled()) {
+            if (support.isEnabled() && support.getPlugin().isEnabled()) {
                 Herobrine.log("Found: " + support.getName() + " v" + support.getPlugin().getDescription().getVersion(), Level.INFO);
             }
         }
