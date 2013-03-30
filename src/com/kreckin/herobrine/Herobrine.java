@@ -3,6 +3,7 @@ package com.kreckin.herobrine;
 import com.kreckin.herobrine.api.SupportManager;
 import com.kreckin.herobrine.api.ActionManager;
 import com.kreckin.herobrine.api.CustomEntityManager;
+import com.kreckin.herobrine.api.HotspotManager;
 import com.kreckin.herobrine.items.HerobrinesSword;
 import com.kreckin.herobrine.listeners.CommandListener;
 import com.kreckin.herobrine.listeners.EventListener;
@@ -22,6 +23,7 @@ public class Herobrine extends JavaPlugin {
     private static YamlConfiguration config;
     private static SupportManager support;
     private static CustomEntityManager entityManager;
+    private static HotspotManager hotspotManager;
 
     @Override
     public void onEnable() {
@@ -48,6 +50,7 @@ public class Herobrine extends JavaPlugin {
         Herobrine.actionManager = new ActionManager();
         Herobrine.support = new SupportManager();
         Herobrine.entityManager = new CustomEntityManager();
+        Herobrine.hotspotManager = new HotspotManager();
         this.getCommand("hb").setExecutor(new CommandListener());
         this.getServer().getPluginManager().registerEvents(new EventListener(), this);
         if (Herobrine.config.getBoolean("Herobrine.verboseLog")) {
@@ -90,6 +93,7 @@ public class Herobrine extends JavaPlugin {
         Herobrine.instance = null;
         Herobrine.support = null;
         Herobrine.entityManager = null;
+        Herobrine.hotspotManager = null;
     }
     
     public static void log(String message, Level level) {
@@ -125,5 +129,9 @@ public class Herobrine extends JavaPlugin {
     
     public static SupportManager getSupportManager() {
         return Herobrine.support;
+    }
+    
+    public static HotspotManager getHotspotManager() {
+        return Herobrine.hotspotManager;
     }
 }

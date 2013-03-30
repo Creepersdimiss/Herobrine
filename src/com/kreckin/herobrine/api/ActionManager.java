@@ -1,6 +1,7 @@
 package com.kreckin.herobrine.api;
 
 import com.kreckin.herobrine.Herobrine;
+import com.kreckin.herobrine.actions.AddHotspot;
 import com.kreckin.herobrine.actions.BatAttack;
 import com.kreckin.herobrine.actions.BuryPlayer;
 import com.kreckin.herobrine.actions.CreateGrave;
@@ -74,6 +75,7 @@ public class ActionManager {
         this.registerAction(new MobAttack());
         this.registerAction(new PlaceChest());
         this.registerAction(new CreateInfection());
+        this.registerAction(new AddHotspot());
         if (Herobrine.getConfigFile().getBoolean("Herobrine.verboseLog")) {
             Herobrine.log("Action Count: " + this.actions.size(), Level.INFO);
         }
