@@ -16,6 +16,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 public class Util {
     
     private final static Random random = new Random();
+    private static int returnsSinceReseed = 0;
 
     public static ItemStack getColoredArmour(Material mat, Color color) {
         ItemStack itemStack = new ItemStack(mat, 1);
@@ -76,7 +77,11 @@ public class Util {
     }
     
     public static Random getRandom() {
-        Util.random.setSeed(Util.random.nextLong());
+        Util.returnsSinceReseed++;
+        if (Util.returnsSinceReseed > 5) {
+            Util.returnsSinceReseed = 0;
+            Util.random.setSeed(Util.random.nextLong());
+        }
         return Util.random;
     }
 }

@@ -35,6 +35,9 @@ Herobrine:
   
   # Should we log all debugging information (you should just ignore this)?
   verboseLog: false
+  
+  # What is the chance that a custom item is dropped by a boss? (1 in X)
+  customItemDropChance: 3
 
   # How much health should a Hell's Guardian have?
   hellsGuardianHealth: 50

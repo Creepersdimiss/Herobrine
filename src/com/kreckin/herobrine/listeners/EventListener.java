@@ -58,7 +58,9 @@ public class EventListener implements Listener {
             entity.onKilled();
             event.setDroppedExp(0);
             event.getDrops().clear();
-            event.getDrops().add(entity.getDrop());
+            if (Util.getRandom().nextInt(Herobrine.getConfigFile().getInt("Herobrine.customItemDropChance")) == 0) {
+                event.getDrops().add(entity.getDrop());
+            }
             Herobrine.getEntityManager().removeEntity(entity.getEntity().getEntityId());
         }
     }
