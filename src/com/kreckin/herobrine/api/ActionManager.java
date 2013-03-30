@@ -16,6 +16,7 @@ import com.kreckin.herobrine.actions.DimTorches;
 import com.kreckin.herobrine.actions.DuplicateItem;
 import com.kreckin.herobrine.actions.GiftBook;
 import com.kreckin.herobrine.actions.GiftHead;
+import com.kreckin.herobrine.actions.MobAttack;
 import com.kreckin.herobrine.actions.PlaceSign;
 import com.kreckin.herobrine.actions.PlaceTorch;
 import com.kreckin.herobrine.actions.PlaySound;
@@ -25,7 +26,7 @@ import com.kreckin.herobrine.actions.RandomLightning;
 import com.kreckin.herobrine.actions.RandomStorm;
 import com.kreckin.herobrine.actions.RearrangeInventory;
 import com.kreckin.herobrine.actions.SendMessage;
-import com.kreckin.herobrine.actions.SpawnEntities;
+import com.kreckin.herobrine.actions.BossAttack;
 import com.kreckin.herobrine.actions.SpinPlayer;
 import com.kreckin.herobrine.actions.StealItem;
 import com.kreckin.herobrine.actions.ThrowPlayer;
@@ -64,10 +65,11 @@ public class ActionManager {
         this.registerAction(new SpinPlayer());
         this.registerAction(new DuplicateItem());
         this.registerAction(new RandomStorm());
-        this.registerAction(new SpawnEntities());
+        this.registerAction(new BossAttack());
         this.registerAction(new DestroyChests());
         this.registerAction(new CreateTomb());
         this.registerAction(new CreateRingOfTorches());
+        this.registerAction(new MobAttack());
     }
     
     public final void registerAction(Action action) {

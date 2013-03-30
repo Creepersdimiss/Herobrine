@@ -7,9 +7,9 @@ import com.kreckin.herobrine.mobs.UnknownDemon;
 import com.kreckin.herobrine.util.Util;
 import org.bukkit.entity.Player;
 
-public class SpawnEntities extends Action {
+public class BossAttack extends Action {
 
-    public SpawnEntities() {
+    public BossAttack() {
         super(true);
     }
 
