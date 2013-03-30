@@ -1,5 +1,12 @@
 Herobrine:
   
+  # What items are we allowed to put into randomly created chests?
+  allowedItems:  
+    - TORCH
+    - FLINT_AND_STEEL
+    - BUCKET
+    - ROTTEN_FLESH
+   
   # What sounds are allowed to be played?
   allowedSounds:
     - AMBIENCE_CAVE
