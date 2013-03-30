@@ -6,6 +6,7 @@ import com.kreckin.herobrine.actions.BuryPlayer;
 import com.kreckin.herobrine.actions.CreateGrave;
 import com.kreckin.herobrine.actions.CreatePyramid;
 import com.kreckin.herobrine.actions.CreateRingOfFire;
+import com.kreckin.herobrine.actions.CreateRingOfTorches;
 import com.kreckin.herobrine.actions.CreateTNTTrap;
 import com.kreckin.herobrine.actions.CreateTomb;
 import com.kreckin.herobrine.actions.CreateTotem;
@@ -66,6 +67,7 @@ public class ActionManager {
         this.registerAction(new SpawnEntities());
         this.registerAction(new DestroyChests());
         this.registerAction(new CreateTomb());
+        this.registerAction(new CreateRingOfTorches());
     }
     
     public final void registerAction(Action action) {
