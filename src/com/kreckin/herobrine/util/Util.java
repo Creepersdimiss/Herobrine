@@ -16,7 +16,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 public class Util {
     
     private final static Random random = new Random();
-    
+
     public static ItemStack getColoredArmour(Material mat, Color color) {
         ItemStack itemStack = new ItemStack(mat, 1);
         LeatherArmorMeta meta = (LeatherArmorMeta) itemStack.getItemMeta();
