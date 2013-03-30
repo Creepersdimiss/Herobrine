@@ -57,11 +57,20 @@ public class Herobrine extends JavaPlugin {
             Herobrine.log("Entity Name: " + Herobrine.config.getString("Herobrine.entityName"), Level.INFO);
             Herobrine.log("Ignore Protected Regions: " + Herobrine.config.getBoolean("Herobrine.ignoreProtectedRegions"), Level.INFO);
             Herobrine.log("Book Title: " + Herobrine.config.getBoolean("Herobrine.bookTitle"), Level.INFO);
+            Herobrine.log("Infection Size: " + Herobrine.config.getInt("Herobrine.infectionSize"), Level.INFO);
+            Herobrine.log("Custom Item Drop Chance: " + Herobrine.config.getInt("Herobrine.customItemDropChance"), Level.INFO);
+            Herobrine.log("Hell's Guardian Health: " + Herobrine.config.getInt("Herobrine.hellsGuardianHealth"), Level.INFO);
+            Herobrine.log("Fallen Angel's Health: " + Herobrine.config.getInt("Herobrine.fallenAngelHealth"), Level.INFO);
+            Herobrine.log("Unknown Demon's Health: " + Herobrine.config.getInt("Herobrine.unknownDemonHealth"), Level.INFO);
+            Herobrine.log("Verbose: Obviously", Level.INFO);
             this.printArray(Herobrine.config.getStringList("Herobrine.bookMessages"), "Book Messages");
             this.printArray(Herobrine.config.getStringList("Herobrine.signMessages"), "Sign Messages");
             this.printArray(Herobrine.config.getStringList("Herobrine.altarMessages"), "Altar Messages");
             this.printArray(Herobrine.config.getStringList("Herobrine.disallowedWorlds"), "Disallowed Worlds");
             this.printArray(Herobrine.config.getStringList("Herobrine.disallowedActions"), "Disallowed Actions");
+            this.printArray(Herobrine.config.getStringList("Herobrine.allowedItems"), "Allowed Items");
+            this.printArray(Herobrine.config.getStringList("Herobrine.allowedSounds"), "Allowed Sounds");
+            this.printArray(Herobrine.config.getStringList("Herobrine.allowedMobs"), "Allowed Mobs");
         }
         try {
             new MetricsLite(this).start();
