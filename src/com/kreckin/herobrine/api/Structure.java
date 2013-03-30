@@ -1,6 +1,7 @@
 package com.kreckin.herobrine.api;
 
 import com.kreckin.herobrine.Herobrine;
+import com.kreckin.herobrine.util.Util;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Chest;
@@ -21,7 +22,22 @@ public class Structure {
         return (new Structure(loc, YamlConfiguration.loadConfiguration(Herobrine.class.getResourceAsStream(name))));
     }
     
-    public void createStructure() {
+    public boolean createStructure() {
+        for (String blockItem : this.config.getStringList("Blocks")) {
+            String[] blockData = blockItem.split(",");
+            if (blockData[1].equalsIgnoreCase("0")) {
+                if (!Util.isValid(new Location(this.loc.getWorld(), this.loc.getBlockX() + Integer.parseInt(blockData[0]), this.loc.getBlockY() + Integer.parseInt(blockData[1]), this.loc.getBlockZ() + Integer.parseInt(blockData[2])).getBlock())) {
+                    return false;
+                }
+            } else {
+                if (blockData[1].equalsIgnoreCase("-1")) {
+                    continue;
+                }
+                if (Util.isSolid(new Location(this.loc.getWorld(), this.loc.getBlockX() + Integer.parseInt(blockData[0]), this.loc.getBlockY() + Integer.parseInt(blockData[1]), this.loc.getBlockZ() + Integer.parseInt(blockData[2])).getBlock())) {
+                    return false;
+                }
+            }
+        }
         for (String blockItem : this.config.getStringList("Blocks")) {
             String[] blockData = blockItem.split(",");
             Location blockLoc = new Location(this.loc.getWorld(), this.loc.getBlockX() + Integer.parseInt(blockData[0]), this.loc.getBlockY() + Integer.parseInt(blockData[1]), this.loc.getBlockZ() + Integer.parseInt(blockData[2]));
@@ -32,6 +48,7 @@ public class Structure {
                 chest.getInventory().addItem(new ItemStack(2266, 1));
             }
         }
+        return true;
     }
     
     public YamlConfiguration getConfigFile() {

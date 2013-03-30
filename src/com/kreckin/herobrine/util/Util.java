@@ -66,6 +66,8 @@ public class Util {
         allowed.add(Material.DIRT);
         allowed.add(Material.COBBLESTONE);
         allowed.add(Material.WOOD);
+        allowed.add(Material.SAND);
+        allowed.add(Material.SANDSTONE);
         return allowed.contains(block.getType());
     }
     
