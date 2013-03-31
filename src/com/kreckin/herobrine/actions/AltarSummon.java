@@ -43,7 +43,7 @@ public class AltarSummon extends Action {
             if (this.allowedMobs.size() == 1) {
                 entity = this.allowedMobs.get(0);
             } else {
-                entity = this.allowedMobs.get(Util.getRandom().nextInt(this.allowedMobs.size() - 1));
+                entity = this.allowedMobs.get(Util.getRandom().nextInt(this.allowedMobs.size()));
             }
             player.getWorld().spawnEntity(Util.getNearbyLocation(player, Util.getRandom().nextInt(10)), entity);
         }

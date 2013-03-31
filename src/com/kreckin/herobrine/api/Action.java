@@ -31,6 +31,7 @@ public abstract class Action {
         if (!Herobrine.getSupportManager().checkPermissions(player.getLocation()) && !Herobrine.getConfigFile().getBoolean("Herobrine.ignoreProtectedRegions")) {
             return "Sorry, events are not allowed in that region!";
         }
+        Herobrine.getHotspotManager().addLocation(player.getLocation());
         Herobrine.log("Running Action: " + this.getClass().getSimpleName() + " & Player: " + player.getName(), Level.INFO);
         String result = this.callAction(player, metadata);
         Herobrine.log(result, Level.INFO);

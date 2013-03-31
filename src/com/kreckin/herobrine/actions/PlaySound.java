@@ -31,7 +31,7 @@ public class PlaySound extends Action {
         if (this.sounds.size() == 1) {
             sound = this.sounds.get(0);
         } else {
-            sound = this.sounds.get(Util.getRandom().nextInt(this.sounds.size() - 1));
+            sound = this.sounds.get(Util.getRandom().nextInt(this.sounds.size()));
         }
         player.playSound(player.getLocation(), sound, 1F, 1F);
         return ("Played: " + sound.toString());

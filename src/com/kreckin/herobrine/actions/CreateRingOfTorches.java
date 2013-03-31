@@ -12,7 +12,7 @@ public class CreateRingOfTorches extends Action {
 
     @Override
     public String callAction(Player player, Object[] metadata) {
-        if (!Structure.loadStructure(player.getLocation(), "/com/kreckin/herobrine/structures/RingOfTorches.yml").createStructure()) {
+        if (!Structure.loadStructure("/com/kreckin/herobrine/structures/RingOfTorches.yml").createStructure(player.getLocation())) {
             return "Failed, could not find a proper location!";
         }
         return ("Location: " + player.getLocation().getBlockX() + ", " + player.getLocation().getBlockY() + ", " + player.getLocation().getBlockZ());

@@ -50,7 +50,7 @@ public class Util {
         if (strings.size() == 1) {
             return strings.get(0);
         }
-        return strings.get(Util.getRandom().nextInt(strings.size() - 1));
+        return strings.get(Util.getRandom().nextInt(strings.size()));
     }
 
     public static Location getNearbyLocation(Player player, int distance) {

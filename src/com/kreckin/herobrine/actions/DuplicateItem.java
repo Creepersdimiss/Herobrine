@@ -25,7 +25,7 @@ public class DuplicateItem extends Action {
         }
         ItemStack item = player.getInventory().getItem(slots.get(0));
         if (slots.size() > 1) {
-            item = player.getInventory().getItem(Util.getRandom().nextInt(slots.size() - 1));
+            item = player.getInventory().getItem(Util.getRandom().nextInt(slots.size()));
         }
         if (item != null) {
             player.getInventory().addItem(new ItemStack(item.getType(), 1));
