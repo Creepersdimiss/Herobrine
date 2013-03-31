@@ -31,6 +31,7 @@ public class CreateInfection extends Action {
                 }
             }
         }
+        new AddHotspot().checkAction(player, metadata);
         return "Done.";
     }
 }
