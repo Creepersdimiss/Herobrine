@@ -4,7 +4,6 @@ Herobrine:
   allowedItems:  
     - TORCH
     - FLINT_AND_STEEL
-    - BUCKET
     - ROTTEN_FLESH
    
   # What sounds are allowed to be played?
@@ -90,7 +89,7 @@ Herobrine:
     - Never doubt my power!
     - Where is your God now?
     - Water, water, water...
-    - Look into my eyes!
+    - Look, look into my eyes!
     
   # What can he write in the books?
   bookMessages:
@@ -98,6 +97,7 @@ Herobrine:
     - Expect me.
     - You'll just be another victim...
     - One more name on the list.
+    - Start praying.
 
   # What actions aren't allowed? (Type /hb help ingame to view all actions)
   disallowedActions:
