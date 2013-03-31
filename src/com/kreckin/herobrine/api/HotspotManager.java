@@ -12,6 +12,9 @@ public class HotspotManager {
     }
     
     public void addLocation(Location loc) {
+        if (this.isInside(loc)) {
+            return;
+        }
         this.locations.add(loc);
     }
     
