@@ -32,9 +32,9 @@ public abstract class Action {
             return "Sorry, events are not allowed in that region!";
         }
         Herobrine.getHotspotManager().addLocation(player.getLocation());
-        Herobrine.log("Running Action: " + this.getClass().getSimpleName() + " & Player: " + player.getName(), Level.INFO);
+        Herobrine.log("Running " + this.getClass().getSimpleName() + " On " + player.getName(), Level.INFO);
         String result = this.callAction(player, metadata);
-        Herobrine.log(result, Level.INFO);
+        Herobrine.log("Result: " + result, Level.INFO);
         return result;
     }
 
