@@ -65,6 +65,8 @@ public class Herobrine extends JavaPlugin {
             Herobrine.log("Hell's Guardian Health: " + Herobrine.config.getInt("Herobrine.hellsGuardianHealth"), Level.INFO);
             Herobrine.log("Fallen Angel's Health: " + Herobrine.config.getInt("Herobrine.fallenAngelHealth"), Level.INFO);
             Herobrine.log("Unknown Demon's Health: " + Herobrine.config.getInt("Herobrine.unknownDemonHealth"), Level.INFO);
+            Herobrine.log("Religious Follower's Health: " + Herobrine.config.getInt("Herobrine.religiousFollowerHealth"), Level.INFO);
+            Herobrine.log("Hotspot Size: " + Herobrine.config.getInt("Herobrine.hotspotSize"), Level.INFO);
             Herobrine.log("Verbose: Obviously", Level.INFO);
             this.printArray(Herobrine.config.getStringList("Herobrine.bookMessages"), "Book Messages");
             this.printArray(Herobrine.config.getStringList("Herobrine.signMessages"), "Sign Messages");

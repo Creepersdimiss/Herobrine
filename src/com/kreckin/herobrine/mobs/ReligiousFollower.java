@@ -3,7 +3,6 @@ package com.kreckin.herobrine.mobs;
 import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.api.CustomEntity;
 import com.kreckin.herobrine.items.SatanicBook;
-import com.kreckin.herobrine.util.Util;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
