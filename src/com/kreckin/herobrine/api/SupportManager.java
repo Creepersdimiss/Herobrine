@@ -55,16 +55,7 @@ public class SupportManager {
         }
         return true;
     }
-    
-    public boolean isSupported(String plugin) {
-        for (Support support: this.supports) {
-            if (support.isEnabled() && support.getName().equals(plugin)) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
+
     public ArrayList<Support> getSupports() {
         return this.supports;
     }
