@@ -4,6 +4,7 @@ import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.support.FactionsSupport;
 import com.kreckin.herobrine.support.GriefPreventionSupport;
 import com.kreckin.herobrine.support.HerobrineAISupport;
+import com.kreckin.herobrine.support.MonsterApocalypseSupport;
 import com.kreckin.herobrine.support.PreciousStonesSupport;
 import com.kreckin.herobrine.support.ResidenceSupport;
 import com.kreckin.herobrine.support.TownySupport;
@@ -25,6 +26,7 @@ public class SupportManager {
         this.registerSupport(new TownySupport());
         this.registerSupport(new HerobrineAISupport());
         this.registerSupport(new FactionsSupport());
+        this.registerSupport(new MonsterApocalypseSupport());
     }
     
     public final void registerSupport(Support support) {
@@ -52,6 +54,15 @@ public class SupportManager {
             }
         }
         return true;
+    }
+    
+    public boolean isSupported(String plugin) {
+        for (Support support: this.supports) {
+            if (support.isEnabled() && support.getName().equals(plugin)) {
+                return true;
+            }
+        }
+        return false;
     }
     
     public ArrayList<Support> getSupports() {
