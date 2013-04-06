@@ -27,6 +27,7 @@ import com.kreckin.herobrine.actions.RandomStorm;
 import com.kreckin.herobrine.actions.RearrangeInventory;
 import com.kreckin.herobrine.actions.SendMessage;
 import com.kreckin.herobrine.actions.BossAttack;
+import com.kreckin.herobrine.actions.BurnPlayer;
 import com.kreckin.herobrine.actions.CreateInfection;
 import com.kreckin.herobrine.actions.DecayFlowers;
 import com.kreckin.herobrine.actions.PlaceChest;
@@ -76,6 +77,7 @@ public class ActionManager {
         this.registerAction(new PlaceChest());
         this.registerAction(new CreateInfection());
         this.registerAction(new DecayFlowers());
+        this.registerAction(new BurnPlayer());
         if (Herobrine.getConfigFile().getBoolean("Herobrine.verboseLog")) {
             Herobrine.log("Action Count: " + this.actions.size(), Level.INFO);
         }

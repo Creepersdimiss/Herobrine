@@ -38,7 +38,7 @@ Herobrine:
   # What is the max infection size?
   infectionSize: 8
   
-  # What is the size of a hotspot (marked with a Jack o' Lantern in the middle)?
+  # What is the size of a hotspot (areas where activity is more common to happen, randomly generated)?
   hotspotSize: 40
   
   # What is the chance that a custom item is dropped by a boss? (1 in X)
@@ -46,6 +46,9 @@ Herobrine:
 
   # How much health should a Hell's Guardian have?
   hellsGuardianHealth: 50
+  
+  # How much health should a Religious Follower have?
+  religiousFollowerHealth: 20
   
   # How much health should a Fallen Angel have?
   fallenAngelHealth: 35
