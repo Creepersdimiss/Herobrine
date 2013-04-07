@@ -3,7 +3,6 @@ package com.kreckin.herobrine.support;
 import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.actions.BatAttack;
 import com.kreckin.herobrine.actions.BossAttack;
-import com.kreckin.herobrine.actions.BurnPlayer;
 import com.kreckin.herobrine.actions.BuryPlayer;
 import com.kreckin.herobrine.actions.CreatePyramid;
 import com.kreckin.herobrine.actions.CreateTomb;
@@ -19,6 +18,7 @@ import com.kreckin.herobrine.actions.WolfAttack;
 import com.kreckin.herobrine.api.Support;
 import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.jakub1221.herobrineai.HerobrineAI;
 
 public class HerobrineAISupport extends Support {
@@ -51,9 +51,7 @@ public class HerobrineAISupport extends Support {
         HerobrineAI.getPluginCore().getConfigDB().UseNPC_Warrior = Herobrine.getActionManager().isAllowed(BossAttack.class);
         HerobrineAI.getPluginCore().getConfigDB().UsePotionEffects = Herobrine.getActionManager().isAllowed(PossessPlayer.class);
         HerobrineAI.getPluginCore().getConfigDB().WriteBooks = Herobrine.getActionManager().isAllowed(GiftBook.class);
-        // HerobrineAI.getPluginCore().getConfigDB().Burn = Herobrine.getActionManager().isAllowed(BurnPlayer.class);
-        // HerobrineAI.getPluginCore().getConfigDB().Curse = Herobrine.getActionManager().isAllowed(PossessPlayer.class);
-        
+        ((JavaPlugin) plugin).getCommand("hb").setExecutor(Herobrine.getCommandListener());
     }
 
     @Override

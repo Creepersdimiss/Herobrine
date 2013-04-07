@@ -22,6 +22,7 @@ public class Herobrine extends JavaPlugin {
     private static SupportManager support;
     private static CustomEntityManager entityManager;
     private static HotspotManager hotspotManager;
+    private static CommandListener commands;
 
     @Override
     public void onEnable() {
@@ -30,13 +31,14 @@ public class Herobrine extends JavaPlugin {
         Herobrine.support = new SupportManager();
         Herobrine.entityManager = new CustomEntityManager();
         Herobrine.hotspotManager = new HotspotManager();
+        Herobrine.commands = new CommandListener();
         ShapedRecipe recipe = new ShapedRecipe(new HerobrinesSword().getItem());
         recipe.shape("ABA", "BCB", "ABA");
         recipe.setIngredient('A', Material.REDSTONE);
         recipe.setIngredient('B', Material.DIAMOND);
         recipe.setIngredient('C', Material.EMERALD);
         this.getServer().addRecipe(recipe);
-        this.getCommand("hb").setExecutor(new CommandListener());
+        this.getCommand("hb").setExecutor(Herobrine.commands);
         this.getServer().getPluginManager().registerEvents(new EventListener(), this);
         try {
             if (!this.getDataFolder().exists()) {
@@ -70,6 +72,7 @@ public class Herobrine extends JavaPlugin {
         Herobrine.support = null;
         Herobrine.entityManager = null;
         Herobrine.hotspotManager = null;
+        Herobrine.commands = null;
     }
 
     public static CustomEntityManager getEntityManager() {
@@ -98,5 +101,9 @@ public class Herobrine extends JavaPlugin {
     
     public static Logger getLog() {
         return Herobrine.getInstance().getLogger();
+    }
+    
+    public static CommandListener getCommandListener() {
+        return Herobrine.commands;
     }
 }
