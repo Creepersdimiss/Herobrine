@@ -13,22 +13,23 @@ public class HotspotManager {
     }
     
     public void addLocation(Location loc) {
-        if (this.isInside(loc)) {
-            return;
-        }
         Herobrine.getLog().info("Added Hotspot: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
         this.locations.add(loc);
     }
     
-    public boolean isInside(Location loc) {
+    public int getImportant(Location loc) {
+        int hotspots = 0;
         for (Location location : this.locations) {
             if (location.distance(loc) <= Herobrine.getConfigFile().getInt("Herobrine.hotspotSize")) {
-                return true;
+                hotspots++;
             }
         }
-        return false;
+        if (hotspots < 2) {
+            hotspots = 2;
+        }
+        return hotspots;
     }
-    
+
     public ArrayList<Location> getLocations() {
         return this.locations;
     }

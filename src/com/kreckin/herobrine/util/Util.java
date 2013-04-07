@@ -31,9 +31,7 @@ public class Util {
         if (player.getWorld().getTime() >= 13000 && player.getWorld().getTime() <= 14200) {
             actionChance /= 4;
         }
-        if (Herobrine.getHotspotManager().isInside(player.getLocation())) {
-            actionChance /= 4;
-        }
+        actionChance /= Herobrine.getHotspotManager().getImportant(player.getLocation());
         if (Herobrine.getConfigFile().getBoolean("Herobrine.heavierEquation")) {
             if (player.getNearbyEntities(5, 5, 5).size() <= 3) {
                 actionChance /= 4;
