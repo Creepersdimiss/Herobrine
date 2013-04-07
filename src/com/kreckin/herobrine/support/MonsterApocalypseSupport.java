@@ -12,8 +12,8 @@ public class MonsterApocalypseSupport extends Support {
     }
     
     @Override
-    public void onStartup() {
-        ((MonsterApocalypse) super.getPlugin()).setHpHandledExternally(true);
+    public void onStartup(Plugin plugin) {
+        ((MonsterApocalypse) plugin).setHpHandledExternally(true);
     }
 
     @Override

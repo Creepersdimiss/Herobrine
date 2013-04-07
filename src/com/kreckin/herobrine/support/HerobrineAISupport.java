@@ -28,7 +28,7 @@ public class HerobrineAISupport extends Support {
     }
     
     @Override
-    public void onStartup() {
+    public void onStartup(Plugin plugin) {
         HerobrineAI.getPluginCore().getConfigDB().AttackCreative = !Herobrine.getConfigFile().getBoolean("Herobrine.survivalOnly");
         HerobrineAI.getPluginCore().getConfigDB().AttackOP = true;
         HerobrineAI.getPluginCore().getConfigDB().BuildPyramids = Herobrine.getActionManager().isAllowed(CreatePyramid.class);
@@ -53,6 +53,7 @@ public class HerobrineAISupport extends Support {
         HerobrineAI.getPluginCore().getConfigDB().WriteBooks = Herobrine.getActionManager().isAllowed(GiftBook.class);
         // HerobrineAI.getPluginCore().getConfigDB().Burn = Herobrine.getActionManager().isAllowed(BurnPlayer.class);
         // HerobrineAI.getPluginCore().getConfigDB().Curse = Herobrine.getActionManager().isAllowed(PossessPlayer.class);
+        
     }
 
     @Override

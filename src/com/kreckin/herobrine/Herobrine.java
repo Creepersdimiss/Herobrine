@@ -27,12 +27,19 @@ public class Herobrine extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        Herobrine.instance = this;
+        Herobrine.actionManager = new ActionManager();
+        Herobrine.support = new SupportManager();
+        Herobrine.entityManager = new CustomEntityManager();
+        Herobrine.hotspotManager = new HotspotManager();
         ShapedRecipe recipe = new ShapedRecipe(new HerobrinesSword().getItem());
         recipe.shape("ABA", "BCB", "ABA");
         recipe.setIngredient('A', Material.REDSTONE);
         recipe.setIngredient('B', Material.DIAMOND);
         recipe.setIngredient('C', Material.EMERALD);
         this.getServer().addRecipe(recipe);
+        this.getCommand("hb").setExecutor(new CommandListener());
+        this.getServer().getPluginManager().registerEvents(new EventListener(), this);
         try {
             if (!this.getDataFolder().exists()) {
                 this.getDataFolder().mkdirs();
@@ -45,37 +52,6 @@ public class Herobrine extends JavaPlugin {
             Herobrine.log("Failed to properly manage the configuration!", Level.SEVERE);
             this.getServer().getPluginManager().disablePlugin(this);
             return;
-        }
-        Herobrine.instance = this;
-        Herobrine.actionManager = new ActionManager();
-        Herobrine.support = new SupportManager();
-        Herobrine.entityManager = new CustomEntityManager();
-        Herobrine.hotspotManager = new HotspotManager();
-        this.getCommand("hb").setExecutor(new CommandListener());
-        this.getServer().getPluginManager().registerEvents(new EventListener(), this);
-        if (Herobrine.config.getBoolean("Herobrine.verboseLog")) {
-            Herobrine.log("Heavier Equation: " + Herobrine.config.getBoolean("Herobrine.heavierEquation"), Level.INFO);
-            Herobrine.log("Survival Only: " + Herobrine.config.getBoolean("Herobrine.survivalOnly"), Level.INFO);
-            Herobrine.log("Action Chance: " + Herobrine.config.getInt("Herobrine.actionChance"), Level.INFO);
-            Herobrine.log("Entity Name: " + Herobrine.config.getString("Herobrine.entityName"), Level.INFO);
-            Herobrine.log("Ignore Protected Regions: " + Herobrine.config.getBoolean("Herobrine.ignoreProtectedRegions"), Level.INFO);
-            Herobrine.log("Book Title: " + Herobrine.config.getBoolean("Herobrine.bookTitle"), Level.INFO);
-            Herobrine.log("Infection Size: " + Herobrine.config.getInt("Herobrine.infectionSize"), Level.INFO);
-            Herobrine.log("Custom Item Drop Chance: " + Herobrine.config.getInt("Herobrine.customItemDropChance"), Level.INFO);
-            Herobrine.log("Hell's Guardian Health: " + Herobrine.config.getInt("Herobrine.hellsGuardianHealth"), Level.INFO);
-            Herobrine.log("Fallen Angel's Health: " + Herobrine.config.getInt("Herobrine.fallenAngelHealth"), Level.INFO);
-            Herobrine.log("Unknown Demon's Health: " + Herobrine.config.getInt("Herobrine.unknownDemonHealth"), Level.INFO);
-            Herobrine.log("Religious Follower's Health: " + Herobrine.config.getInt("Herobrine.religiousFollowerHealth"), Level.INFO);
-            Herobrine.log("Hotspot Size: " + Herobrine.config.getInt("Herobrine.hotspotSize"), Level.INFO);
-            Herobrine.log("Verbose: Obviously", Level.INFO);
-            this.printArray(Herobrine.config.getStringList("Herobrine.bookMessages"), "Book Messages");
-            this.printArray(Herobrine.config.getStringList("Herobrine.signMessages"), "Sign Messages");
-            this.printArray(Herobrine.config.getStringList("Herobrine.altarMessages"), "Altar Messages");
-            this.printArray(Herobrine.config.getStringList("Herobrine.disallowedWorlds"), "Disallowed Worlds");
-            this.printArray(Herobrine.config.getStringList("Herobrine.disallowedActions"), "Disallowed Actions");
-            this.printArray(Herobrine.config.getStringList("Herobrine.allowedItems"), "Allowed Items");
-            this.printArray(Herobrine.config.getStringList("Herobrine.allowedSounds"), "Allowed Sounds");
-            this.printArray(Herobrine.config.getStringList("Herobrine.allowedMobs"), "Allowed Mobs");
         }
         try {
             new MetricsLite(this).start();
@@ -101,18 +77,7 @@ public class Herobrine extends JavaPlugin {
     public static void log(String message, Level level) {
         Bukkit.getLogger().log(level, "[Herobrine] {0}", message);
     }
-    
-    private void printArray(List<String> list, String tag) {
-        if (list.isEmpty()) {
-            Herobrine.log(tag + ": None", Level.INFO);
-        } else {
-            Herobrine.log(tag + ":", Level.INFO);
-            for (int index = 0; index < list.size(); index++) {
-                Herobrine.log("\t" + (index + 1) + ". " + list.get(index), Level.INFO);
-            }
-        }
-    }
-    
+
     public static CustomEntityManager getEntityManager() {
         return Herobrine.entityManager;
     }

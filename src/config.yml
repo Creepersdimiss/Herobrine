@@ -31,10 +31,7 @@ Herobrine:
     - SPIDER
     - WITCH
     - ZOMBIE
-  
-  # Should we log all debugging information (you should just ignore this)?
-  verboseLog: false
-  
+
   # What is the max infection size?
   infectionSize: 8
   

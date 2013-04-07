@@ -37,7 +37,6 @@ import com.kreckin.herobrine.actions.StealItem;
 import com.kreckin.herobrine.actions.ThrowPlayer;
 import com.kreckin.herobrine.actions.WolfAttack;
 import java.util.ArrayList;
-import java.util.logging.Level;
 
 public class ActionManager {
 
@@ -80,16 +79,10 @@ public class ActionManager {
         this.registerAction(new DecayFlowers());
         this.registerAction(new BurnPlayer());
         this.registerAction(new EffectExplosion());
-        if (Herobrine.getConfigFile().getBoolean("Herobrine.verboseLog")) {
-            Herobrine.log("Action Count: " + this.actions.size(), Level.INFO);
-        }
     }
     
     public final void registerAction(Action action) {
         this.actions.add(action);
-        if (Herobrine.getConfigFile().getBoolean("Herobrine.verboseLog")) {
-            Herobrine.log("Registered: " + action.getClass().getSimpleName(), Level.INFO);
-        }
     }
     
     public boolean isAllowed(Class<? extends Action> action) {

@@ -31,15 +31,12 @@ public class SupportManager {
     
     public final void registerSupport(Support support) {
         this.supports.add(support);
-        if (Herobrine.getConfigFile().getBoolean("Herobrine.verboseLog")) {
-            Herobrine.log("Supports: " + support.getName(), Level.INFO);
-        }
     }
     
     public void checkPlugins() {
         for (Support support : this.supports) {
             if (support.isEnabled() && support.getPlugin().isEnabled()) {
-                Herobrine.log("Found: " + support.getName() + " v" + support.getPlugin().getDescription().getVersion(), Level.INFO);
+                Herobrine.log("Hooked: " + support.getName() + " v" + support.getPlugin().getDescription().getVersion(), Level.INFO);
             }
         }
     }

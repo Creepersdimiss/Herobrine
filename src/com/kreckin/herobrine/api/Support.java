@@ -15,7 +15,7 @@ public abstract class Support {
         this.state = 0;
     }
     
-    public void onStartup() { }
+    public void onStartup(Plugin plugin) { }
 
     public abstract boolean checkPermissions(Location loc, Plugin plugin);
 
@@ -30,7 +30,7 @@ public abstract class Support {
         if (state == 0) {
             if (this.getPlugin() != null) {
                 state = 1;
-                this.onStartup();
+                this.onStartup(this.plugin);
             } else {
                 state = -1;
             }
