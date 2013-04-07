@@ -26,6 +26,19 @@ public class Herobrine extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        try {
+            if (!this.getDataFolder().exists()) {
+                this.getDataFolder().mkdirs();
+            }
+            if (!new File(this.getDataFolder() + "/config.yml").exists()) {
+                this.saveResource("config.yml", false);
+            }
+            Herobrine.config = YamlConfiguration.loadConfiguration(new File(this.getDataFolder() + "/config.yml"));
+        } catch (Exception ex) {
+            Herobrine.getLog().severe("Failed to properly manage the configuration!");
+            this.getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
         Herobrine.instance = this;
         Herobrine.actionManager = new ActionManager();
         Herobrine.support = new SupportManager();
@@ -41,25 +54,12 @@ public class Herobrine extends JavaPlugin {
         this.getCommand("hb").setExecutor(Herobrine.commands);
         this.getServer().getPluginManager().registerEvents(new EventListener(), this);
         try {
-            if (!this.getDataFolder().exists()) {
-                this.getDataFolder().mkdirs();
-            }
-            if (!new File(this.getDataFolder() + "/config.yml").exists()) {
-                this.saveResource("config.yml", false);
-            }
-            Herobrine.config = YamlConfiguration.loadConfiguration(new File(this.getDataFolder() + "/config.yml"));
-        } catch (Exception ex) {
-            Herobrine.getLog().severe("Failed to properly manage the configuration!");
-            this.getServer().getPluginManager().disablePlugin(this);
-            return;
-        }
-        try {
             new MetricsLite(this).start();
         } catch (Exception ex) {
             Herobrine.getLog().severe("Failed to start MCStats reporting!");
         }
         Herobrine.support.checkPlugins();
-        Herobrine.getLog().info("Special Thanks Too: ");
+        Herobrine.getLog().info("Donators: ");
         Herobrine.getLog().info("\t- cadester177");
         Herobrine.getLog().info("\t- Deanfvjr");
     }
