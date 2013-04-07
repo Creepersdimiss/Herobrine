@@ -22,7 +22,7 @@ public class CommandListener implements CommandExecutor {
             return true;
         }
         if (strings.length == 1 && strings[0].equalsIgnoreCase("help")) {
-            String knownActions = "Known actions: ";
+            String knownActions = "Known Actions: ";
             for (Action action : Herobrine.getActionManager().getActions()) {
                 knownActions += action.getClass().getSimpleName() + ", ";
             }
