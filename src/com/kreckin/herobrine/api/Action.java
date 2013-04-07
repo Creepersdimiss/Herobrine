@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.api;
 
 import com.kreckin.herobrine.Herobrine;
-import java.util.logging.Level;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
@@ -32,9 +31,9 @@ public abstract class Action {
             return "Sorry, events are not allowed in that region!";
         }
         Herobrine.getHotspotManager().addLocation(player.getLocation());
-        Herobrine.log("Running " + this.getClass().getSimpleName() + " On " + player.getName(), Level.INFO);
+        Herobrine.getLog().info("Running " + this.getClass().getSimpleName() + " On " + player.getName());
         String result = this.callAction(player, metadata);
-        Herobrine.log("Result: " + result, Level.INFO);
+        Herobrine.getLog().info("Result: " + result);
         return result;
     }
 

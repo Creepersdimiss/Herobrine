@@ -8,9 +8,7 @@ import com.kreckin.herobrine.items.HerobrinesSword;
 import com.kreckin.herobrine.listeners.CommandListener;
 import com.kreckin.herobrine.listeners.EventListener;
 import java.io.File;
-import java.util.List;
-import java.util.logging.Level;
-import org.bukkit.Bukkit;
+import java.util.logging.Logger;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ShapedRecipe;
@@ -49,19 +47,19 @@ public class Herobrine extends JavaPlugin {
             }
             Herobrine.config = YamlConfiguration.loadConfiguration(new File(this.getDataFolder() + "/config.yml"));
         } catch (Exception ex) {
-            Herobrine.log("Failed to properly manage the configuration!", Level.SEVERE);
+            Herobrine.getLog().severe("Failed to properly manage the configuration!");
             this.getServer().getPluginManager().disablePlugin(this);
             return;
         }
         try {
             new MetricsLite(this).start();
         } catch (Exception ex) {
-            Herobrine.log("Failed to start MCStats reporting!", Level.WARNING);
+            Herobrine.getLog().severe("Failed to start MCStats reporting!");
         }
         Herobrine.support.checkPlugins();
-        Herobrine.log("Special Thanks Too: ", Level.INFO);
-        Herobrine.log("\t- cadester177", Level.INFO);
-        Herobrine.log("\t- Deanfvjr", Level.INFO);
+        Herobrine.getLog().info("Special Thanks Too: ");
+        Herobrine.getLog().info("\t- cadester177");
+        Herobrine.getLog().info("\t- Deanfvjr");
     }
     
     @Override
@@ -72,10 +70,6 @@ public class Herobrine extends JavaPlugin {
         Herobrine.support = null;
         Herobrine.entityManager = null;
         Herobrine.hotspotManager = null;
-    }
-    
-    public static void log(String message, Level level) {
-        Bukkit.getLogger().log(level, "[Herobrine] {0}", message);
     }
 
     public static CustomEntityManager getEntityManager() {
@@ -100,5 +94,9 @@ public class Herobrine extends JavaPlugin {
     
     public static HotspotManager getHotspotManager() {
         return Herobrine.hotspotManager;
+    }
+    
+    public static Logger getLog() {
+        return Herobrine.getInstance().getLogger();
     }
 }

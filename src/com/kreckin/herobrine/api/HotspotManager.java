@@ -2,7 +2,6 @@ package com.kreckin.herobrine.api;
 
 import com.kreckin.herobrine.Herobrine;
 import java.util.ArrayList;
-import java.util.logging.Level;
 import org.bukkit.Location;
 
 public class HotspotManager {
@@ -17,7 +16,7 @@ public class HotspotManager {
         if (this.isInside(loc)) {
             return;
         }
-        Herobrine.log("Added Hotspot: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ(), Level.INFO);
+        Herobrine.getLog().info("Added Hotspot: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
         this.locations.add(loc);
     }
     

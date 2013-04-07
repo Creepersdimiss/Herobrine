@@ -10,7 +10,6 @@ import com.kreckin.herobrine.support.ResidenceSupport;
 import com.kreckin.herobrine.support.TownySupport;
 import com.kreckin.herobrine.support.WorldGuardSupport;
 import java.util.ArrayList;
-import java.util.logging.Level;
 import org.bukkit.Location;
 
 public class SupportManager {
@@ -36,7 +35,7 @@ public class SupportManager {
     public void checkPlugins() {
         for (Support support : this.supports) {
             if (support.isEnabled() && support.getPlugin().isEnabled()) {
-                Herobrine.log("Hooked: " + support.getName() + " v" + support.getPlugin().getDescription().getVersion(), Level.INFO);
+                Herobrine.getLog().info("Hooked: " + support.getName() + " v" + support.getPlugin().getDescription().getVersion());
             }
         }
     }
