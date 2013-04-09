@@ -17,7 +17,7 @@ public class HotspotManager {
         this.locations.add(loc);
     }
     
-    public int getImportant(Location loc) {
+    public int getImportance(Location loc) {
         int hotspots = 0;
         for (Location location : this.locations) {
             if (!location.getWorld().getName().equals(loc.getWorld().getName())) {

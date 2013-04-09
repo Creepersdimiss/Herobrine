@@ -41,10 +41,10 @@ public class Herobrine extends JavaPlugin {
         }
         Herobrine.instance = this;
         Herobrine.actionManager = new ActionManager();
+        Herobrine.commands = new CommandListener();
         Herobrine.support = new SupportManager();
         Herobrine.entityManager = new CustomEntityManager();
         Herobrine.hotspotManager = new HotspotManager();
-        Herobrine.commands = new CommandListener();
         ShapedRecipe recipe = new ShapedRecipe(new HerobrinesSword().getItem());
         recipe.shape("ABA", "BCB", "ABA");
         recipe.setIngredient('A', Material.REDSTONE);
