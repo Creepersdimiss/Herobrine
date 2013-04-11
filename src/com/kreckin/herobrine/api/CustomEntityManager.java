@@ -1,6 +1,7 @@
 package com.kreckin.herobrine.api;
 
 import java.util.ArrayList;
+import com.kreckin.herobrine.Herobrine;
 
 public class CustomEntityManager {
     
@@ -11,6 +12,10 @@ public class CustomEntityManager {
     }
 
     public void addEntity(CustomEntity entity) {
+        if (this.entities.size() >= Herobrine.getConfigFile().getInt("Herobrine.maxCustomEntities")) {
+            Herobrine.getLog().warning("Max custom entities count has been surpassed!");
+            return;
+        }
         if (this.getEntity(entity.getEntity().getEntityId()) != null) {
             return;
         }
@@ -25,6 +30,9 @@ public class CustomEntityManager {
     }
     
     public CustomEntity getEntity(int id) {
+        if (this.entities.isEmpty()) {
+            return null;
+        }
         for (CustomEntity entity : this.entities) {
             if (entity.getEntity().getEntityId() == id) {
                 return entity;
