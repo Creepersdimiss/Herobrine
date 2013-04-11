@@ -31,6 +31,9 @@ Herobrine:
     - SPIDER
     - WITCH
     - ZOMBIE
+    
+  # What is the max number of custom entities (bosses) that can be spawned at one time?
+  maxCustomEntities: 10
 
   # What is the max infection size?
   infectionSize: 8
