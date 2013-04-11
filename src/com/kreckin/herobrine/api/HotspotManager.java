@@ -27,7 +27,7 @@ public class HotspotManager {
                 hotspots++;
             }
         }
-        if (hotspots < 2) {
+        if (hotspots < 2 && Herobrine.getConfigFile().getInt("Herobrine.hotspotSize") > 1) {
             hotspots = 2;
         }
         return hotspots;
