@@ -33,10 +33,8 @@ public class Util {
             actionChance /= 4;
         }
         actionChance /= Herobrine.getHotspotManager().getImportance(player.getLocation());
-        if (Herobrine.getConfigFile().getBoolean("Herobrine.heavierEquation")) {
-            if (player.getNearbyEntities(5, 5, 5).size() <= 3) {
-                actionChance /= 4;
-            }
+        if (Herobrine.getConfigFile().getBoolean("Herobrine.heavierEquation") && player.getNearbyEntities(5, 5, 5).size() <= 3) {
+            actionChance /= 4;
         }
         return (Util.getRandom().nextInt(actionChance) == 0);
     }
