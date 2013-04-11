@@ -52,6 +52,7 @@ public class Herobrine extends JavaPlugin {
         recipe.setIngredient('C', Material.EMERALD);
         this.getServer().addRecipe(recipe);
         this.getCommand("hb").setExecutor(Herobrine.commands);
+        this.getCommand("herobrine").setExecutor(Herobrine.commands);
         this.getServer().getPluginManager().registerEvents(new EventListener(), this);
         try {
             new MetricsLite(this).start();
