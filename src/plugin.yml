@@ -16,3 +16,6 @@ commands:
   hb:
     description: Herobrine commands.
     usage: Please use /hb help!
+  herobrine:
+    description: Herobrine commands.
+    usage: Please use /herobrine help!
