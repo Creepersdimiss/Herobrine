@@ -32,6 +32,9 @@ Herobrine:
     - WITCH
     - ZOMBIE
     
+  # How often should we change the random instance used to calculate thigns (you should not worry about this)?
+  randomReseedTime: 5
+    
   # What is the max number of custom entities (bosses) that can be spawned at one time?
   maxCustomEntities: 10
 
