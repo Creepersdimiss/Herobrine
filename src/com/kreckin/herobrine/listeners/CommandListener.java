@@ -50,10 +50,10 @@ public class CommandListener implements CommandExecutor {
                     cs.sendMessage(Util.formatString(foundAction.checkAction(player, null)));
                 }
             } else {
-                cs.sendMessage(Util.formatString("Unknown action! Type \"/hb help\" for all actions!"));
+                cs.sendMessage(Util.formatString("Unknown action! Type \"/hb help\" (or \"/herobrine help\") for all actions!"));
             }
         } else {
-            cs.sendMessage(Util.formatString("Run an action with \"/hb action username\", or type \"/hb help\" for all actions!"));
+            cs.sendMessage(Util.formatString("Run an action with \"/hb action username\" (or \"/herobrine action username\"), or type \"/hb help\" (\"/herobrine help\") for all actions!"));
         }
         return true;
     }
