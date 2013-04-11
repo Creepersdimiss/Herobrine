@@ -79,7 +79,7 @@ public class Util {
     
     public static Random getRandom() {
         Util.returnsSinceReseed++;
-        if (Util.returnsSinceReseed > 5) {
+        if (Util.returnsSinceReseed > Herobrine.getConfigFile().getInt("Herobrine.randomReseedTime")) {
             Util.returnsSinceReseed = 0;
             Util.random.setSeed(Util.random.nextLong());
         }
