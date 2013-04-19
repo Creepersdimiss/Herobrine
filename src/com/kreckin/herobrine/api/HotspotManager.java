@@ -13,6 +13,9 @@ public class HotspotManager {
     }
     
     public void addLocation(Location loc) {
+        if (!Herobrine.getConfigFile().getBoolean("Herobrine.allowHotspots")) {
+            return;
+        }
         Herobrine.getLog().info("Added Hotspot: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
         this.locations.add(loc);
     }
