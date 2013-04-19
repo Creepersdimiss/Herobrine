@@ -4,6 +4,7 @@ import com.kreckin.herobrine.api.SupportManager;
 import com.kreckin.herobrine.api.ActionManager;
 import com.kreckin.herobrine.api.CustomEntityManager;
 import com.kreckin.herobrine.api.HotspotManager;
+import com.kreckin.herobrine.api.ChatManager;
 import com.kreckin.herobrine.items.HerobrinesSword;
 import com.kreckin.herobrine.listeners.CommandListener;
 import com.kreckin.herobrine.listeners.EventListener;
@@ -23,6 +24,7 @@ public class Herobrine extends JavaPlugin {
     private static CustomEntityManager entityManager;
     private static HotspotManager hotspotManager;
     private static CommandListener commands;
+    private static ChatManager chatManager;
 
     @Override
     public void onEnable() {
@@ -45,6 +47,7 @@ public class Herobrine extends JavaPlugin {
         Herobrine.support = new SupportManager();
         Herobrine.entityManager = new CustomEntityManager();
         Herobrine.hotspotManager = new HotspotManager();
+        Herobrine.chatManager = new ChatManager();
         ShapedRecipe recipe = new ShapedRecipe(new HerobrinesSword().getItem());
         recipe.shape("ABA", "BCB", "ABA");
         recipe.setIngredient('A', Material.REDSTONE);
@@ -75,6 +78,11 @@ public class Herobrine extends JavaPlugin {
         Herobrine.entityManager = null;
         Herobrine.hotspotManager = null;
         Herobrine.commands = null;
+        Herobrine.chatManager = null;
+    }
+    
+    public static ChatManager getChatManager() {
+        return Herobrine.chatManager;
     }
 
     public static CustomEntityManager getEntityManager() {
