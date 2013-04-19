@@ -29,6 +29,7 @@ import com.kreckin.herobrine.actions.SendMessage;
 import com.kreckin.herobrine.actions.BossAttack;
 import com.kreckin.herobrine.actions.CreatePillar;
 import com.kreckin.herobrine.actions.BurnPlayer;
+import com.kreckin.herobrine.actions.CreateBlankTree;
 import com.kreckin.herobrine.actions.CreateInfection;
 import com.kreckin.herobrine.actions.DecayFlowers;
 import com.kreckin.herobrine.actions.EffectExplosion;
@@ -81,6 +82,7 @@ public class ActionManager {
         this.registerAction(new BurnPlayer());
         this.registerAction(new EffectExplosion());
         this.registerAction(new CreatePillar());
+        this.registerAction(new CreateBlankTree());
     }
     
     public final void registerAction(Action action) {
