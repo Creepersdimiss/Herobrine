@@ -14,6 +14,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class EventListener implements Listener {
     
@@ -62,6 +63,13 @@ public class EventListener implements Listener {
                 event.getDrops().add(entity.getDrop());
             }
             Herobrine.getEntityManager().removeEntity(entity.getEntity().getEntityId());
+        }
+    }
+    
+    @EventHandler
+    public void onPlayerChat(AsyncPlayerChatEvent event) {
+        if (Herobrine.getChatManager().getUsernames().contains(event.getPlayer().getName())) {
+            event.setCancelled(true);
         }
     }
 }
