@@ -32,7 +32,9 @@ public abstract class Action {
         }
         Herobrine.getHotspotManager().addLocation(player.getLocation());
         Herobrine.getLog().info("Running " + this.getClass().getSimpleName() + ", targetting: " + player.getName());
+        Herobrine.getChatManager().addPlayer(player);
         String result = this.callAction(player, metadata);
+        Herobrine.getChatManager().removePlayer(player);
         Herobrine.getLog().info("Result: " + result);
         return result;
     }
