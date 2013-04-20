@@ -23,8 +23,8 @@ public abstract class CustomEntity {
         this.entity.getEquipment().setHelmetDropChance(0);
         this.entity.getEquipment().setItemInHandDropChance(0);
         this.entity.getEquipment().setLeggingsDropChance(0);
-        Herobrine.getEntityManager().addEntity(this);
         this.onSpawn();
+        Herobrine.getEntityManager().addEntity(this);
     }
     
     public abstract void onSpawn();
