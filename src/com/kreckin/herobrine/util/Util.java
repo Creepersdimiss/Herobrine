@@ -26,15 +26,21 @@ public class Util {
         itemStack.setItemMeta(meta);
         return itemStack;
     }
+    
+    public static boolean shouldAct() {
+        return Util.shouldAct(null);
+    }
 
     public static boolean shouldAct(Player player) {
         int actionChance = Herobrine.getConfigFile().getInt("Herobrine.actionChance");
-        if (player.getWorld().getTime() >= 13000 && player.getWorld().getTime() <= 14200) {
-            actionChance /= 4;
-        }
-        actionChance /= Herobrine.getHotspotManager().getImportance(player.getLocation());
-        if (Herobrine.getConfigFile().getBoolean("Herobrine.heavierEquation") && player.getNearbyEntities(5, 5, 5).size() <= 3) {
-            actionChance /= 4;
+        if (player != null) {
+            if (player.getWorld().getTime() >= 13000 && player.getWorld().getTime() <= 14200) {
+                actionChance /= 4;
+            }
+            actionChance /= Herobrine.getHotspotManager().getImportance(player.getLocation());
+            if (Herobrine.getConfigFile().getBoolean("Herobrine.heavierEquation") && player.getNearbyEntities(5, 5, 5).size() <= 3) {
+                actionChance /= 4;
+            }
         }
         return (Util.getRandom().nextInt(actionChance) == 0);
     }
