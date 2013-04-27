@@ -66,6 +66,7 @@ public class Herobrine extends JavaPlugin {
         Herobrine.getLog().info("Donators: ");
         Herobrine.getLog().info("\t- cadester177");
         Herobrine.getLog().info("\t- Deanfvjr");
+        Herobrine.getLog().info("\t- Arksy");
     }
     
     @Override
