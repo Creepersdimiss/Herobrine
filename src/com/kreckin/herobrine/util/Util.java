@@ -18,6 +18,15 @@ public class Util {
     private final static Random random = new Random();
     private static int returnsSinceReseed = 0;
     private static int reseedCooldown = -1;
+    private final static ArrayList<Material> solids = new ArrayList<Material>() {{
+        add(Material.STONE);
+        add(Material.GRASS);
+        add(Material.DIRT);
+        add(Material.COBBLESTONE);
+        add(Material.WOOD);
+        add(Material.SAND);
+        add(Material.SANDSTONE);
+    }};
 
     public static ItemStack getColoredArmour(Material mat, Color color) {
         Validate.isSafe(mat, color);
@@ -72,15 +81,7 @@ public class Util {
     
     public static boolean isSolid(Block block) {
         Validate.isSafe(block);
-        List<Material> allowed = new ArrayList<Material>();
-        allowed.add(Material.STONE);
-        allowed.add(Material.GRASS);
-        allowed.add(Material.DIRT);
-        allowed.add(Material.COBBLESTONE);
-        allowed.add(Material.WOOD);
-        allowed.add(Material.SAND);
-        allowed.add(Material.SANDSTONE);
-        return allowed.contains(block.getType());
+        return solids.contains(block.getType());
     }
     
     public static String formatString(String message) {
