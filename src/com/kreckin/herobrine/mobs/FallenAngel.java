@@ -18,17 +18,17 @@ public class FallenAngel extends CustomEntity {
 
     @Override
     public void onSpawn() {
-        super.getEntity().setMaxHealth(Herobrine.getConfigFile().getInt("Herobrine.fallenAngelHealth"));
-        super.getEntity().setHealth(super.getEntity().getMaxHealth());
-        super.getEntity().getEquipment().setBoots(Util.getColoredArmour(Material.LEATHER_BOOTS, Color.SILVER));
-        super.getEntity().getEquipment().setLeggings(Util.getColoredArmour(Material.LEATHER_LEGGINGS, Color.SILVER));
-        super.getEntity().getEquipment().setChestplate(Util.getColoredArmour(Material.LEATHER_CHESTPLATE, Color.SILVER));
-        super.getEntity().getEquipment().setHelmet(Util.getColoredArmour(Material.LEATHER_HELMET, Color.SILVER));
-        super.getEntity().getEquipment().setItemInHand(new ItemStack(Material.REDSTONE_TORCH_ON, 1));
+        getEntity().setMaxHealth(Herobrine.getConfigFile().getInt("Herobrine.fallenAngelHealth"));
+        getEntity().setHealth(getEntity().getMaxHealth());
+        getEntity().getEquipment().setBoots(Util.getColoredArmour(Material.LEATHER_BOOTS, Color.SILVER));
+        getEntity().getEquipment().setLeggings(Util.getColoredArmour(Material.LEATHER_LEGGINGS, Color.SILVER));
+        getEntity().getEquipment().setChestplate(Util.getColoredArmour(Material.LEATHER_CHESTPLATE, Color.SILVER));
+        getEntity().getEquipment().setHelmet(Util.getColoredArmour(Material.LEATHER_HELMET, Color.SILVER));
+        getEntity().getEquipment().setItemInHand(new ItemStack(Material.REDSTONE_TORCH_ON, 1));
     }
     
     @Override
     public void onKilled() {
-        super.getEntity().getWorld().createExplosion(super.getEntity().getLocation(), 2, true);
+        getEntity().getWorld().createExplosion(getEntity().getLocation(), 2, true);
     }
 }

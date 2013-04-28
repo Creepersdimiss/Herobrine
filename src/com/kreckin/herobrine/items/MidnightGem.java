@@ -8,6 +8,6 @@ public class MidnightGem extends CustomItem {
     
     public MidnightGem() {
         super("Midnight Gem", "Dropped by a Hell's Guardian", Material.DIAMOND);
-        super.addEnchantment(Enchantment.FIRE_ASPECT, 1);
+        addEnchantment(Enchantment.FIRE_ASPECT, 1);
     }
 }

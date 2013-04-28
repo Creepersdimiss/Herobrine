@@ -45,48 +45,48 @@ public class ActionManager {
     private final ArrayList<Action> actions;
     
     public ActionManager() {
-        this.actions = new ArrayList<Action>();
-        this.registerAction(new PlaceTorch());
-        this.registerAction(new PlaceSign());
-        this.registerAction(new DestroyTorches());
-        this.registerAction(new CreateRingOfFire());
-        this.registerAction(new BuryPlayer());
-        this.registerAction(new CreateGrave());
-        this.registerAction(new CreateTNTTrap());
-        this.registerAction(new StealItem());
-        this.registerAction(new RearrangeInventory());
-        this.registerAction(new PossessPlayer());
-        this.registerAction(new WolfAttack());
-        this.registerAction(new BatAttack());
-        this.registerAction(new CreatePyramid());
-        this.registerAction(new PlaySound());
-        this.registerAction(new GiftBook());
-        this.registerAction(new SendMessage());
-        this.registerAction(new RandomLightning());
-        this.registerAction(new RandomExplosion());
-        this.registerAction(new DimTorches());
-        this.registerAction(new ThrowPlayer());
-        this.registerAction(new GiftHead());
-        this.registerAction(new CreateTotem());
-        this.registerAction(new SpinPlayer());
-        this.registerAction(new DuplicateItem());
-        this.registerAction(new RandomStorm());
-        this.registerAction(new BossAttack());
-        this.registerAction(new DestroyChests());
-        this.registerAction(new CreateTomb());
-        this.registerAction(new CreateRingOfTorches());
-        this.registerAction(new MobAttack());
-        this.registerAction(new PlaceChest());
-        this.registerAction(new CreateInfection());
-        this.registerAction(new DecayFlowers());
-        this.registerAction(new BurnPlayer());
-        this.registerAction(new EffectExplosion());
-        this.registerAction(new CreatePillar());
-        this.registerAction(new CreateBlankTree());
+        actions = new ArrayList<Action>();
+        registerAction(new PlaceTorch());
+        registerAction(new PlaceSign());
+        registerAction(new DestroyTorches());
+        registerAction(new CreateRingOfFire());
+        registerAction(new BuryPlayer());
+        registerAction(new CreateGrave());
+        registerAction(new CreateTNTTrap());
+        registerAction(new StealItem());
+        registerAction(new RearrangeInventory());
+        registerAction(new PossessPlayer());
+        registerAction(new WolfAttack());
+        registerAction(new BatAttack());
+        registerAction(new CreatePyramid());
+        registerAction(new PlaySound());
+        registerAction(new GiftBook());
+        registerAction(new SendMessage());
+        registerAction(new RandomLightning());
+        registerAction(new RandomExplosion());
+        registerAction(new DimTorches());
+        registerAction(new ThrowPlayer());
+        registerAction(new GiftHead());
+        registerAction(new CreateTotem());
+        registerAction(new SpinPlayer());
+        registerAction(new DuplicateItem());
+        registerAction(new RandomStorm());
+        registerAction(new BossAttack());
+        registerAction(new DestroyChests());
+        registerAction(new CreateTomb());
+        registerAction(new CreateRingOfTorches());
+        registerAction(new MobAttack());
+        registerAction(new PlaceChest());
+        registerAction(new CreateInfection());
+        registerAction(new DecayFlowers());
+        registerAction(new BurnPlayer());
+        registerAction(new EffectExplosion());
+        registerAction(new CreatePillar());
+        registerAction(new CreateBlankTree());
     }
     
     public final void registerAction(Action action) {
-        this.actions.add(action);
+        actions.add(action);
     }
     
     public boolean isAllowed(Class<? extends Action> action) {
@@ -94,6 +94,6 @@ public class ActionManager {
     }
 
     public ArrayList<Action> getActions() {
-        return this.actions;
+        return actions;
     }
 }

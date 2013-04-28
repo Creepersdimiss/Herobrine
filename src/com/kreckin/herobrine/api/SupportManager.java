@@ -17,23 +17,23 @@ public class SupportManager {
     private final ArrayList<Support> supports;
     
     public SupportManager() {
-        this.supports = new ArrayList<Support>();
-        this.registerSupport(new ResidenceSupport());
-        this.registerSupport(new GriefPreventionSupport());
-        this.registerSupport(new PreciousStonesSupport());
-        this.registerSupport(new WorldGuardSupport());
-        this.registerSupport(new TownySupport());
-        this.registerSupport(new HerobrineAISupport());
-        this.registerSupport(new FactionsSupport());
-        this.registerSupport(new MonsterApocalypseSupport());
+        supports = new ArrayList<Support>();
+        registerSupport(new ResidenceSupport());
+        registerSupport(new GriefPreventionSupport());
+        registerSupport(new PreciousStonesSupport());
+        registerSupport(new WorldGuardSupport());
+        registerSupport(new TownySupport());
+        registerSupport(new HerobrineAISupport());
+        registerSupport(new FactionsSupport());
+        registerSupport(new MonsterApocalypseSupport());
     }
     
     public final void registerSupport(Support support) {
-        this.supports.add(support);
+        supports.add(support);
     }
     
     public void checkPlugins() {
-        for (Support support : this.supports) {
+        for (Support support : supports) {
             if (support.isEnabled() && support.getPlugin().isEnabled()) {
                 Herobrine.getLog().info("Hooked: " + support.getName() + " v" + support.getPlugin().getDescription().getVersion());
             }
@@ -41,7 +41,7 @@ public class SupportManager {
     }
     
     public boolean checkPermissions(Location loc) {
-        for (Support support : this.supports) {
+        for (Support support : supports) {
             if (!support.isEnabled()) {
                 continue;
             }
@@ -53,6 +53,6 @@ public class SupportManager {
     }
 
     public ArrayList<Support> getSupports() {
-        return this.supports;
+        return supports;
     }
 }

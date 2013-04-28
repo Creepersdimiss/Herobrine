@@ -35,85 +35,85 @@ public class Herobrine extends JavaPlugin {
             if (!new File(this.getDataFolder() + "/config.yml").exists()) {
                 this.saveResource("config.yml", false);
             }
-            Herobrine.config = YamlConfiguration.loadConfiguration(new File(this.getDataFolder() + "/config.yml"));
+            config = YamlConfiguration.loadConfiguration(new File(this.getDataFolder() + "/config.yml"));
         } catch (Exception ex) {
-            Herobrine.getLog().severe("Failed to properly manage the configuration!");
+            getLog().severe("Failed to properly manage the configuration!");
             this.getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        Herobrine.instance = this;
-        Herobrine.actionManager = new ActionManager();
-        Herobrine.commands = new CommandListener();
-        Herobrine.support = new SupportManager();
-        Herobrine.entityManager = new CustomEntityManager();
-        Herobrine.hotspotManager = new HotspotManager();
-        Herobrine.chatManager = new ChatManager();
+        instance = this;
+        actionManager = new ActionManager();
+        commands = new CommandListener();
+        support = new SupportManager();
+        entityManager = new CustomEntityManager();
+        hotspotManager = new HotspotManager();
+        chatManager = new ChatManager();
         ShapedRecipe recipe = new ShapedRecipe(new HerobrinesSword().getItem());
         recipe.shape("ABA", "BCB", "ABA");
         recipe.setIngredient('A', Material.REDSTONE);
         recipe.setIngredient('B', Material.DIAMOND);
         recipe.setIngredient('C', Material.EMERALD);
         this.getServer().addRecipe(recipe);
-        this.getCommand("hb").setExecutor(Herobrine.commands);
-        this.getCommand("hbu").setExecutor(Herobrine.commands);
+        this.getCommand("hb").setExecutor(commands);
+        this.getCommand("hbu").setExecutor(commands);
         this.getServer().getPluginManager().registerEvents(new EventListener(), this);
         try {
             new MetricsLite(this).start();
         } catch (Exception ex) {
-            Herobrine.getLog().severe("Failed to start MCStats reporting!");
+            getLog().severe("Failed to start MCStats reporting!");
         }
-        Herobrine.support.checkPlugins();
-        Herobrine.getLog().info("Donators: ");
-        Herobrine.getLog().info("\t- cadester177");
-        Herobrine.getLog().info("\t- Deanfvjr");
-        Herobrine.getLog().info("\t- Arksy");
+        support.checkPlugins();
+        getLog().info("Donators: ");
+        getLog().info("\t- cadester177");
+        getLog().info("\t- Deanfvjr");
+        getLog().info("\t- Arksy");
     }
     
     @Override
     public void onDisable() {
-        Herobrine.actionManager = null;
-        Herobrine.config = null;
-        Herobrine.instance = null;
-        Herobrine.support = null;
-        Herobrine.entityManager = null;
-        Herobrine.hotspotManager = null;
-        Herobrine.commands = null;
-        Herobrine.chatManager = null;
+        actionManager = null;
+        config = null;
+        instance = null;
+        support = null;
+        entityManager = null;
+        hotspotManager = null;
+        commands = null;
+        chatManager = null;
     }
     
     public static ChatManager getChatManager() {
-        return Herobrine.chatManager;
+        return chatManager;
     }
 
     public static CustomEntityManager getEntityManager() {
-        return Herobrine.entityManager;
+        return entityManager;
     }
     
     public static YamlConfiguration getConfigFile() {
-        return Herobrine.config;
+        return config;
     }
     
     public static ActionManager getActionManager() {
-        return Herobrine.actionManager;
+        return actionManager;
     }
     
     public static Herobrine getInstance() {
-        return Herobrine.instance;
+        return instance;
     }
     
     public static SupportManager getSupportManager() {
-        return Herobrine.support;
+        return support;
     }
     
     public static HotspotManager getHotspotManager() {
-        return Herobrine.hotspotManager;
+        return hotspotManager;
     }
     
     public static Logger getLog() {
-        return Herobrine.getInstance().getLogger();
+        return instance.getLogger();
     }
     
     public static CommandListener getCommandListener() {
-        return Herobrine.commands;
+        return commands;
     }
 }

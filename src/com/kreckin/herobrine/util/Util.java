@@ -28,7 +28,7 @@ public class Util {
     }
     
     public static boolean shouldAct() {
-        return Util.shouldAct(null);
+        return shouldAct(null);
     }
 
     public static boolean shouldAct(Player player) {
@@ -42,7 +42,7 @@ public class Util {
                 actionChance /= 4;
             }
         }
-        return (Util.getRandom().nextInt(actionChance) == 0);
+        return (getRandom().nextInt(actionChance) == 0);
     }
     
     public static String getMessage(String path) {
@@ -53,17 +53,17 @@ public class Util {
         if (strings.size() == 1) {
             return strings.get(0);
         }
-        return strings.get(Util.getRandom().nextInt(strings.size()));
+        return strings.get(getRandom().nextInt(strings.size()));
     }
 
     public static Location getNearbyLocation(Player player, int distance) {
-        int addX = (Util.getRandom().nextBoolean() ? -Util.getRandom().nextInt(distance) : Util.getRandom().nextInt(distance));
-        int addZ = (Util.getRandom().nextBoolean() ? -Util.getRandom().nextInt(distance) : Util.getRandom().nextInt(distance));
+        int addX = (getRandom().nextBoolean() ? -getRandom().nextInt(distance) : getRandom().nextInt(distance));
+        int addZ = (getRandom().nextBoolean() ? -getRandom().nextInt(distance) : getRandom().nextInt(distance));
         return (player.getLocation().add(addX, 0, addZ));
     }
     
     public static boolean isValid(Block block) {
-        return ((block.getType().equals(Material.AIR) || block.getType().equals(Material.LONG_GRASS)) && Util.isSolid(block.getWorld().getBlockAt(block.getLocation().subtract(0, 1, 0))));
+        return ((block.getType().equals(Material.AIR) || block.getType().equals(Material.LONG_GRASS)) && isSolid(block.getWorld().getBlockAt(block.getLocation().subtract(0, 1, 0))));
     }
     
     public static boolean isSolid(Block block) {
@@ -83,14 +83,14 @@ public class Util {
     }
     
     public static Random getRandom() {
-        if (Util.reseedCooldown == -1) {
-            Util.reseedCooldown = Herobrine.getConfigFile().getInt("Herobrine.randomReseedTime");
+        if (reseedCooldown == -1) {
+            reseedCooldown = Herobrine.getConfigFile().getInt("Herobrine.randomReseedTime");
         }
-        Util.returnsSinceReseed++;
-        if (Util.returnsSinceReseed > Util.reseedCooldown) {
-            Util.returnsSinceReseed = 0;
-            Util.random.setSeed(Util.random.nextLong());
+        returnsSinceReseed++;
+        if (returnsSinceReseed > reseedCooldown) {
+            returnsSinceReseed = 0;
+            random.setSeed(random.nextLong());
         }
-        return Util.random;
+        return random;
     }
 }

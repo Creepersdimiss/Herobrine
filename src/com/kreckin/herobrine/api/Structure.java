@@ -21,7 +21,7 @@ public class Structure {
     }
 
     public boolean createStructure(Location loc) {
-        for (String blockItem : this.config.getStringList("Blocks")) {
+        for (String blockItem : config.getStringList("Blocks")) {
             String[] blockData = blockItem.split(",");
             if (blockData[1].equalsIgnoreCase("0")) {
                 if (!Util.isValid(new Location(loc.getWorld(), loc.getBlockX() + Integer.parseInt(blockData[0]), loc.getBlockY() + Integer.parseInt(blockData[1]), loc.getBlockZ() + Integer.parseInt(blockData[2])).getBlock())) {
@@ -36,7 +36,7 @@ public class Structure {
                 }
             }
         }
-        for (String blockItem : this.config.getStringList("Blocks")) {
+        for (String blockItem : config.getStringList("Blocks")) {
             String[] blockData = blockItem.split(",");
             Location blockLoc = new Location(loc.getWorld(), loc.getBlockX() + Integer.parseInt(blockData[0]), loc.getBlockY() + Integer.parseInt(blockData[1]), loc.getBlockZ() + Integer.parseInt(blockData[2]));
             blockLoc.getBlock().setType(Material.getMaterial(blockData[3]));
@@ -47,7 +47,7 @@ public class Structure {
     
     public ArrayList<Block> getBlocks(Location loc) {
         ArrayList<Block> blocks = new ArrayList<Block>();
-        for (String blockItem : this.config.getStringList("Blocks")) {
+        for (String blockItem : config.getStringList("Blocks")) {
             String[] blockData = blockItem.split(",");
             blocks.add(new Location(loc.getWorld(), loc.getBlockX() + Integer.parseInt(blockData[0]), loc.getBlockY() + Integer.parseInt(blockData[1]), loc.getBlockZ() + Integer.parseInt(blockData[2])).getBlock());
         }
@@ -55,6 +55,6 @@ public class Structure {
     }
     
     public YamlConfiguration getConfigFile() {
-        return this.config;
+        return config;
     }
 }

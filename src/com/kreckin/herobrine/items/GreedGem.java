@@ -8,6 +8,6 @@ public class GreedGem extends CustomItem {
     
     public GreedGem() {
         super("Greed Gem", "Dropped by a Fallen Angel", Material.EMERALD);
-        super.addEnchantment(Enchantment.FIRE_ASPECT, 1);
+        addEnchantment(Enchantment.FIRE_ASPECT, 1);
     }
 }

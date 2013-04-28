@@ -31,15 +31,15 @@ public abstract class Action {
             return "Sorry, events are not allowed in that region!";
         }
         Herobrine.getHotspotManager().addLocation(player.getLocation());
-        Herobrine.getLog().info("Running " + this.getClass().getSimpleName() + ", targetting: " + player.getName());
+        Herobrine.getLog().info("Running " + getClass().getSimpleName() + ", targetting: " + player.getName());
         Herobrine.getChatManager().addPlayer(player);
-        String result = this.callAction(player, metadata);
+        String result = callAction(player, metadata);
         Herobrine.getChatManager().removePlayer(player);
         Herobrine.getLog().info("Result: " + result);
         return result;
     }
 
     public boolean isRandom() {
-        return this.random;
+        return random;
     }
 }

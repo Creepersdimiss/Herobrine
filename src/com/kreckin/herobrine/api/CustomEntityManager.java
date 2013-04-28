@@ -8,32 +8,32 @@ public class CustomEntityManager {
     private final ArrayList<CustomEntity> entities;
     
     public CustomEntityManager() {
-        this.entities = new ArrayList<CustomEntity>();
+        entities = new ArrayList<CustomEntity>();
     }
 
     public void addEntity(CustomEntity entity) {
-        if (this.entities.size() >= Herobrine.getConfigFile().getInt("Herobrine.maxCustomEntities")) {
+        if (entities.size() >= Herobrine.getConfigFile().getInt("Herobrine.maxCustomEntities")) {
             Herobrine.getLog().warning("Max custom entities count has been surpassed!");
             return;
         }
-        if (this.getEntity(entity.getEntity().getEntityId()) != null) {
+        if (getEntity(entity.getEntity().getEntityId()) != null) {
             return;
         }
-        this.entities.add(entity);
+        entities.add(entity);
     }
     
     public void removeEntity(int id) {
-        if (this.getEntity(id) == null) {
+        if (getEntity(id) == null) {
             return;
         }
-        this.entities.remove(this.getEntity(id));
+        entities.remove(getEntity(id));
     }
     
     public CustomEntity getEntity(int id) {
-        if (this.entities.isEmpty()) {
+        if (entities.isEmpty()) {
             return null;
         }
-        for (CustomEntity entity : this.entities) {
+        for (CustomEntity entity : entities) {
             if (entity.getEntity().getEntityId() == id) {
                 return entity;
             }
@@ -42,6 +42,6 @@ public class CustomEntityManager {
     }
     
     public ArrayList<CustomEntity> getEntities() {
-        return this.entities;
+        return entities;
     }
 }

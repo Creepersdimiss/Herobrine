@@ -12,18 +12,18 @@ public abstract class CustomEntity {
     private final ItemStack drop;
 
     public CustomEntity(Location loc, EntityType type, String name, ItemStack drop) {
-        this.entity = (LivingEntity) loc.getWorld().spawnEntity(loc, type);
         this.drop = drop;
-        this.entity.setCanPickupItems(false);
-        this.entity.setCustomName(name);
-        this.entity.setCustomNameVisible(true);
-        this.entity.setRemoveWhenFarAway(false);
-        this.entity.getEquipment().setBootsDropChance(0);
-        this.entity.getEquipment().setChestplateDropChance(0);
-        this.entity.getEquipment().setHelmetDropChance(0);
-        this.entity.getEquipment().setItemInHandDropChance(0);
-        this.entity.getEquipment().setLeggingsDropChance(0);
-        this.onSpawn();
+        entity = (LivingEntity) loc.getWorld().spawnEntity(loc, type);
+        entity.setCanPickupItems(false);
+        entity.setCustomName(name);
+        entity.setCustomNameVisible(true);
+        entity.setRemoveWhenFarAway(false);
+        entity.getEquipment().setBootsDropChance(0);
+        entity.getEquipment().setChestplateDropChance(0);
+        entity.getEquipment().setHelmetDropChance(0);
+        entity.getEquipment().setItemInHandDropChance(0);
+        entity.getEquipment().setLeggingsDropChance(0);
+        onSpawn();
         Herobrine.getEntityManager().addEntity(this);
     }
     
@@ -32,14 +32,14 @@ public abstract class CustomEntity {
     public abstract void onKilled();
 
     public ItemStack getDrop() {
-        return this.drop;
+        return drop;
     }
 
     public LivingEntity getEntity() {
-        return this.entity;
+        return entity;
     }
     
     public String getName() {
-        return this.entity.getCustomName();
+        return entity.getCustomName();
     }
 }

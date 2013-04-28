@@ -12,7 +12,6 @@ public abstract class Support {
     
     public Support(String name) {
         this.name = name;
-        this.state = 0;
     }
     
     public void onStartup(Plugin plugin) { }
@@ -20,25 +19,25 @@ public abstract class Support {
     public abstract boolean checkPermissions(Location loc, Plugin plugin);
 
     public Plugin getPlugin() {
-        if (this.state == 0) {
-            this.plugin = Bukkit.getServer().getPluginManager().getPlugin(this.name);
+        if (state == 0) {
+            plugin = Bukkit.getServer().getPluginManager().getPlugin(name);
         }
-        return this.plugin;
+        return plugin;
     }
     
     public boolean isEnabled() {
         if (state == 0) {
-            if (this.getPlugin() != null) {
+            if (getPlugin() != null) {
                 state = 1;
-                this.onStartup(this.plugin);
+                onStartup(plugin);
             } else {
                 state = -1;
             }
         }
-        return (this.state == 1);
+        return (state == 1);
     }
     
     public String getName() {
-        return this.name;
+        return name;
     }
 }

@@ -18,17 +18,17 @@ public class HellsGuardian extends CustomEntity {
     
     @Override
     public void onSpawn() {
-        super.getEntity().setMaxHealth(Herobrine.getConfigFile().getInt("Herobrine.hellsGuardianHealth"));
-        super.getEntity().setHealth(super.getEntity().getMaxHealth());
-        super.getEntity().getEquipment().setBoots(Util.getColoredArmour(Material.LEATHER_BOOTS, Color.RED));
-        super.getEntity().getEquipment().setLeggings(Util.getColoredArmour(Material.LEATHER_LEGGINGS, Color.RED));
-        super.getEntity().getEquipment().setChestplate(Util.getColoredArmour(Material.LEATHER_CHESTPLATE, Color.RED));
-        super.getEntity().getEquipment().setHelmet(Util.getColoredArmour(Material.LEATHER_HELMET, Color.RED));
-        super.getEntity().getEquipment().setItemInHand(new ItemStack(Material.IRON_SWORD, 1));
+        getEntity().setMaxHealth(Herobrine.getConfigFile().getInt("Herobrine.hellsGuardianHealth"));
+        getEntity().setHealth(getEntity().getMaxHealth());
+        getEntity().getEquipment().setBoots(Util.getColoredArmour(Material.LEATHER_BOOTS, Color.RED));
+        getEntity().getEquipment().setLeggings(Util.getColoredArmour(Material.LEATHER_LEGGINGS, Color.RED));
+        getEntity().getEquipment().setChestplate(Util.getColoredArmour(Material.LEATHER_CHESTPLATE, Color.RED));
+        getEntity().getEquipment().setHelmet(Util.getColoredArmour(Material.LEATHER_HELMET, Color.RED));
+        getEntity().getEquipment().setItemInHand(new ItemStack(Material.IRON_SWORD, 1));
     }
 
     @Override
     public void onKilled() {
-        super.getEntity().getWorld().createExplosion(super.getEntity().getLocation(), 2, true);
+        getEntity().getWorld().createExplosion(getEntity().getLocation(), 2, true);
     }
 }

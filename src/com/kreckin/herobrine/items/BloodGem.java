@@ -8,6 +8,6 @@ public class BloodGem extends CustomItem {
     
     public BloodGem() {
         super("Blood Gem", "Dropped by an Unknown Demon", Material.REDSTONE);
-        super.addEnchantment(Enchantment.FIRE_ASPECT, 1);
+        addEnchantment(Enchantment.FIRE_ASPECT, 1);
     }
 }

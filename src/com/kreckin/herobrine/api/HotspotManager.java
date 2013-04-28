@@ -9,7 +9,7 @@ public class HotspotManager {
     private final ArrayList<Location> locations;
     
     public HotspotManager() {
-        this.locations = new ArrayList<Location>();
+        locations = new ArrayList<Location>();
     }
     
     public void addLocation(Location loc) {
@@ -17,12 +17,12 @@ public class HotspotManager {
             return;
         }
         Herobrine.getLog().info("Added Hotspot: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
-        this.locations.add(loc);
+        locations.add(loc);
     }
     
     public int getImportance(Location loc) {
         int hotspots = 0;
-        for (Location location : this.locations) {
+        for (Location location : locations) {
             if (!location.getWorld().getName().equals(loc.getWorld().getName())) {
                 continue;
             }
@@ -37,6 +37,6 @@ public class HotspotManager {
     }
 
     public ArrayList<Location> getLocations() {
-        return this.locations;
+        return locations;
     }
 }
