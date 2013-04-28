@@ -1,5 +1,6 @@
 package com.kreckin.herobrine.api;
 
+import com.kreckin.herobrine.util.Validate;
 import java.util.ArrayList;
 import org.bukkit.entity.Player;
 
@@ -12,12 +13,14 @@ public class ChatManager {
     }
   
     public void addPlayer(Player player) {
+        Validate.isSafe(player);
         if (!usernames.contains(player.getName())) {
             usernames.add(player.getName());
         }
     }
   
     public void removePlayer(Player player) {
+        Validate.isSafe(player);
         if (usernames.contains(player.getName())) {
             usernames.remove(player.getName());
         }

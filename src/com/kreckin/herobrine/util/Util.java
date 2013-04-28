@@ -20,6 +20,7 @@ public class Util {
     private static int reseedCooldown = -1;
 
     public static ItemStack getColoredArmour(Material mat, Color color) {
+        Validate.isSafe(mat, color);
         ItemStack itemStack = new ItemStack(mat, 1);
         LeatherArmorMeta meta = (LeatherArmorMeta) itemStack.getItemMeta();
         meta.setColor(color);
@@ -46,6 +47,7 @@ public class Util {
     }
     
     public static String getMessage(String path) {
+        Validate.isSafe(path);
         List<String> strings = Herobrine.getConfigFile().getStringList(path);
         if (strings.isEmpty()) {
             return null;
@@ -57,16 +59,19 @@ public class Util {
     }
 
     public static Location getNearbyLocation(Player player, int distance) {
+        Validate.isSafe(player, distance);
         int addX = (getRandom().nextBoolean() ? -getRandom().nextInt(distance) : getRandom().nextInt(distance));
         int addZ = (getRandom().nextBoolean() ? -getRandom().nextInt(distance) : getRandom().nextInt(distance));
         return (player.getLocation().add(addX, 0, addZ));
     }
     
     public static boolean isValid(Block block) {
+        Validate.isSafe(block);
         return ((block.getType().equals(Material.AIR) || block.getType().equals(Material.LONG_GRASS)) && isSolid(block.getWorld().getBlockAt(block.getLocation().subtract(0, 1, 0))));
     }
     
     public static boolean isSolid(Block block) {
+        Validate.isSafe(block);
         List<Material> allowed = new ArrayList<Material>();
         allowed.add(Material.STONE);
         allowed.add(Material.GRASS);
@@ -79,6 +84,7 @@ public class Util {
     }
     
     public static String formatString(String message) {
+        Validate.isSafe(message);
         return ("[" + ChatColor.RED + Herobrine.getConfigFile().getString("Herobrine.entityName") + ChatColor.WHITE + "] " + message);
     }
     

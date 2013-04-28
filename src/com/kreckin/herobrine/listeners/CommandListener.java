@@ -3,6 +3,7 @@ package com.kreckin.herobrine.listeners;
 import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.util.Util;
+import com.kreckin.herobrine.util.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,6 +14,7 @@ public class CommandListener implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender cs, Command cmnd, String string, String[] strings) {
+        Validate.isSafe((Object[]) strings);
         if (!(cs instanceof Player)) {
             Herobrine.getLog().warning("You can only use these commands if you are a player!");
             return true;

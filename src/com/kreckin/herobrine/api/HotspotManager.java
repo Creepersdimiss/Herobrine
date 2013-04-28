@@ -1,6 +1,7 @@
 package com.kreckin.herobrine.api;
 
 import com.kreckin.herobrine.Herobrine;
+import com.kreckin.herobrine.util.Validate;
 import java.util.ArrayList;
 import org.bukkit.Location;
 
@@ -13,6 +14,7 @@ public class HotspotManager {
     }
     
     public void addLocation(Location loc) {
+        Validate.isSafe(loc);
         if (!Herobrine.getConfigFile().getBoolean("Herobrine.allowHotspots")) {
             return;
         }
@@ -21,6 +23,7 @@ public class HotspotManager {
     }
     
     public int getImportance(Location loc) {
+        Validate.isSafe(loc);
         int hotspots = 0;
         for (Location location : locations) {
             if (!location.getWorld().getName().equals(loc.getWorld().getName())) {

@@ -9,6 +9,7 @@ import com.kreckin.herobrine.support.PreciousStonesSupport;
 import com.kreckin.herobrine.support.ResidenceSupport;
 import com.kreckin.herobrine.support.TownySupport;
 import com.kreckin.herobrine.support.WorldGuardSupport;
+import com.kreckin.herobrine.util.Validate;
 import java.util.ArrayList;
 import org.bukkit.Location;
 
@@ -29,6 +30,7 @@ public class SupportManager {
     }
     
     public final void registerSupport(Support support) {
+        Validate.isSafe(support);
         supports.add(support);
     }
     
@@ -41,6 +43,7 @@ public class SupportManager {
     }
     
     public boolean checkPermissions(Location loc) {
+        Validate.isSafe(loc);
         for (Support support : supports) {
             if (!support.isEnabled()) {
                 continue;

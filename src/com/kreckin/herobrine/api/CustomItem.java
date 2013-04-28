@@ -1,5 +1,6 @@
 package com.kreckin.herobrine.api;
 
+import com.kreckin.herobrine.util.Validate;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.ChatColor;
@@ -13,6 +14,7 @@ public class CustomItem {
     private final ItemStack item;
     
     public CustomItem(String name, String description, Material mat) {
+        Validate.isSafe(name, description, mat);
         item = new ItemStack(mat, 1);
         List<String> lore = new ArrayList<String>();
         lore.add(ChatColor.RESET + description);
@@ -23,6 +25,7 @@ public class CustomItem {
     }
     
     public void addEnchantment(Enchantment enchant, int level) {
+        Validate.isSafe(enchant, level);
         ItemMeta meta = item.getItemMeta();
         meta.addEnchant(enchant, level, true);
         item.setItemMeta(meta);

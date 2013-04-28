@@ -2,6 +2,7 @@ package com.kreckin.herobrine.api;
 
 import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.util.Util;
+import com.kreckin.herobrine.util.Validate;
 import java.util.ArrayList;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -17,10 +18,12 @@ public class Structure {
     }
     
     public static Structure loadStructure(String name) {
+        Validate.isSafe(name);
         return (new Structure(YamlConfiguration.loadConfiguration(Herobrine.class.getResourceAsStream(name))));
     }
 
     public boolean createStructure(Location loc) {
+        Validate.isSafe(loc);
         for (String blockItem : config.getStringList("Blocks")) {
             String[] blockData = blockItem.split(",");
             if (blockData[1].equalsIgnoreCase("0")) {
@@ -46,6 +49,7 @@ public class Structure {
     }
     
     public ArrayList<Block> getBlocks(Location loc) {
+        Validate.isSafe(loc);
         ArrayList<Block> blocks = new ArrayList<Block>();
         for (String blockItem : config.getStringList("Blocks")) {
             String[] blockData = blockItem.split(",");

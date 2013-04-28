@@ -1,6 +1,7 @@
 package com.kreckin.herobrine.api;
 
 import com.kreckin.herobrine.Herobrine;
+import com.kreckin.herobrine.util.Validate;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
@@ -15,6 +16,7 @@ public abstract class Action {
     public abstract String callAction(Player player, Object[] metadata);
     
     public String checkAction(Player player, Object[] metadata) {
+        Validate.isSafe(player, metadata);
         if (Herobrine.getConfigFile().getStringList("Herobrine.disallowedActions").contains(this.getClass().getSimpleName())) {
             return "Sorry, that action has been disallowed in the configuration file!";
         }

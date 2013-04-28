@@ -1,6 +1,7 @@
 package com.kreckin.herobrine.api;
 
 import com.kreckin.herobrine.Herobrine;
+import com.kreckin.herobrine.util.Validate;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -12,6 +13,7 @@ public abstract class CustomEntity {
     private final ItemStack drop;
 
     public CustomEntity(Location loc, EntityType type, String name, ItemStack drop) {
+        Validate.isSafe(loc, type, name, drop);
         this.drop = drop;
         entity = (LivingEntity) loc.getWorld().spawnEntity(loc, type);
         entity.setCanPickupItems(false);

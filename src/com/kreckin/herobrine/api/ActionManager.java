@@ -38,6 +38,7 @@ import com.kreckin.herobrine.actions.SpinPlayer;
 import com.kreckin.herobrine.actions.StealItem;
 import com.kreckin.herobrine.actions.ThrowPlayer;
 import com.kreckin.herobrine.actions.WolfAttack;
+import com.kreckin.herobrine.util.Validate;
 import java.util.ArrayList;
 
 public class ActionManager {
@@ -86,10 +87,12 @@ public class ActionManager {
     }
     
     public final void registerAction(Action action) {
+        Validate.isSafe(action);
         actions.add(action);
     }
     
     public boolean isAllowed(Class<? extends Action> action) {
+        Validate.isSafe(action);
         return (!Herobrine.getConfigFile().getStringList("Herobrine.disallowedActions").contains(action.getSimpleName()));
     }
 
