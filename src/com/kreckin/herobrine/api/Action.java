@@ -37,6 +37,9 @@ public abstract class Action {
         Herobrine.getChatManager().addPlayer(player);
         String result = callAction(player, metadata);
         Herobrine.getChatManager().removePlayer(player);
+        if (result == null) {
+            result = "Empty response from event!";
+        }
         Herobrine.getLog().info("Result: " + result);
         return result;
     }
