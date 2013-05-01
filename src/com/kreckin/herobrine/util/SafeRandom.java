@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class SafeRandom extends Random {
 
-    private int sinceReseed;
+    private int sinceReseed, maxSince;
     private boolean stopDoubleCheck;
 
     public int nextInt(int min, int max) {
