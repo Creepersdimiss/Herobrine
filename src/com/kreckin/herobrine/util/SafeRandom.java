@@ -6,13 +6,13 @@ import java.util.Random;
 public class SafeRandom extends Random {
 
     private int sinceReseed;
-    private final int maxSince;
-
-    public SafeRandom() {
-        maxSince = Herobrine.getConfigFile().getInt("Herobrine.randomReseedTime");
-    }
+    private boolean stopDoubleCheck;
 
     public int nextInt(int min, int max) {
+        if (!stopDoubleCheck) {
+            stopDoubleCheck = true;
+            maxSince = Herobrine.getConfigFile().getInt("Herobrine.randomReseedTime");
+        }
         if (min < 0 || max <= 0) {
             return -1;
         }
