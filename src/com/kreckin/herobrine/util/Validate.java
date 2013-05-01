@@ -6,9 +6,9 @@ public class Validate {
         if (objects == null) {
             throw (new IllegalArgumentException("Null object!"));
         }
-        for (Object object : objects) {
-            if (object == null) {
-                throw (new IllegalArgumentException("Null object!"));
+        for (int index = 0; index < objects.length; index++) {
+            if (objects[index] == null) {
+                throw (new IllegalArgumentException("Null object at index: " + index + "!"));
             }
         }
     }
