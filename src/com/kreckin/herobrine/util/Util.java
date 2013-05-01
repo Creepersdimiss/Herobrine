@@ -1,9 +1,9 @@
 package com.kreckin.herobrine.util;
 
 import com.kreckin.herobrine.Herobrine;
+import com.kreckin.herobrine.util.SafeRandom;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -15,9 +15,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class Util {
     
-    private final static Random random = new Random();
-    private static int returnsSinceReseed = 0;
-    private static int reseedCooldown = -1;
+    private final static SafeRandom random = new SafeRandom();
     private final static ArrayList<Material> solids = new ArrayList<Material>() {{
         add(Material.STONE);
         add(Material.GRASS);
@@ -89,15 +87,7 @@ public class Util {
         return ("[" + ChatColor.RED + Herobrine.getConfigFile().getString("Herobrine.entityName") + ChatColor.WHITE + "] " + message);
     }
     
-    public static Random getRandom() {
-        if (reseedCooldown == -1) {
-            reseedCooldown = Herobrine.getConfigFile().getInt("Herobrine.randomReseedTime");
-        }
-        returnsSinceReseed++;
-        if (returnsSinceReseed > reseedCooldown) {
-            returnsSinceReseed = 0;
-            random.setSeed(random.nextLong());
-        }
+    public static SafeRandom getRandom() {
         return random;
     }
 }
