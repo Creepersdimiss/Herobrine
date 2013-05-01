@@ -23,7 +23,6 @@ public class Herobrine extends JavaPlugin {
     private static SupportManager support;
     private static CustomEntityManager entityManager;
     private static HotspotManager hotspotManager;
-    private static CommandListener commands;
     private static ChatManager chatManager;
 
     @Override
@@ -43,7 +42,6 @@ public class Herobrine extends JavaPlugin {
         }
         instance = this;
         actionManager = new ActionManager();
-        commands = new CommandListener();
         support = new SupportManager();
         entityManager = new CustomEntityManager();
         hotspotManager = new HotspotManager();
@@ -54,8 +52,8 @@ public class Herobrine extends JavaPlugin {
         recipe.setIngredient('B', Material.DIAMOND);
         recipe.setIngredient('C', Material.EMERALD);
         this.getServer().addRecipe(recipe);
-        this.getCommand("hb").setExecutor(commands);
-        this.getCommand("hbu").setExecutor(commands);
+        this.getCommand("hb").setExecutor(new CommandListener());
+        this.getCommand("hbu").setExecutor(new CommandListener());
         this.getServer().getPluginManager().registerEvents(new EventListener(), this);
         try {
             new MetricsLite(this).start();
@@ -63,24 +61,8 @@ public class Herobrine extends JavaPlugin {
             getLog().severe("Failed to start MCStats reporting!");
         }
         support.checkPlugins();
-        getLog().info("Donators: ");
-        getLog().info("\t- cadester177");
-        getLog().info("\t- Deanfvjr");
-        getLog().info("\t- Arksy");
     }
-    
-    @Override
-    public void onDisable() {
-        actionManager = null;
-        config = null;
-        instance = null;
-        support = null;
-        entityManager = null;
-        hotspotManager = null;
-        commands = null;
-        chatManager = null;
-    }
-    
+
     public static ChatManager getChatManager() {
         return chatManager;
     }
@@ -111,9 +93,5 @@ public class Herobrine extends JavaPlugin {
     
     public static Logger getLog() {
         return instance.getLogger();
-    }
-    
-    public static CommandListener getCommandListener() {
-        return commands;
     }
 }

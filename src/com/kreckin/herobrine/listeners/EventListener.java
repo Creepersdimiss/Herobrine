@@ -5,6 +5,8 @@ import com.kreckin.herobrine.actions.AltarSummon;
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.CustomEntity;
 import com.kreckin.herobrine.util.Util;
+import java.util.ArrayList;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
@@ -15,8 +17,15 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 public class EventListener implements Listener {
+    
+    private final ArrayList<String> people = new ArrayList<String>() {{
+        add("cadester177");
+        add("deanfvjr");
+        add("arksy");
+    }};
     
     @EventHandler
     public void onBlockIgnite(BlockIgniteEvent event) {
@@ -27,6 +36,13 @@ public class EventListener implements Listener {
         Block moss = nether.getLocation().subtract(0D, 1D, 0D).getBlock();
         if (nether.getType().equals(Material.NETHERRACK) && moss.getType().equals(Material.MOSSY_COBBLESTONE)) {
             new AltarSummon().checkAction(event.getPlayer(), new Object[] { nether });
+        }
+    }
+    
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        if (people.contains(event.getPlayer().getName().toLowerCase())) {
+            event.getPlayer().sendMessage(Util.formatString("Hey, just wanted to tell you, I " + ChatColor.RED + "<3" + ChatColor.WHITE + " you! :)"));
         }
     }
 

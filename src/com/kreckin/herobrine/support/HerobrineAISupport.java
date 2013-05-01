@@ -17,6 +17,7 @@ import com.kreckin.herobrine.actions.RandomLightning;
 import com.kreckin.herobrine.actions.SendMessage;
 import com.kreckin.herobrine.actions.WolfAttack;
 import com.kreckin.herobrine.api.Support;
+import com.kreckin.herobrine.listeners.CommandListener;
 import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -54,7 +55,7 @@ public class HerobrineAISupport extends Support {
         HerobrineAI.getPluginCore().getConfigDB().WriteBooks = Herobrine.getActionManager().isAllowed(GiftBook.class);
         HerobrineAI.getPluginCore().getConfigDB().Burn = Herobrine.getActionManager().isAllowed(BurnPlayer.class);
         HerobrineAI.getPluginCore().getConfigDB().Curse = Herobrine.getActionManager().isAllowed(PossessPlayer.class);
-        ((JavaPlugin) plugin).getCommand("hb").setExecutor(Herobrine.getCommandListener());
+        ((JavaPlugin) plugin).getCommand("hb").setExecutor(new CommandListener());
     }
 
     @Override
