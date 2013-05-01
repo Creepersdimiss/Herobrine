@@ -6,7 +6,8 @@ import java.util.Random;
 public class SafeRandom extends Random {
 
     private int sinceReseed;
-
+ 
+    @Override
     public int nextInt(int min, int max) {
         if (min < 0 || max <= 0) {
             return -1;
