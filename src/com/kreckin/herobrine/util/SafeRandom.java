@@ -8,7 +8,7 @@ public class SafeRandom extends Random {
 
     @Override
     public int nextInt(int max) {
-        if (max <= 0) {
+        if (max < 0) {
             return 0;
         }
         sinceReseed++;
