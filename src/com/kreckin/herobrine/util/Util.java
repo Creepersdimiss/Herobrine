@@ -58,7 +58,7 @@ public class Util {
                 actionChance /= 4;
             }
         }
-        return (getRandom().nextInt(actionChance) == 0);
+        return (random.nextInt(actionChance) == 0);
     }
     
     public static String getMessage(String path) {
@@ -70,13 +70,13 @@ public class Util {
         if (strings.size() == 1) {
             return strings.get(0);
         }
-        return strings.get(getRandom().nextInt(strings.size()));
+        return strings.get(random.nextInt(strings.size()));
     }
 
     public static Location getNearbyLocation(Player player, int distance) {
         Validate.isSafe(player, distance);
-        int addX = (getRandom().nextBoolean() ? -getRandom().nextInt(distance) : getRandom().nextInt(distance));
-        int addZ = (getRandom().nextBoolean() ? -getRandom().nextInt(distance) : getRandom().nextInt(distance));
+        int addX = (random.nextBoolean() ? -random.nextInt(distance) : random.nextInt(distance));
+        int addZ = (random.nextBoolean() ? -random.nextInt(distance) : random.nextInt(distance));
         return (player.getLocation().add(addX, 0, addZ));
     }
     
