@@ -2,7 +2,6 @@ package com.kreckin.herobrine.listeners;
 
 import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.actions.AltarSummon;
-import com.kreckin.herobrine.actions.ChangeMOTD;
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.CustomEntity;
 import com.kreckin.herobrine.util.Util;
@@ -16,7 +15,6 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.server.ServerListPingEvent;
 
 public class EventListener implements Listener {
     
@@ -72,13 +70,6 @@ public class EventListener implements Listener {
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         if (Herobrine.getChatManager().getUsernames().contains(event.getPlayer().getName())) {
             event.setCancelled(true);
-        }
-    }
-    
-    @EventHandler
-    public void onServerPing(ServerListPingEvent event) {
-        if (Util.shouldAct()) {
-            new ChangeMOTD().checkAction(null, new Object[] { event });
         }
     }
 }
