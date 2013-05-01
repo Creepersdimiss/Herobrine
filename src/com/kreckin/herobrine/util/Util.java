@@ -1,7 +1,6 @@
 package com.kreckin.herobrine.util;
 
 import com.kreckin.herobrine.Herobrine;
-import com.kreckin.herobrine.util.SafeRandom;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.ChatColor;
