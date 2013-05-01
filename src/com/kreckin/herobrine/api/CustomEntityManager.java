@@ -22,6 +22,7 @@ public class CustomEntityManager {
             return;
         }
         entities.add(entity);
+        entity.onSpawn();
     }
     
     public void removeEntity(int id) {

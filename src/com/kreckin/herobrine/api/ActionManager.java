@@ -47,46 +47,46 @@ public class ActionManager {
     
     public ActionManager() {
         actions = new ArrayList<Action>();
-        registerAction(new PlaceTorch());
-        registerAction(new PlaceSign());
-        registerAction(new DestroyTorches());
-        registerAction(new CreateRingOfFire());
-        registerAction(new BuryPlayer());
-        registerAction(new CreateGrave());
-        registerAction(new CreateTNTTrap());
-        registerAction(new StealItem());
-        registerAction(new RearrangeInventory());
-        registerAction(new PossessPlayer());
-        registerAction(new WolfAttack());
-        registerAction(new BatAttack());
-        registerAction(new CreatePyramid());
-        registerAction(new PlaySound());
-        registerAction(new GiftBook());
-        registerAction(new SendMessage());
-        registerAction(new RandomLightning());
-        registerAction(new RandomExplosion());
-        registerAction(new DimTorches());
-        registerAction(new ThrowPlayer());
-        registerAction(new GiftHead());
-        registerAction(new CreateTotem());
-        registerAction(new SpinPlayer());
-        registerAction(new DuplicateItem());
-        registerAction(new RandomStorm());
-        registerAction(new BossAttack());
-        registerAction(new DestroyChests());
-        registerAction(new CreateTomb());
-        registerAction(new CreateRingOfTorches());
-        registerAction(new MobAttack());
-        registerAction(new PlaceChest());
-        registerAction(new CreateInfection());
-        registerAction(new DecayFlowers());
-        registerAction(new BurnPlayer());
-        registerAction(new EffectExplosion());
-        registerAction(new CreatePillar());
-        registerAction(new CreateBlankTree());
+        addAction(new PlaceTorch());
+        addAction(new PlaceSign());
+        addAction(new DestroyTorches());
+        addAction(new CreateRingOfFire());
+        addAction(new BuryPlayer());
+        addAction(new CreateGrave());
+        addAction(new CreateTNTTrap());
+        addAction(new StealItem());
+        addAction(new RearrangeInventory());
+        addAction(new PossessPlayer());
+        addAction(new WolfAttack());
+        addAction(new BatAttack());
+        addAction(new CreatePyramid());
+        addAction(new PlaySound());
+        addAction(new GiftBook());
+        addAction(new SendMessage());
+        addAction(new RandomLightning());
+        addAction(new RandomExplosion());
+        addAction(new DimTorches());
+        addAction(new ThrowPlayer());
+        addAction(new GiftHead());
+        addAction(new CreateTotem());
+        addAction(new SpinPlayer());
+        addAction(new DuplicateItem());
+        addAction(new RandomStorm());
+        addAction(new BossAttack());
+        addAction(new DestroyChests());
+        addAction(new CreateTomb());
+        addAction(new CreateRingOfTorches());
+        addAction(new MobAttack());
+        addAction(new PlaceChest());
+        addAction(new CreateInfection());
+        addAction(new DecayFlowers());
+        addAction(new BurnPlayer());
+        addAction(new EffectExplosion());
+        addAction(new CreatePillar());
+        addAction(new CreateBlankTree());
     }
     
-    public final void registerAction(Action action) {
+    public final void addAction(Action action) {
         Validate.isSafe(action);
         actions.add(action);
     }

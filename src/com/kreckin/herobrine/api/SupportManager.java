@@ -19,17 +19,17 @@ public class SupportManager {
     
     public SupportManager() {
         supports = new ArrayList<Support>();
-        registerSupport(new ResidenceSupport());
-        registerSupport(new GriefPreventionSupport());
-        registerSupport(new PreciousStonesSupport());
-        registerSupport(new WorldGuardSupport());
-        registerSupport(new TownySupport());
-        registerSupport(new HerobrineAISupport());
-        registerSupport(new FactionsSupport());
-        registerSupport(new MonsterApocalypseSupport());
+        addSupport(new ResidenceSupport());
+        addSupport(new GriefPreventionSupport());
+        addSupport(new PreciousStonesSupport());
+        addSupport(new WorldGuardSupport());
+        addSupport(new TownySupport());
+        addSupport(new HerobrineAISupport());
+        addSupport(new FactionsSupport());
+        addSupport(new MonsterApocalypseSupport());
     }
     
-    public final void registerSupport(Support support) {
+    public final void addSupport(Support support) {
         Validate.isSafe(support);
         supports.add(support);
     }
