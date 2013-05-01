@@ -24,6 +24,15 @@ public class Util {
         add(Material.SAND);
         add(Material.SANDSTONE);
     }};
+    private final static ArrayList<Material> airs = new ArrayList<Material>() {{
+        add(Material.AIR);
+        add(Material.LONG_GRASS);
+        add(Material.SAPLING);
+        add(Material.BROWN_MUSHROOM);
+        add(Material.RED_MUSHROOM);
+        add(Material.RED_ROSE);
+        add(Material.YELLOW_FLOWER);
+    }};
 
     public static ItemStack getColoredArmour(Material mat, Color color) {
         Validate.isSafe(mat, color);
@@ -73,7 +82,7 @@ public class Util {
     
     public static boolean isValid(Block block) {
         Validate.isSafe(block);
-        return ((block.getType().equals(Material.AIR) || block.getType().equals(Material.LONG_GRASS)) && isSolid(block.getWorld().getBlockAt(block.getLocation().subtract(0, 1, 0))));
+        return (airs.contains(block.getType())) && isSolid(block.getWorld().getBlockAt(block.getLocation().subtract(0, 1, 0)));
     }
     
     public static boolean isSolid(Block block) {
