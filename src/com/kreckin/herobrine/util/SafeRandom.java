@@ -5,19 +5,14 @@ import java.util.Random;
 
 public class SafeRandom extends Random {
 
-    private int sinceReseed, maxSince;
-    private boolean stopDoubleCheck;
+    private int sinceReseed;
 
     public int nextInt(int min, int max) {
-        if (!stopDoubleCheck) {
-            stopDoubleCheck = true;
-            maxSince = Herobrine.getConfigFile().getInt("Herobrine.randomReseedTime");
-        }
         if (min < 0 || max <= 0) {
             return -1;
         }
         sinceReseed++;
-        if (sinceReseed > maxSince) {
+        if (sinceReseed > 10) {
             sinceReseed = 0;
             setSeed(nextLong());
         }
