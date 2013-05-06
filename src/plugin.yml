@@ -2,7 +2,7 @@ name: Herobrine
 version: 7.1
 main: com.kreckin.herobrine.Herobrine
 description: I'll never stop.
-author: steaks4uce
+author: nkrecklow
 website: http://dev.bukkit.org/server-mods/herobrineunleashed/
 
 permissions:
