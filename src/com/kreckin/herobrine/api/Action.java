@@ -10,6 +10,7 @@ public abstract class Action {
     private final boolean random;
 
     public Action(boolean random) {
+        Validate.isSafe(random);
         this.random = random;
     }
 

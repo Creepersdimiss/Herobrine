@@ -33,6 +33,7 @@ import com.kreckin.herobrine.actions.CreateBlankTree;
 import com.kreckin.herobrine.actions.CreateInfection;
 import com.kreckin.herobrine.actions.DecayFlowers;
 import com.kreckin.herobrine.actions.EffectExplosion;
+import com.kreckin.herobrine.actions.FlashMob;
 import com.kreckin.herobrine.actions.PlaceChest;
 import com.kreckin.herobrine.actions.SpinPlayer;
 import com.kreckin.herobrine.actions.StealItem;
@@ -84,6 +85,7 @@ public class ActionManager {
         addAction(new EffectExplosion());
         addAction(new CreatePillar());
         addAction(new CreateBlankTree());
+        addAction(new FlashMob());
     }
     
     public final void addAction(Action action) {
