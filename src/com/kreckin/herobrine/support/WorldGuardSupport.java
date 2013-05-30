@@ -17,14 +17,12 @@ public class WorldGuardSupport extends Support {
     @Override
     public boolean checkPermissions(Location loc, Plugin plugin) {
         RegionManager manager = ((WorldGuardPlugin) plugin).getRegionManager(loc.getWorld());
-        if (manager != null) {
-            if (manager.getRegions() == null) {
-                return true;
-            }
-            for (Map.Entry entry : manager.getRegions().entrySet()) {
-                if (((ProtectedRegion) entry.getValue()).contains(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ())) {
-                    return false;
-                }
+        if (manager.getRegions() == null) {
+            return true;
+        }
+        for (Map.Entry entry : manager.getRegions().entrySet()) {
+            if (((ProtectedRegion) entry.getValue()).contains(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ())) {
+                return false;
             }
         }
         return true;

@@ -31,6 +31,9 @@ Herobrine:
     - SPIDER
     - WITCH
     - ZOMBIE
+    
+  # When we are doing something to the player, should we mute them?
+  mutePlayers: true
 
   # What is the max number of custom entities (bosses) that can be spawned at one time?
   maxCustomEntities: 10
