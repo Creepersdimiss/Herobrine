@@ -5,7 +5,9 @@ import com.kreckin.herobrine.actions.AltarSummon;
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.api.CustomEntity;
 import com.kreckin.herobrine.util.Util;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -20,11 +22,12 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class EventListener implements Listener {
     
-    private final ArrayList<String> people = new ArrayList<String>() {{
-        add("cadester177");
-        add("deanfvjr");
-        add("arksy");
-    }};
+    private final Random random = new Random();
+    private final List<String> people = Arrays.asList(
+        "cadester177",
+        "deanfvjr",
+        "arksy"
+    );
     
     @EventHandler
     public void onBlockIgnite(BlockIgniteEvent event) {
@@ -48,7 +51,7 @@ public class EventListener implements Listener {
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
         if (Util.shouldAct(event.getPlayer())) {
-            Action action = Herobrine.getActionManager().getActions().get(Util.getRandom().nextInt(Herobrine.getActionManager().getActions().size() - 1));
+            Action action = Herobrine.getActionManager().getActions().get(random.nextInt(Herobrine.getActionManager().getActions().size() - 1));
             if (!action.isRandom()) {
                 return;
             }
@@ -58,7 +61,7 @@ public class EventListener implements Listener {
     
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
-        if (Herobrine.getEntityManager().getEntity(event.getEntity().getEntityId()) != null && !event.getCause().equals(DamageCause.ENTITY_ATTACK)) {
+        if (Herobrine.getEntityManager().getEntities().get(event.getEntity().getEntityId()) != null && !event.getCause().equals(DamageCause.ENTITY_ATTACK)) {
             event.setCancelled(true);
             event.setDamage(0);
             if (event.getEntity().getFireTicks() > 0) {
@@ -69,12 +72,12 @@ public class EventListener implements Listener {
     
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
-        CustomEntity entity = Herobrine.getEntityManager().getEntity(event.getEntity().getEntityId());
+        CustomEntity entity = Herobrine.getEntityManager().getEntities().get(event.getEntity().getEntityId());
         if (entity != null) {
             entity.onKilled();
             event.setDroppedExp(0);
             event.getDrops().clear();
-            if (Util.getRandom().nextInt(Herobrine.getConfigFile().getInt("Herobrine.customItemDropChance")) == 0) {
+            if (random.nextInt(Herobrine.getConfigFile().getInt("Herobrine.customItemDropChance")) == 0) {
                 event.getDrops().add(entity.getDrop());
             }
             Herobrine.getEntityManager().removeEntity(entity.getEntity().getEntityId());

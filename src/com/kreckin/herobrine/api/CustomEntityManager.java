@@ -20,7 +20,7 @@ public class CustomEntityManager {
     public void removeEntity(int id) {
         entities.remove(id);
     }
-    
+
     public Map<Integer, CustomEntity> getEntities() {
         return entities;
     }
