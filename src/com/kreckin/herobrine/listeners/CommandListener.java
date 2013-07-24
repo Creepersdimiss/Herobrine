@@ -14,7 +14,6 @@ public class CommandListener implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender cs, Command cmnd, String string, String[] strings) {
-        Validate.isSafe((Object[]) strings);
         if (!(cs instanceof Player)) {
             Herobrine.getLog().warning("You can only use these commands if you are a player!");
             return true;

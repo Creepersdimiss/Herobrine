@@ -17,7 +17,7 @@ public abstract class Action {
     public abstract String callAction(Player player, Object[] metadata);
     
     public String checkAction(Player player, Object[] metadata) {
-        Validate.isSafe(player, metadata);
+        Validate.isSafe(player);
         if (Herobrine.getConfigFile().getStringList("Herobrine.disallowedActions").contains(this.getClass().getSimpleName())) {
             return "Sorry, that action has been disallowed in the configuration file!";
         }
@@ -35,9 +35,7 @@ public abstract class Action {
         }
         Herobrine.getHotspotManager().addLocation(player.getLocation());
         Herobrine.getLog().info("Running " + getClass().getSimpleName() + ", targetting: " + player.getName());
-        Herobrine.getChatManager().addPlayer(player);
         String result = callAction(player, metadata);
-        Herobrine.getChatManager().removePlayer(player);
         if (result == null) {
             result = "Empty response from event!";
         }
