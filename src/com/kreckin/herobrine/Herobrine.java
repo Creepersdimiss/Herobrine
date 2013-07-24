@@ -49,6 +49,7 @@ public class Herobrine extends JavaPlugin {
         getCommand("hb").setExecutor(new CommandListener());
         getCommand("hbu").setExecutor(new CommandListener());
         getServer().getPluginManager().registerEvents(new EventListener(), this);
+        getServer().getScheduler().runTaskTimer(this, new ActionRunner(), 10, 10);
         try {
             new MetricsLite(this).start();
         } catch (Exception ex) {
@@ -61,6 +62,7 @@ public class Herobrine extends JavaPlugin {
     public void onDisable() {
         instance = null;
         HandlerList.unregisterAll(this);
+        getServer().getScheduler().cancelTasks(this);
     }
 
     public static CustomEntityManager getEntityManager() {

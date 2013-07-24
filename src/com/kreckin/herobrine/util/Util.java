@@ -35,18 +35,6 @@ public class Util {
         Material.YELLOW_FLOWER
     );
 
-    public static ItemStack getColoredArmour(Material mat, Color color) {
-        ItemStack itemStack = new ItemStack(mat, 1);
-        LeatherArmorMeta meta = (LeatherArmorMeta) itemStack.getItemMeta();
-        meta.setColor(color);
-        itemStack.setItemMeta(meta);
-        return itemStack;
-    }
-    
-    public static boolean shouldAct() {
-        return shouldAct(null);
-    }
-
     public static boolean shouldAct(Player player) {
         int actionChance = Herobrine.getConfigFile().getInt("Herobrine.actionChance");
         if (player != null) {
@@ -85,5 +73,13 @@ public class Util {
     
     public static String formatString(String message) {
         return ("[" + ChatColor.RED + Herobrine.getConfigFile().getString("Herobrine.entityName") + ChatColor.WHITE + "] " + message);
+    }
+    
+    public static ItemStack getColoredArmour(Material mat, Color color) {
+        ItemStack itemStack = new ItemStack(mat, 1);
+        LeatherArmorMeta meta = (LeatherArmorMeta) itemStack.getItemMeta();
+        meta.setColor(color);
+        itemStack.setItemMeta(meta);
+        return itemStack;
     }
 }
