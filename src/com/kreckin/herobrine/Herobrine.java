@@ -8,7 +8,6 @@ import com.kreckin.herobrine.items.HerobrinesSword;
 import com.kreckin.herobrine.listeners.CommandListener;
 import com.kreckin.herobrine.listeners.EventListener;
 import java.io.File;
-import java.util.logging.Logger;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ShapedRecipe;
@@ -31,7 +30,7 @@ public class Herobrine extends JavaPlugin {
                 getDataFolder().mkdirs();
             }
             if (!new File(getDataFolder() + File.separator + "config.yml").exists()) {
-                this.saveResource("config.yml", false);
+                saveResource("config.yml", false);
             }
             config = YamlConfiguration.loadConfiguration(new File(getDataFolder() + File.separator + "config.yml"));
         } catch (Exception ex) {
