@@ -1,6 +1,5 @@
 package com.kreckin.herobrine.api;
 
-import com.kreckin.herobrine.util.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
@@ -12,7 +11,6 @@ public abstract class Support {
     private final String name;
     
     public Support(String name) {
-        Validate.isSafe(name);
         this.name = name;
     }
     

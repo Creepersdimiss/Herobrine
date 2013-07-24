@@ -9,41 +9,34 @@ import com.kreckin.herobrine.support.PreciousStonesSupport;
 import com.kreckin.herobrine.support.ResidenceSupport;
 import com.kreckin.herobrine.support.TownySupport;
 import com.kreckin.herobrine.support.WorldGuardSupport;
-import com.kreckin.herobrine.util.Validate;
 import java.util.ArrayList;
+import java.util.List;
 import org.bukkit.Location;
 
 public class SupportManager {
     
-    private final ArrayList<Support> supports;
+    private final List<Support> supports = new ArrayList<>();
     
     public SupportManager() {
-        supports = new ArrayList<Support>();
-        addSupport(new ResidenceSupport());
-        addSupport(new GriefPreventionSupport());
-        addSupport(new PreciousStonesSupport());
-        addSupport(new WorldGuardSupport());
-        addSupport(new TownySupport());
-        addSupport(new HerobrineAISupport());
-        addSupport(new FactionsSupport());
-        addSupport(new MonsterApocalypseSupport());
+        supports.add(new ResidenceSupport());
+        supports.add(new GriefPreventionSupport());
+        supports.add(new PreciousStonesSupport());
+        supports.add(new WorldGuardSupport());
+        supports.add(new TownySupport());
+        supports.add(new HerobrineAISupport());
+        supports.add(new FactionsSupport());
+        supports.add(new MonsterApocalypseSupport());
     }
-    
-    public final void addSupport(Support support) {
-        Validate.isSafe(support);
-        supports.add(support);
-    }
-    
+
     public void checkPlugins() {
         for (Support support : supports) {
             if (support.isEnabled() && support.getPlugin().isEnabled()) {
-                Herobrine.getLog().info("Hooked: " + support.getName() + " v" + support.getPlugin().getDescription().getVersion());
+                Herobrine.getInstance().getLogger().info("Hooked: " + support.getName() + " v" + support.getPlugin().getDescription().getVersion());
             }
         }
     }
     
     public boolean checkPermissions(Location loc) {
-        Validate.isSafe(loc);
         for (Support support : supports) {
             if (!support.isEnabled()) {
                 continue;
@@ -55,7 +48,7 @@ public class SupportManager {
         return true;
     }
 
-    public ArrayList<Support> getSupports() {
+    public List<Support> getSupports() {
         return supports;
     }
 }
