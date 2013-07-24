@@ -10,17 +10,18 @@ import com.kreckin.herobrine.listeners.EventListener;
 import java.io.File;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Herobrine extends JavaPlugin {
 
     private static Herobrine instance;
-    private static ActionManager actionManager;
+    private final static ActionManager actionManager = new ActionManager();
+    private final static SupportManager support = new SupportManager();
+    private final static CustomEntityManager entityManager = new CustomEntityManager();
+    private final static HotspotManager hotspotManager = new HotspotManager();
     private static YamlConfiguration config;
-    private static SupportManager support;
-    private static CustomEntityManager entityManager;
-    private static HotspotManager hotspotManager;
 
     @Override
     public void onEnable() {
@@ -38,10 +39,7 @@ public class Herobrine extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        actionManager = new ActionManager();
-        support = new SupportManager();
-        entityManager = new CustomEntityManager();
-        hotspotManager = new HotspotManager();
+        actionManager.loadDefaultActions();
         ShapedRecipe recipe = new ShapedRecipe(new HerobrinesSword().getItem());
         recipe.shape("ABA", "BCB", "ABA");
         recipe.setIngredient('A', Material.REDSTONE);
@@ -58,6 +56,12 @@ public class Herobrine extends JavaPlugin {
         }
         support.checkPlugins();
     }
+    
+    @Override
+    public void onDisable() {
+        instance = null;
+        HandlerList.unregisterAll(this);
+    }
 
     public static CustomEntityManager getEntityManager() {
         return entityManager;
@@ -70,16 +74,16 @@ public class Herobrine extends JavaPlugin {
     public static ActionManager getActionManager() {
         return actionManager;
     }
-    
-    public static Herobrine getInstance() {
-        return instance;
-    }
-    
+
     public static SupportManager getSupportManager() {
         return support;
     }
     
     public static HotspotManager getHotspotManager() {
         return hotspotManager;
+    }
+    
+    public static Herobrine getInstance() {
+        return instance;
     }
 }

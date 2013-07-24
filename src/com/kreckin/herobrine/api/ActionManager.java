@@ -45,46 +45,57 @@ import java.util.List;
 public class ActionManager {
 
     private final List<Action> actions = new ArrayList<>();
+    private State state;
+
+    public void loadDefaultActions() {
+        if (state.equals(State.LOADED)) {
+            return;
+        }
+        state = state.LOADED;
+        attemptLoad(new PlaceTorch());
+        attemptLoad(new PlaceSign());
+        attemptLoad(new DestroyTorches());
+        attemptLoad(new CreateRingOfFire());
+        attemptLoad(new BuryPlayer());
+        attemptLoad(new CreateGrave());
+        attemptLoad(new CreateTNTTrap());
+        attemptLoad(new StealItem());
+        attemptLoad(new RearrangeInventory());
+        attemptLoad(new PossessPlayer());
+        attemptLoad(new WolfAttack());
+        attemptLoad(new BatAttack());
+        attemptLoad(new CreatePyramid());
+        attemptLoad(new PlaySound());
+        attemptLoad(new GiftBook());
+        attemptLoad(new SendMessage());
+        attemptLoad(new RandomLightning());
+        attemptLoad(new RandomExplosion());
+        attemptLoad(new DimTorches());
+        attemptLoad(new ThrowPlayer());
+        attemptLoad(new GiftHead());
+        attemptLoad(new CreateTotem());
+        attemptLoad(new SpinPlayer());
+        attemptLoad(new DuplicateItem());
+        attemptLoad(new RandomStorm());
+        attemptLoad(new BossAttack());
+        attemptLoad(new DestroyChests());
+        attemptLoad(new CreateTomb());
+        attemptLoad(new CreateRingOfTorches());
+        attemptLoad(new MobAttack());
+        attemptLoad(new PlaceChest());
+        attemptLoad(new CreateInfection());
+        attemptLoad(new DecayFlowers());
+        attemptLoad(new BurnPlayer());
+        attemptLoad(new EffectExplosion());
+        attemptLoad(new CreatePillar());
+        attemptLoad(new CreateBlankTree());
+        attemptLoad(new FlashMob());
+    }
     
-    public ActionManager() {
-        actions.add(new PlaceTorch());
-        actions.add(new PlaceSign());
-        actions.add(new DestroyTorches());
-        actions.add(new CreateRingOfFire());
-        actions.add(new BuryPlayer());
-        actions.add(new CreateGrave());
-        actions.add(new CreateTNTTrap());
-        actions.add(new StealItem());
-        actions.add(new RearrangeInventory());
-        actions.add(new PossessPlayer());
-        actions.add(new WolfAttack());
-        actions.add(new BatAttack());
-        actions.add(new CreatePyramid());
-        actions.add(new PlaySound());
-        actions.add(new GiftBook());
-        actions.add(new SendMessage());
-        actions.add(new RandomLightning());
-        actions.add(new RandomExplosion());
-        actions.add(new DimTorches());
-        actions.add(new ThrowPlayer());
-        actions.add(new GiftHead());
-        actions.add(new CreateTotem());
-        actions.add(new SpinPlayer());
-        actions.add(new DuplicateItem());
-        actions.add(new RandomStorm());
-        actions.add(new BossAttack());
-        actions.add(new DestroyChests());
-        actions.add(new CreateTomb());
-        actions.add(new CreateRingOfTorches());
-        actions.add(new MobAttack());
-        actions.add(new PlaceChest());
-        actions.add(new CreateInfection());
-        actions.add(new DecayFlowers());
-        actions.add(new BurnPlayer());
-        actions.add(new EffectExplosion());
-        actions.add(new CreatePillar());
-        actions.add(new CreateBlankTree());
-        actions.add(new FlashMob());
+    public void attemptLoad(Action action) {
+        if (isAllowed(action.getClass())) {
+            actions.add(action);
+        }
     }
 
     public boolean isAllowed(Class<? extends Action> action) {

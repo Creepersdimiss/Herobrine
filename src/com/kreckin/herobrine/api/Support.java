@@ -6,7 +6,7 @@ import org.bukkit.plugin.Plugin;
 
 public abstract class Support {
     
-    private SupportState state = SupportState.UNLOADED;
+    private State state = State.UNLOADED;
     private Plugin plugin;
     private final String name;
     
@@ -19,22 +19,22 @@ public abstract class Support {
     public abstract boolean checkPermissions(Location loc, Plugin plugin);
 
     public Plugin getPlugin() {
-        if (state.equals(SupportState.UNLOADED)) {
+        if (state.equals(State.UNLOADED)) {
             plugin = Bukkit.getServer().getPluginManager().getPlugin(name);
         }
         return plugin;
     }
     
     public boolean isEnabled() {
-        if (state.equals(SupportState.UNLOADED)) {
+        if (state.equals(State.UNLOADED)) {
             if (getPlugin() != null) {
-                state = SupportState.LOADED;
+                state = State.LOADED;
                 onStartup(plugin);
             } else {
-                state = SupportState.INVALID;
+                state = State.INVALID;
             }
         }
-        return state.equals(SupportState.LOADED);
+        return state.equals(State.LOADED);
     }
     
     public String getName() {

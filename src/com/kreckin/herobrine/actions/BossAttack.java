@@ -20,13 +20,13 @@ public class BossAttack extends Action {
     public String callAction(Player player, Object[] metadata) {
         int mobId = random.nextInt(4);
         if (mobId == 0) {
-            return ("Spawned: " + new HellsGuardian(player.getLocation()).getName());
+            return ("Spawned: " + new HellsGuardian(player.getLocation()).getEntity().getCustomName());
         } else if (mobId == 1) {
-            return ("Spawned: " + new FallenAngel(player.getLocation()).getName());
+            return ("Spawned: " + new FallenAngel(player.getLocation()).getEntity().getCustomName());
         } else if (mobId == 2) {
-            return ("Spawned: " + new ReligiousFollower(player.getLocation()).getName());
+            return ("Spawned: " + new ReligiousFollower(player.getLocation()).getEntity().getCustomName());
         } else {
-            return ("Spawned: " + new UnknownDemon(player.getLocation()).getName());
+            return ("Spawned: " + new UnknownDemon(player.getLocation()).getEntity().getCustomName());
         }
     }
 }

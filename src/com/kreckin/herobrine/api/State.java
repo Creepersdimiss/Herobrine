@@ -1,6 +1,6 @@
 package com.kreckin.herobrine.api;
 
-public enum SupportState {
+public enum State {
 
     UNLOADED,
     INVALID,

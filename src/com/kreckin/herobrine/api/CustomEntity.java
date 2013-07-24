@@ -37,8 +37,4 @@ public abstract class CustomEntity {
     public LivingEntity getEntity() {
         return entity;
     }
-    
-    public String getName() {
-        return entity.getCustomName();
-    }
 }
