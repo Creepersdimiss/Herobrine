@@ -1,8 +1,9 @@
 package com.kreckin.herobrine.util;
 
 import com.kreckin.herobrine.Herobrine;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -13,29 +14,28 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class Util {
-    
-    private final static SafeRandom random = new SafeRandom();
-    private final static ArrayList<Material> solids = new ArrayList<Material>() {{
-        add(Material.STONE);
-        add(Material.GRASS);
-        add(Material.DIRT);
-        add(Material.COBBLESTONE);
-        add(Material.WOOD);
-        add(Material.SAND);
-        add(Material.SANDSTONE);
-    }};
-    private final static ArrayList<Material> airs = new ArrayList<Material>() {{
-        add(Material.AIR);
-        add(Material.LONG_GRASS);
-        add(Material.SAPLING);
-        add(Material.BROWN_MUSHROOM);
-        add(Material.RED_MUSHROOM);
-        add(Material.RED_ROSE);
-        add(Material.YELLOW_FLOWER);
-    }};
+
+    private final static Random random = new Random();
+    private final static List<Material> solids = Arrays.asList(
+        Material.STONE,
+        Material.GRASS,
+        Material.DIRT,
+        Material.COBBLESTONE,
+        Material.WOOD,
+        Material.SAND,
+        Material.SANDSTONE
+    );
+    private final static List<Material> airs = Arrays.asList(
+        Material.AIR,
+        Material.LONG_GRASS,
+        Material.SAPLING,
+        Material.BROWN_MUSHROOM,
+        Material.RED_MUSHROOM,
+        Material.RED_ROSE,
+        Material.YELLOW_FLOWER
+    );
 
     public static ItemStack getColoredArmour(Material mat, Color color) {
-        Validate.isSafe(mat, color);
         ItemStack itemStack = new ItemStack(mat, 1);
         LeatherArmorMeta meta = (LeatherArmorMeta) itemStack.getItemMeta();
         meta.setColor(color);
@@ -62,40 +62,28 @@ public class Util {
     }
     
     public static String getMessage(String path) {
-        Validate.isSafe(path);
         List<String> strings = Herobrine.getConfigFile().getStringList(path);
         if (strings.isEmpty()) {
             return null;
-        }
-        if (strings.size() == 1) {
-            return strings.get(0);
         }
         return strings.get(random.nextInt(strings.size()));
     }
 
     public static Location getNearbyLocation(Player player, int distance) {
-        Validate.isSafe(player, distance);
         int addX = (random.nextBoolean() ? -random.nextInt(distance) : random.nextInt(distance));
         int addZ = (random.nextBoolean() ? -random.nextInt(distance) : random.nextInt(distance));
-        return (player.getLocation().add(addX, 0, addZ));
+        return (player.getLocation().clone().add(addX, 0, addZ));
     }
     
     public static boolean isValid(Block block) {
-        Validate.isSafe(block);
         return (airs.contains(block.getType())) && isSolid(block.getWorld().getBlockAt(block.getLocation().subtract(0, 1, 0)));
     }
     
     public static boolean isSolid(Block block) {
-        Validate.isSafe(block);
         return solids.contains(block.getType());
     }
     
     public static String formatString(String message) {
-        Validate.isSafe(message);
         return ("[" + ChatColor.RED + Herobrine.getConfigFile().getString("Herobrine.entityName") + ChatColor.WHITE + "] " + message);
-    }
-    
-    public static SafeRandom getRandom() {
-        return random;
     }
 }
