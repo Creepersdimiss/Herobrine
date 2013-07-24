@@ -16,7 +16,7 @@ public class CustomEntityManager {
         entities.put(entity.getEntity().getEntityId(), entity);
         entity.onSpawn();
     }
-    
+
     public void removeEntity(int id) {
         entities.remove(id);
     }
