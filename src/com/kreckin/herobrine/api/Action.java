@@ -34,12 +34,12 @@ public abstract class Action {
             return "Sorry, events are not allowed in that region!";
         }
         Herobrine.getHotspotManager().addLocation(player.getLocation());
-        Herobrine.getLog().info("Running " + getClass().getSimpleName() + ", targetting: " + player.getName());
+        Herobrine.getInstance().getLogger().info("Running " + getClass().getSimpleName() + ", targetting: " + player.getName());
         String result = callAction(player, metadata);
         if (result == null) {
             result = "Empty response from event!";
         }
-        Herobrine.getLog().info("Result: " + result);
+        Herobrine.getInstance().getLogger().info("Result: " + result);
         return result;
     }
 

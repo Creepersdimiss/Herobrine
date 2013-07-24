@@ -39,66 +39,59 @@ import com.kreckin.herobrine.actions.SpinPlayer;
 import com.kreckin.herobrine.actions.StealItem;
 import com.kreckin.herobrine.actions.ThrowPlayer;
 import com.kreckin.herobrine.actions.WolfAttack;
-import com.kreckin.herobrine.util.Validate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ActionManager {
 
-    private final ArrayList<Action> actions;
+    private final List<Action> actions = new ArrayList<>();
     
     public ActionManager() {
-        actions = new ArrayList<Action>();
-        addAction(new PlaceTorch());
-        addAction(new PlaceSign());
-        addAction(new DestroyTorches());
-        addAction(new CreateRingOfFire());
-        addAction(new BuryPlayer());
-        addAction(new CreateGrave());
-        addAction(new CreateTNTTrap());
-        addAction(new StealItem());
-        addAction(new RearrangeInventory());
-        addAction(new PossessPlayer());
-        addAction(new WolfAttack());
-        addAction(new BatAttack());
-        addAction(new CreatePyramid());
-        addAction(new PlaySound());
-        addAction(new GiftBook());
-        addAction(new SendMessage());
-        addAction(new RandomLightning());
-        addAction(new RandomExplosion());
-        addAction(new DimTorches());
-        addAction(new ThrowPlayer());
-        addAction(new GiftHead());
-        addAction(new CreateTotem());
-        addAction(new SpinPlayer());
-        addAction(new DuplicateItem());
-        addAction(new RandomStorm());
-        addAction(new BossAttack());
-        addAction(new DestroyChests());
-        addAction(new CreateTomb());
-        addAction(new CreateRingOfTorches());
-        addAction(new MobAttack());
-        addAction(new PlaceChest());
-        addAction(new CreateInfection());
-        addAction(new DecayFlowers());
-        addAction(new BurnPlayer());
-        addAction(new EffectExplosion());
-        addAction(new CreatePillar());
-        addAction(new CreateBlankTree());
-        addAction(new FlashMob());
+        actions.add(new PlaceTorch());
+        actions.add(new PlaceSign());
+        actions.add(new DestroyTorches());
+        actions.add(new CreateRingOfFire());
+        actions.add(new BuryPlayer());
+        actions.add(new CreateGrave());
+        actions.add(new CreateTNTTrap());
+        actions.add(new StealItem());
+        actions.add(new RearrangeInventory());
+        actions.add(new PossessPlayer());
+        actions.add(new WolfAttack());
+        actions.add(new BatAttack());
+        actions.add(new CreatePyramid());
+        actions.add(new PlaySound());
+        actions.add(new GiftBook());
+        actions.add(new SendMessage());
+        actions.add(new RandomLightning());
+        actions.add(new RandomExplosion());
+        actions.add(new DimTorches());
+        actions.add(new ThrowPlayer());
+        actions.add(new GiftHead());
+        actions.add(new CreateTotem());
+        actions.add(new SpinPlayer());
+        actions.add(new DuplicateItem());
+        actions.add(new RandomStorm());
+        actions.add(new BossAttack());
+        actions.add(new DestroyChests());
+        actions.add(new CreateTomb());
+        actions.add(new CreateRingOfTorches());
+        actions.add(new MobAttack());
+        actions.add(new PlaceChest());
+        actions.add(new CreateInfection());
+        actions.add(new DecayFlowers());
+        actions.add(new BurnPlayer());
+        actions.add(new EffectExplosion());
+        actions.add(new CreatePillar());
+        actions.add(new CreateBlankTree());
+        actions.add(new FlashMob());
     }
-    
-    public final void addAction(Action action) {
-        Validate.isSafe(action);
-        actions.add(action);
-    }
-    
+
     public boolean isAllowed(Class<? extends Action> action) {
-        Validate.isSafe(action);
         return (!Herobrine.getConfigFile().getStringList("Herobrine.disallowedActions").contains(action.getSimpleName()));
     }
 
-    public ArrayList<Action> getActions() {
+    public List<Action> getActions() {
         return actions;
     }
 }

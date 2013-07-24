@@ -1,52 +1,27 @@
 package com.kreckin.herobrine.api;
 
-import java.util.ArrayList;
 import com.kreckin.herobrine.Herobrine;
-import com.kreckin.herobrine.util.Validate;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CustomEntityManager {
     
-    private final ArrayList<CustomEntity> entities;
-    
-    public CustomEntityManager() {
-        entities = new ArrayList<CustomEntity>();
-    }
+    private final Map<Integer, CustomEntity> entities = new HashMap<>();
 
     public void addEntity(CustomEntity entity) {
-        Validate.isSafe(entity);
         if (entities.size() >= Herobrine.getConfigFile().getInt("Herobrine.maxCustomEntities")) {
-            Herobrine.getLog().warning("Max custom entities count has been surpassed!");
+            Herobrine.getInstance().getLogger().warning("Max custom entities count has been surpassed!");
             return;
         }
-        if (getEntity(entity.getEntity().getEntityId()) != null) {
-            return;
-        }
-        entities.add(entity);
+        entities.put(entity.getEntity().getEntityId(), entity);
         entity.onSpawn();
     }
     
     public void removeEntity(int id) {
-        Validate.isSafe(id);
-        if (getEntity(id) == null) {
-            return;
-        }
-        entities.remove(getEntity(id));
+        entities.remove(id);
     }
     
-    public CustomEntity getEntity(int id) {
-        Validate.isSafe(id);
-        if (entities.isEmpty()) {
-            return null;
-        }
-        for (CustomEntity entity : entities) {
-            if (entity.getEntity().getEntityId() == id) {
-                return entity;
-            }
-        }
-        return null;
-    }
-    
-    public ArrayList<CustomEntity> getEntities() {
+    public Map<Integer, CustomEntity> getEntities() {
         return entities;
     }
 }
