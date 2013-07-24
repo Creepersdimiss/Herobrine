@@ -4,6 +4,8 @@ import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.util.Util;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -11,14 +13,14 @@ import org.bukkit.entity.Player;
 
 public class AltarSummon extends Action {
 
-    private final ArrayList<EntityType> allowedMobs;
+    private final Random random = new Random();
+    private final List<EntityType> allowedMobs = new ArrayList<>();
 
     public AltarSummon() {
         super(false);
-        this.allowedMobs = new ArrayList<EntityType>();
         for (String mobName : Herobrine.getConfigFile().getStringList("Herobrine.allowedMobs")) {
             if (EntityType.fromName(mobName) != null) {
-                this.allowedMobs.add(EntityType.fromName(mobName));
+                allowedMobs.add(EntityType.fromName(mobName));
             }
         }
     }
@@ -34,18 +36,18 @@ public class AltarSummon extends Action {
                 ((Player) entity).sendMessage(Util.formatString(Util.getMessage("Herobrine.altarMessages")));
             }
         }
-        int amountToSpawn = 5 + (Util.getRandom().nextInt(5));
+        int amountToSpawn = 5 + (random.nextInt(5));
         for (int id = 0; id < amountToSpawn; id++) {
-            if (this.allowedMobs.isEmpty()) {
+            if (allowedMobs.isEmpty()) {
                 break;
             }
             EntityType entity;
             if (this.allowedMobs.size() == 1) {
                 entity = this.allowedMobs.get(0);
             } else {
-                entity = this.allowedMobs.get(Util.getRandom().nextInt(this.allowedMobs.size()));
+                entity = this.allowedMobs.get(random.nextInt(this.allowedMobs.size()));
             }
-            player.getWorld().spawnEntity(Util.getNearbyLocation(player, Util.getRandom().nextInt(10)), entity);
+            player.getWorld().spawnEntity(Util.getNearbyLocation(player, random.nextInt(10)), entity);
         }
         String message = Util.getMessage("Herobrine.altarMessages");
         if (message!= null) {

@@ -1,10 +1,12 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.util.Util;
+import java.util.Random;
 import org.bukkit.entity.Player;
 
 public class BurnPlayer extends Action {
+    
+    private final Random random = new Random();
     
     public BurnPlayer() {
         super(true);
@@ -12,7 +14,7 @@ public class BurnPlayer extends Action {
 
     @Override
     public String callAction(Player player, Object[] metadata) {
-        int time = Util.getRandom().nextInt(5) * 20;
+        int time = random.nextInt(5) * 20;
         if (time == 0) {
             time = 20;
         }

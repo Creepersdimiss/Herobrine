@@ -2,11 +2,14 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.util.Util;
+import java.util.Random;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 public class CreateBlankTree extends Action {
+    
+    private final Random random = new Random();
     
     public CreateBlankTree() {
         super(true);
@@ -16,7 +19,7 @@ public class CreateBlankTree extends Action {
     public String callAction(Player player, Object[] metadata) {
         Location loc = Util.getNearbyLocation(player, 15);
         if (Util.isValid(loc.getBlock())) {
-            int height = 4 + Util.getRandom().nextInt(3);
+            int height = 4 + random.nextInt(3);
             for (int y = 0; y < height; y++) {
                 if (!loc.add(0, y, 0).getBlock().getType().equals(Material.AIR)) {
                     break;
