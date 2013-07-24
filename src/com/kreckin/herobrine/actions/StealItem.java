@@ -1,12 +1,15 @@
 package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
-import com.kreckin.herobrine.util.Util;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class StealItem extends Action {
+    
+    private final Random random = new Random();
     
     public StealItem() {
         super(true);
@@ -14,7 +17,7 @@ public class StealItem extends Action {
 
     @Override
     public String callAction(Player player, Object[] metadata) {
-        ArrayList<Integer> slots = new ArrayList<Integer>();
+        List<Integer> slots = new ArrayList<>();
         for (int index = 0; index < 35; index++) {
             if (player.getInventory().getItem(index) != null) {
                 slots.add(index);
@@ -25,7 +28,7 @@ public class StealItem extends Action {
         }
         ItemStack item = player.getInventory().getItem(slots.get(0));
         if (slots.size() > 1) {
-            item = player.getInventory().getItem(Util.getRandom().nextInt(slots.size()));
+            item = player.getInventory().getItem(random.nextInt(slots.size()));
         }
         if (item != null) {
             player.getInventory().remove(item);
