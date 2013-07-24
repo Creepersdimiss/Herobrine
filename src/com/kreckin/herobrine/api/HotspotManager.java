@@ -1,29 +1,23 @@
 package com.kreckin.herobrine.api;
 
 import com.kreckin.herobrine.Herobrine;
-import com.kreckin.herobrine.util.Validate;
 import java.util.ArrayList;
+import java.util.List;
 import org.bukkit.Location;
 
 public class HotspotManager {
     
-    private final ArrayList<Location> locations;
-    
-    public HotspotManager() {
-        locations = new ArrayList<Location>();
-    }
-    
+    private final List<Location> locations = new ArrayList<>();
+
     public void addLocation(Location loc) {
-        Validate.isSafe(loc);
         if (!Herobrine.getConfigFile().getBoolean("Herobrine.allowHotspots")) {
             return;
         }
-        Herobrine.getLog().info("Added Hotspot: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
+        Herobrine.getInstance().getLogger().info("Added Hotspot: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());
         locations.add(loc);
     }
     
     public int getImportance(Location loc) {
-        Validate.isSafe(loc);
         int hotspots = 0;
         for (Location location : locations) {
             if (!location.getWorld().getName().equals(loc.getWorld().getName())) {
@@ -39,7 +33,7 @@ public class HotspotManager {
         return hotspots;
     }
 
-    public ArrayList<Location> getLocations() {
+    public List<Location> getLocations() {
         return locations;
     }
 }
