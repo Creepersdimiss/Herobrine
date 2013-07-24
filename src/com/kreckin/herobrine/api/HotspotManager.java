@@ -19,11 +19,12 @@ public class HotspotManager {
     
     public int getImportance(Location loc) {
         int hotspots = 0;
+        int size = Herobrine.getConfigFile().getInt("Herobrine.hotspotSize");
         for (Location location : locations) {
             if (!location.getWorld().getName().equals(loc.getWorld().getName())) {
                 continue;
             }
-            if (location.distance(loc) <= Herobrine.getConfigFile().getInt("Herobrine.hotspotSize")) {
+            if (location.distanceSquared(loc) <= (size * size)) {
                 hotspots++;
             }
         }
