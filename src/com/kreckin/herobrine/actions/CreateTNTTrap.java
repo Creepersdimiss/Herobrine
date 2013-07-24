@@ -2,12 +2,15 @@ package com.kreckin.herobrine.actions;
 
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.util.Util;
+import java.util.Random;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 public class CreateTNTTrap extends Action {
+    
+    private final Random random = new Random();
 
     public CreateTNTTrap() {
         super(true);
@@ -19,7 +22,7 @@ public class CreateTNTTrap extends Action {
         Block ground = plate.getLocation().subtract(0, 1, 0).getBlock();
         Block tnt = ground.getLocation().subtract(0, 1, 0).getBlock();
         if (Util.isValid(plate) && Util.isSolid(ground) && Util.isSolid(tnt)) {
-            plate.setTypeId(Util.getRandom().nextBoolean() ? 70 : 72);
+            plate.setTypeId(random.nextBoolean() ? 70 : 72);
             tnt.setType(Material.TNT);
             Location loc = plate.getLocation();
             return ("Location: " + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ());

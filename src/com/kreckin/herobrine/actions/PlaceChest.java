@@ -4,6 +4,8 @@ import com.kreckin.herobrine.Herobrine;
 import com.kreckin.herobrine.api.Action;
 import com.kreckin.herobrine.util.Util;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Chest;
@@ -12,14 +14,14 @@ import org.bukkit.inventory.ItemStack;
 
 public class PlaceChest extends Action {
     
-    private final ArrayList<Material> items;
+    private final List<Material> items = new ArrayList<>();
+    private final Random random = new Random();
     
     public PlaceChest() {
         super(true);
-        this.items = new ArrayList<Material>();
         for (String line : Herobrine.getConfigFile().getStringList("Herobrine.allowedItems")) {
             if (Material.getMaterial(line) != null) {
-                this.items.add(Material.getMaterial(line));
+                items.add(Material.getMaterial(line));
             }
         }
     }
@@ -35,9 +37,9 @@ public class PlaceChest extends Action {
         }
         ItemStack item;
         if (items.size() == 1) {
-            item = new ItemStack(this.items.get(0), Util.getRandom().nextInt(3));
+            item = new ItemStack(items.get(0), random.nextInt(3));
         } else {
-            item = new ItemStack(this.items.get(Util.getRandom().nextInt(this.items.size() - 1)), Util.getRandom().nextInt(3));
+            item = new ItemStack(items.get(random.nextInt(this.items.size() - 1)), random.nextInt(3));
         }
         loc.getBlock().setType(Material.CHEST);
         ((Chest) loc.getBlock().getState()).getInventory().addItem(item);
