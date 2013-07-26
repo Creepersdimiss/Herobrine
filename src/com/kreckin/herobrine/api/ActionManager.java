@@ -45,7 +45,7 @@ import java.util.List;
 public class ActionManager {
 
     private final List<Action> actions = new ArrayList<>();
-    private State state;
+    private State state = State.UNLOADED;
 
     public void loadDefaultActions() {
         if (state.equals(State.LOADED)) {
